@@ -4,9 +4,9 @@ import styles from "./styles.module.css";
 import Category from "@/components/Category/Category";
 import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 
-// import image from "../../../assets/113111.jpg";
-// import image1 from "../../../assets/142221.jpg";
-// import image2 from "../../../assets/11111111.jpg";
+import image from "../../../assets/113111.jpg";
+import image1 from "../../../assets/142221.jpg";
+import image2 from "../../../assets/11111111.jpg";
 
 const services = [
   {

@@ -49,11 +49,11 @@ const page = () => {
 
   return (
     <div className={styles.wrapp}>
-      {/* <div>
+      <div>
         <Link href={"/cart"} className={styles.cart}>
           <Image src={Imag4} height={50} width={50} alt="Корзина" />
         </Link>
-      </div> */}
+      </div>
       <div className="category-list">
         {products.map((category, id) => (
           <Category

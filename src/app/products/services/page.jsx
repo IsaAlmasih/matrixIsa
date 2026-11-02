@@ -2,11 +2,11 @@
 import React, { use } from "react";
 import styles from "./styles.module.css";
 import Category from "@/components/Category/Category";
-// import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 
-// import image from "../../../assets/113111.jpg";
-// import image1 from "../../../assets/142221.jpg";
-// import image2 from "../../../assets/11111111.jpg";
+import image from "../../../assets/113111.jpg";
+import image1 from "../../../assets/142221.jpg";
+import image2 from "../../../assets/11111111.jpg";
 
 const services = [
 
@@ -18,12 +18,12 @@ const services = [
 
 import { useRouter } from "next/navigation";
 const page = () => {
-  // const images = [image.src, image1.src, image2.src];
+  const images = [image.src, image1.src, image2.src];
   const router = useRouter();
 
   return (
     <div className={styles.wrapper}>
-      {/* <div className={styles.text}>Страница товаров</div> */}
+      <div className={styles.text}>Страница товаров</div>
       <div className={styles.image}>
         Страница товаров для творчества.
         <div className="category-list">
