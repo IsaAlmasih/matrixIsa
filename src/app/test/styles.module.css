@@ -1,0 +1,33 @@
+.wrapper {
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    color: #0f1ccf;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    gap: 20px;
+}
+
+.wrappe {
+    background-color: black;
+    height: 10vh;
+    width: 250px;
+    color: #0f1ccf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    gap: 10px; 
+}
+
+.include {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}

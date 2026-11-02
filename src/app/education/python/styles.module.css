@@ -1,0 +1,27 @@
+.wrapper {
+    margin-top: 150px;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.wrap {
+    color: #04ff00;
+    margin-top: 50px;
+}
+
+.container a {
+  display: flex; /* или inline-block */
+  margin-bottom: 5px; /* чуть пространства между ссылками */
+  color: #ffffff;
+  justify-content: center;
+}
+
+
+.button {
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    border: 2px solid #4dff00;
+    width: 140px;
+}

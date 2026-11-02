@@ -1,0 +1,57 @@
+
+.cardGrid {
+  display: grid;
+  justify-content: center;
+  margin-top: 100px;
+  grid-template-columns: repeat(3, 320px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 15px;
+}
+
+.card {
+  /* width: 100px;
+    height: 100px; */
+  border: 2px solid rgb(47, 255, 0);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 70px minmax(500px, 1fr) 150px;
+  /* border: 2px solid rgb(47, 255, 0); */
+  min-height: 100vh;
+  margin-left: 270px;
+  width: 1200px;
+  gap: 20px;
+}
+
+.remoteLeft {
+  width: 200px;
+  height: 800px;
+  margin-top: 180px;
+  grid-column: 1 ;
+  grid-row: 1/4;
+  border: 2px solid rgb(47, 255, 0);
+}
+
+.Btn {
+  border: 1px solid;
+  grid-column: 2;
+  grid-row: 1;
+  border: 2px solid rgb(47, 255, 0);
+}
+
+.remoteRight {
+  width: 200px;
+  height: 800px;
+  margin-top: 180px;
+  grid-column: 3;
+  grid-row: 1/4;
+  border: 2px solid rgb(47, 255, 0);
+}
+
+.footer {
+  border: 2px solid rgb(47, 255, 0);
+  grid-column: 2;
+  grid-row: 3;
+}

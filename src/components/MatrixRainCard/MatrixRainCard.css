@@ -1,0 +1,68 @@
+.matrix-card {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  max-width: 200px;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px #00000033;
+}
+
+.matrix-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+}
+
+.matrix-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 30px;
+  z-index: 2;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.matrix-content h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.matrix-content p {
+  font-size: 16px; 
+}
+
+.matrix-card-container {
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.matrix-grid-container {
+  display: flex;
+  height: 350px;
+  width: 1300px;
+  gap: 30px;
+}
+
+
+@media (max-width:390px) {
+  .matrix-content h2 {
+    font-size: 15px;
+  }
+  .matrix-content a {
+    font-size: 17px;
+  }
+  .matrix-card {
+    height: 150px;
+  }
+}
+

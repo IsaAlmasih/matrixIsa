@@ -1,0 +1,68 @@
+/* .wrapper {
+    background-color: rgb(0, 0, 0);
+    background-repeat: no-repeat;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    margin-top: 20vh;
+}
+
+.wrappe {
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+}
+
+.book {
+    background-repeat: no-repeat;
+    background-color: rgb(255, 255, 255);
+}
+
+.button {
+    font-size: 20px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: rgb(254, 7, 7);
+    background-color: transparent;
+    border: 30;
+    z-index: 100;
+}
+
+.firstPage {
+    background-color: blueviolet;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.secondPage {
+    background-color: aqua;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.thirdPage {
+    background-color: blue;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+
+@media (min-width: 380px) {
+ .wrapper {
+    height: 50% !important;
+    width: 70%;
+ }
+ .image img {
+    width: 70px;
+ }
+} */

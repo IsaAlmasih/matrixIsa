@@ -1,0 +1,67 @@
+.wrapper {
+  /* background-color: rgb(0, 0, 0); */
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.wrappe {
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+}
+
+.book {
+  background-repeat: no-repeat;
+}
+
+.button {
+  font-size: 20px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color: rgb(0, 255, 102);
+  background-color: transparent;
+  border: 30;
+  z-index: 100;
+}
+
+/* Стили страниц */
+.firstPage {
+  padding: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 3px solid rgb(30, 41, 14);
+  overflow-y: auto;
+  font-size: 20px;
+}
+
+
+.secondPage {
+  padding: 16px;
+  display: block; /* или inline-block */
+  margin-bottom: 3px; /* чуть пространства между ссылками */
+  font-size: 19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 3px solid rgb(30, 41, 14);
+  background-position: center;
+  overflow-y: auto;
+}
+
+.thirdPage {
+  padding: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow-y: auto;
+}
+

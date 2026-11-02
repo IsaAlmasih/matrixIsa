@@ -1,0 +1,143 @@
+.wrapper {
+    background-color: rgb(3, 3, 66);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.blok {
+    background-color: rgb(3, 3, 64);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+    -webkit-box-shadow: 20px 31px 40px -11px rgba(0, 142, 251, 0.59);
+    -moz-box-shadow: 20px 31px 40px -11px rgba(0, 145, 255, 0.33);
+    box-shadow: 20px 21px 40px -11px rgba(0, 144, 255, 0.33);
+}
+
+
+.textTsar {
+    color: #5a5454;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+@media (min-width: 360px) {
+    .text {
+    font-size: 30px;
+    }
+    .textTsar {
+        font-size: 25px;
+    }
+    .blok {
+            background-color: rgb(3, 3, 64);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    height: 60%;
+    -webkit-box-shadow: 20px 31px 40px -11px rgba(0, 142, 251, 0.59);
+    -moz-box-shadow: 20px 31px 40px -11px rgba(0, 145, 255, 0.33);
+    box-shadow: 20px 21px 40px -11px rgba(0, 144, 255, 0.33);
+    }
+}
+
+@media (min-width: 480px) {
+    .text {
+    font-size: 30px;
+    } 
+}
+
+@media (min-width: 768px) {
+    .text {
+    font-size: 36px;
+    } 
+}
+
+@media (min-width: 962px) {
+    .text {
+    font-size: 38px;
+    } 
+}
+
+@media (min-width: 1024px) {
+    .text {
+    font-size: 38px;
+    } 
+}
+
+/* @media (min-width: 1280px) {
+    .blok {
+    font-size: 66px;
+    } 
+} */
+
+/* @media (min-width: 1536px) {
+    .blok {
+    font-size: 76px;
+    } 
+} */
+
+/* @media (min-width: 1920px) {
+    .blok {
+    font-size: 108px;
+    } 
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+/* .wrapper {
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    color: #0f1ccf;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    gap: 20px;
+}
+
+.wrappe {
+    background-color: black;
+    height: 10vh;
+    width: 250px;
+    color: #0f1ccf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    gap: 10px; 
+}
+
+.include {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+} */
