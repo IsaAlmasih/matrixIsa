@@ -62,16 +62,22 @@ const page = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.text}>Это страница книг!</div>
-        <div className="category-list">
-          {/* {" "}
+      <div className="category-list">
+        {/* {" "}
           {images.map((src, index) => (
             <img key={index} src={src} />
           ))} */}
-          {/* {books && books.map((book) => <ProductCard product={book} />)} */}
-          {books &&
-            books.map(({ id, name, image, link }) => (
-              <Category id={id} categoryName={name} image={image} href={link} />
-            ))}
+        {/* {books && books.map((book) => <ProductCard product={book} />)} */}
+        {books &&
+          books.map(({ id, name, image, link }) => (
+            <Category
+              key={id}
+              id={id}
+              categoryName={name}
+              image={image}
+              href={link}
+            />
+          ))}
       </div>
       <button
         onClick={() => router.push("/products")}

@@ -28,7 +28,13 @@ const page = () => {
         Страница товаров для творчества.
         <div className="category-list">
           {services.map(({ id, name, image, link }) => (
-            <Category id={id} categoryName={name} image={image} href={link} />
+            <Category
+              key={id}
+              id={id}
+              categoryName={name}
+              image={image}
+              href={link}
+            />
           ))}
         </div>
       </div>
