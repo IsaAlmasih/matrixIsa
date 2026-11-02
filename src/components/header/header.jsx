@@ -27,7 +27,6 @@ const Header = () => {
           <Image src={logo} width={45} height={45} alt="logo" />
           Matrix
         </Link>
-
         {/* <button
           onClick={() => {
             setIsMatrixPopupOpen((prev) => !prev);
@@ -38,7 +37,7 @@ const Header = () => {
         </button> */}
 
         <div className={styles.navigation}>
-          {/* <Link href={"/"}>Главная страница</Link> */}
+          <Link href={"/"}>Главная страница</Link>
           <Link href={"/cart"}>Кабинет</Link>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className={styles.openPopup}>

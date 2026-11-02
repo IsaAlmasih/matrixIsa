@@ -16,7 +16,7 @@ const page = () => {
         <div>Бюджет Акционерного общества 9680 рублей.</div>
         <Link href="/price">Вернуться.</Link>
       </div>
-      {/* <MatrixRain></MatrixRain> */}
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const page = () => {
           Перейти в общество.
         </Link>
       </div>
-      {/* <MatrixRain></MatrixRain> */}
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

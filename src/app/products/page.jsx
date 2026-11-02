@@ -68,7 +68,7 @@ const page = () => {
       <button onClick={() => router.push("/")} className={styles.button}>
         {"<--"}Назад
       </button>
-      {/* <MatrixRain></MatrixRain> */}
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

@@ -9,34 +9,34 @@ import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 // import image2 from "../../../assets/142221.jpg";
 
 const services = [
-  {
-    id: 1,
-    name: "Товар один.",
-    image,
-    description: "...",
-    link: "/ditails/detail9",
-  },
-  {
-    id: 2,
-    name: "Товар два.",
-    image,
-    description: "...",
-    link: "/ditails/detail10",
-  },
-  {
-    id: 3,
-    name: "Товар три",
-    image,
-    description: "...",
-    link: "/ditails/detail11",
-  },
-  {
-    id: 4,
-    name: "Товар четыре",
-    image,
-    description: "...",
-    link: "/ditails/detail12",
-  },
+  // {
+  //   id: 1,
+  //   name: "Товар один.",
+  //   image,
+  //   description: "...",
+  //   link: "/ditails/detail9",
+  // },
+  // {
+  //   id: 2,
+  //   name: "Товар два.",
+  //   image,
+  //   description: "...",
+  //   link: "/ditails/detail10",
+  // },
+  // {
+  //   id: 3,
+  //   name: "Товар три",
+  //   image,
+  //   description: "...",
+  //   link: "/ditails/detail11",
+  // },
+  // {
+  //   id: 4,
+  //   name: "Товар четыре",
+  //   image,
+  //   description: "...",
+  //   link: "/ditails/detail12",
+  // },
 ];
 
 import { useRouter } from "next/navigation";

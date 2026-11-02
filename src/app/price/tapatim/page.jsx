@@ -15,8 +15,9 @@ const page = () => {
         <a href={"/deta_Ip.pdf"}>Политика.</a>
         <Link href={"/contacts.pdf"}>Реквизиты.</Link>
         <Link href={"/PrivacyPolicy.pdf"}>Пользовательское..</Link>
+        <Link href={"/PlanetPage"}>Вернутся назад.</Link>
       </div>
-      {/* <MatrixRain></MatrixRain> */}
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

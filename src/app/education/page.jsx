@@ -82,20 +82,23 @@ const page = () => {
   return (
     <div key="10" className={styles.mainWrapper}>
       <div className={styles.text}>Выберите интересующую тему.</div>
-        <div className={styles.MatrixWrapper}>
-          {images3 &&
-            images3.map((image, index) => (
-              < MatrixRainCard
-                key={index}
-                name={image.name}
-                id={image.id}
-                link={image.link}
-                image={image.image}
-              />
-            ))}
-        </div>
+      <div className={styles.MatrixWrapper}>
+        {images3 &&
+          images3.map((image, index) => (
+            <MatrixRainCard
+              key={index}
+              name={image.name}
+              id={image.id}
+              link={image.link}
+              image={image.image}
+            />
+          ))}
+      </div>
       <MatrixRain></MatrixRain>
-      <button onClick={() => router.push("/")} className={styles.button}>
+      <button
+        onClick={() => router.push("/PlanetPage")}
+        className={styles.button}
+      >
         {"<--"}Назад
       </button>
     </div>

@@ -25,21 +25,33 @@
     color: #00ff04;
 }
 
+@media (max-width: 700px) {
+    .wrapper p {  
+    font-size: 24px;
+}
+}
 
-@media (max-width: 360px) {
-    .wrapper {  
+
+@media (max-width: 590px) {
+    .wrapper p {  
+    font-size: 24px;
+}
+
+
+
+}
+@media (max-width: 490px) {
+    .wrapper p{  
+    font-size: 20px;
+}
+}
+
+
+@media (max-width: 350px) {
+    .wrapper p {  
     font-size: 15px;
 }
 }
 
-@media (max-width: 490px) {
-    .wrapper p {  
-    font-size: 16px;
-}
-}
 
-@media (max-width: 590px) {
-    .wrapper p {  
-    font-size: 20px;
-}
-}
+

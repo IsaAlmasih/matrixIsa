@@ -12,7 +12,7 @@ export default function Home() {
       <div className={styles.wrapper}>
         <div className={styles.remoteLeft}>Пульты</div>
         <div className={styles.Btn}>
-          <Link href={"/planetPage"}>Выйти из матрицы.</Link>
+          <Link href="/planetPage">Выйти из матрицы.</Link>
         </div>
         <div className={styles.cardGrid}>
           <div className={styles.card}>Блок 1</div>
@@ -20,7 +20,9 @@ export default function Home() {
           <div className={styles.card}>Блок 3</div>
           <div className={styles.card}>
             Блок 4
-            <Link href={"/https://bhaskaracharjee.github.io/3D-Room/"}>Комната нужная</Link>
+            <Link href="https://bhaskaracharjee.github.io/3D-Room/">
+              Комната нужная
+            </Link>
           </div>
           <div className={styles.card}>Блок 5</div>
           <div className={styles.card}>Блок 6</div>
@@ -31,7 +33,7 @@ export default function Home() {
         <div className={styles.remoteRight}>Пульты правые.</div>
         <div className={styles.footer}>Подвал.</div>
       </div>
-      <MatrixRain></MatrixRain>
+      <MatrixRain/>
     </>
   );
 }
