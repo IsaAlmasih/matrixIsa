@@ -1,82 +1,69 @@
 .wrapper {
-    background-color: rgb(3, 3, 66);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
+  /* background-color: rgb(3, 3, 66); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
 }
-
 
 .blok {
-    background-color: rgb(3, 3, 64);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 60%;
-    height: 60%;
-    -webkit-box-shadow: 20px 31px 40px -11px rgba(0, 142, 251, 0.59);
-    -moz-box-shadow: 20px 31px 40px -11px rgba(0, 145, 255, 0.33);
-    box-shadow: 20px 21px 40px -11px rgba(0, 144, 255, 0.33);
+  background-color: rgb(3, 3, 64);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 60%;
+  height: 60%;
+  -webkit-box-shadow: 20px 31px 40px -11px rgba(0, 142, 251, 0.59);
+  -moz-box-shadow: 20px 31px 40px -11px rgba(0, 145, 255, 0.33);
+  box-shadow: 20px 21px 40px -11px rgba(0, 144, 255, 0.33);
 }
 
-
 .textTsar {
-    color: #5a5454;
+  color: #a13939;
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-
-@media (min-width: 360px) {
-    .text {
-    font-size: 30px;
-    }
-    .textTsar {
-        font-size: 25px;
-    }
-    .blok {
-            background-color: rgb(3, 3, 64);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 90%;
-    height: 60%;
-    -webkit-box-shadow: 20px 31px 40px -11px rgba(0, 142, 251, 0.59);
-    -moz-box-shadow: 20px 31px 40px -11px rgba(0, 145, 255, 0.33);
-    box-shadow: 20px 21px 40px -11px rgba(0, 144, 255, 0.33);
-    }
-}
-
-@media (min-width: 480px) {
-    .text {
-    font-size: 30px;
-    } 
-}
-
-@media (min-width: 768px) {
-    .text {
-    font-size: 36px;
-    } 
-}
-
-@media (min-width: 962px) {
-    .text {
-    font-size: 38px;
-    } 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media (min-width: 1024px) {
-    .text {
+  .text {
     font-size: 38px;
-    } 
+  }
+}
+
+@media (min-width: 962px) {
+  .text {
+    font-size: 38px;
+  }
+}
+
+@media (min-width: 768px) {
+  .text {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 480px) {
+  .text {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 350px) {
+  .textTsar {
+    font-size: 19px;
+  }
+
+  .blok {
+    width: 290px;
+    height: 450px;
+  }
 }
 
 /* @media (min-width: 1280px) {
@@ -96,17 +83,6 @@
     font-size: 108px;
     } 
 } */
-
-
-
-
-
-
-
-
-
-
-
 
 /* .wrapper {
     background-color: black;

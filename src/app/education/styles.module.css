@@ -30,7 +30,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   height: 350px;
-  width: 65%;
+  /* width: 65%; */
   gap: 20px;
 }
 
@@ -77,7 +77,7 @@
   }
 
   .mainWrapper {
-    background-color: #000000;
+    /* background-color: #000000; */
     padding-top: 100px;
     justify-content: flex-start;
     display: flex;
@@ -118,7 +118,7 @@
   }
 
   .mainWrapper {
-    background-color: #000000;
+    /* background-color: #000000; */
     padding-top: 100px;
     justify-content: flex-start;
     display: flex;

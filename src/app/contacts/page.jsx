@@ -4,6 +4,8 @@ import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 
+import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+
 const page = () => {
   return (
     <div className={styles.wrapper}>
@@ -18,6 +20,7 @@ const page = () => {
           </Link>
         </div>
       </div>
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

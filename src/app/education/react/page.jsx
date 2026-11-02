@@ -36,7 +36,7 @@ const page = () => {
       >
         {"<--"}Назад
       </button>
-      {/* <MatrixRain></MatrixRain> */}
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

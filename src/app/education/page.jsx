@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import styles from "../education/styles.module.css";
-// import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 import ProductCard from "@/components/productCard/productCard";
 
 import image from "../../assets//education/python.jpg";
@@ -10,7 +10,6 @@ import image2 from "../../assets/education/React.jpg";
 import image3 from "../../assets/education/djang.jpg";
 
 import { useRouter } from "next/navigation";
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 import Book from "@/components/book/Book";
 
 import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
@@ -94,13 +93,14 @@ const page = () => {
             />
           ))}
       </div>
-      <MatrixRain></MatrixRain>
+
       <button
         onClick={() => router.push("/PlanetPage")}
         className={styles.button}
       >
         {"<--"}Назад
-      </button>
+      </button>      
+      <MatrixRain></MatrixRain>
     </div>
   );
 };

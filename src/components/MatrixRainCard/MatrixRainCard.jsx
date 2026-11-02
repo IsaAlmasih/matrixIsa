@@ -44,7 +44,7 @@ const MatrixRainCard = ({ name, id, image, link }) => {
         // Сбрасываем каплю, если она выходит за нижнюю границу
         if (drop.y > canvas.height) {
           drop.y = -fontSize; // Сбрасываем её строго сверху
-          drop.speed = 4 + Math.random() * 6; // Обновляем скорость
+          drop.speed = 1 + Math.random() * 7; // Обновляем скорость
         }
       });
     };
