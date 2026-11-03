@@ -39,6 +39,33 @@
   border: 2px solid rgb(30, 0, 255);
 }
 
+.cardTwu {
+  display: flex;
+  justify-content: center; /* Центр по горизонтали */
+  align-items: center; /* Центр по вертикали */
+  text-align: center;
+  color: #51ff00;
+  border: 2px solid rgb(30, 0, 255);
+}
+
+.cardFour {
+  display: flex;
+  justify-content: center; /* Центр по горизонтали */
+  align-items: center; /* Центр по вертикали */
+  text-align: center;
+  color: #51ff00;
+  border: 2px solid rgb(30, 0, 255);
+}
+
+.cardFive {
+  display: flex;
+  justify-content: center; /* Центр по горизонтали */
+  align-items: center; /* Центр по вертикали */
+  text-align: center;
+  color: #51ff00;
+  border: 2px solid rgb(30, 0, 255);
+}
+
 .remoteRight {
   justify-self: center;
   width: 300px;

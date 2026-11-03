@@ -9,11 +9,7 @@ import Image from "next/image";
 
 import logo from "../../assets/141.jpg";
 
-import MatrixPopup from "../MatrixPopup/MatrixPopup";
-
 const Header = () => {
-  const [isMatrixPopupOpen, setIsMatrixPopupOpen] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const headerClasses = clsx(styles.header, {
@@ -21,23 +17,22 @@ const Header = () => {
   });
   return (
     <>
-      <MatrixPopup isOpened={isMatrixPopupOpen} />
       <header className={headerClasses}>
         <Link className={styles.logo} href={"/matrix"}>
           <Image src={logo} width={45} height={45} alt="logo" />
           Matrix
         </Link>
-        {/* <button
-          onClick={() => {
-            setIsMatrixPopupOpen((prev) => !prev);
-          }}
-          className={styles["header-btn"]}
-        >
-          {isMatrixPopupOpen ? "Выйти из матрицы" : "Войти в матрицу"}
-        </button> */}
-
+        <div className={styles.btn}>
+          <Link href="/">На главную</Link>
+        </div>
         <div className={styles.navigation}>
-          <Link href={"/"}>Главная страница</Link>
+          <Link
+            href="https://bhaskaracharjee.github.io/3D-Room/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Выйти из матрицы.
+          </Link>
           <Link href={"/cart"}>Кабинет</Link>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className={styles.openPopup}>
@@ -70,13 +65,12 @@ const Header = () => {
                   </svg>
                 </button>
               </div>
-
-              {/* <div className={styles.navigation}>
+              <div className={styles.navigation}>
                 <Link href={"/"}>Главная страница</Link>
                 <Link href={"/about"}>О нас</Link>
                 <Link href={"/"}>Контакты</Link>
                 <Link href={"/cart"}>Кабинет</Link>
-              </div> */}
+              </div>
             </div>
           </div>
         )}

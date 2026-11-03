@@ -14,8 +14,10 @@ const page = () => {
         <Link href={"/UserAgreement.pdf"}>Пользовательское соглашение .</Link>
         <a href={"/deta_Ip.pdf"}>Политика.</a>
         <Link href={"/contacts.pdf"}>Реквизиты.</Link>
-        <Link href={"/PrivacyPolicy.pdf"}>Пользовательское..</Link>
-        <Link href={"/PlanetPage"}>Вернутся назад.</Link>
+        <Link href={"/PrivacyPolicy.pdf"}>Пользовательское.</Link>
+      <button className={styles.button}>
+        <a href="/PlanetPage">Вернутся назад.</a>
+      </button>      
       </div>
       <MatrixRain></MatrixRain>
     </div>

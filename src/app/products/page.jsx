@@ -42,6 +42,54 @@ const products = [
     image: Imag5,
     link: "/products/hyrlands",
   },
+  {
+    id: 20,
+    name: "Папирус",
+    image: Imag3,
+    link: "/products/papirus",
+  },
+  {
+    id: 9,
+    name: "Товары для творчества",
+    image: Imag1,
+    link: "/products/services",
+  },
+  {
+    id: 30,
+    name: "Книги",
+    image: Imag2,
+    link: "/products/books",
+  },
+  {
+    id: 40,
+    name: "Новогодние товары",
+    image: Imag5,
+    link: "/products/hyrlands",
+  },
+  {
+    id: 20,
+    name: "Папирус",
+    image: Imag3,
+    link: "/products/papirus",
+  },
+  {
+    id: 9,
+    name: "Товары для творчества",
+    image: Imag1,
+    link: "/products/services",
+  },
+  {
+    id: 30,
+    name: "Книги",
+    image: Imag2,
+    link: "/products/books",
+  },
+  {
+    id: 40,
+    name: "Новогодние товары",
+    image: Imag5,
+    link: "/products/hyrlands",
+  },
 ];
 
 const page = () => {
