@@ -76,9 +76,9 @@ const Header = () => {
             <div className={styles.svwyz}>Документы</div>
             <div>4</div>
             <div>5</div>
-            <div>Контакты</div>
+            <div className={styles.svwyz}>Контакты</div>
             <div>7</div>
-            <div>Вакансии</div>
+            <div className={styles.svwyz}>Вакансии</div>
             <div>9</div>
             <div>10</div>
             <div>11</div>
