@@ -1,5 +1,4 @@
 .wrapper {
-  /* background-color: rgb(0, 0, 0); */
   font-size: 25px;
   color: #00ff08;
   display: flex;
@@ -17,11 +16,6 @@
   z-index: 10;
 }
 
-.wrapper p {
-  font-size: 40px;
-  max-width: 75%;
-  color: #00ff04;
-}
 
 .butt {
   background-color: #110670;
@@ -45,7 +39,15 @@
     align-items: center;
   }
 } */
-
+@media (max-width: 450px) {
+  .wrapper {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
 
 
 @media (max-width: 350px) {

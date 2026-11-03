@@ -1,0 +1,49 @@
+.wrapper {
+    background-color: rgb(6, 6, 65);
+    color: #40ff00;
+    width: 95%;
+    height: auto;
+    padding: 40px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.wrapperBoodu {
+    margin-top: 50px;
+    color: #00ff1a;
+}
+
+
+.blokOne {
+    margin-bottom: 15px;
+    border: 2px solid #0d00ff;
+    color: #1aff00;
+    padding: 10px;
+}
+
+
+
+@media (max-width: 360px) {
+    .wrapper {
+        display: flex;
+        padding: 0px;
+        justify-content: center;
+        background-color: rgb(3, 17, 79);
+        text-align: center;
+    }
+
+    .wrapperBoodu {
+        margin-top: 5px;
+}
+
+    .bodiGrig {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0px;
+        margin: 0px;
+        font-size: 7px;
+    }
+}

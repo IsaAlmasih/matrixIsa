@@ -1,11 +1,278 @@
 .wrapper {
-    position: relative;
-    background-color: aquamarine;
+    background-color: rgb(3, 7, 63);
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    height: 100vh;
-    width: 100%;
-    z-index: -1;
+    text-align: center;
+    font-size: 30px;
+    color: #eae5e5;
+    gap: 30px;
 }
+
+
+.header {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    background-color: rgb(109, 11, 11);
+    width: 100%;
+    padding: 32px;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, calc(-100% - 24px));
+    transition: 0.4s transform ease-in-out;
+    -webkit-box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+    -moz-box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+    box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+  }
+  
+
+.blok {
+    background-color: rgb(13, 13, 83);
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 70%;
+    -webkit-box-shadow: 20px 21px 10px -11px rgba(0, 142, 251, 0.33);
+    -moz-box-shadow: 20px 21px 10px -11px rgba(0, 145, 255, 0.33);
+    box-shadow: 20px 21px 10px -11px rgba(0, 144, 255, 0.33);
+}
+
+
+.svwxy {
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  height: 100vh;           /* Высота контейнера (для примера) */
+}
+
+
+.suxyzGrid * {
+  padding: 10px 15px;
+  background-color: rgb(4, 5, 61);
+  border: 1px solid red;
+  text-align: center;
+  font-size: 22px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+}
+
+
+.suxyzGrid {
+  margin-top: 35px;
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px 150px;
+  grid-gap: 30px
+}
+
+
+.svwxz {
+  background-color: rgb(38, 43, 43);
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  font-size: 25px;
+}
+
+
+.svwyz {
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  font-size: 26px;
+}
+
+
+.isVisible {
+  transform: translate(-50%, 0);
+} 
+
+
+.navigation {
+  font-size: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+
+.logo {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}  
+
+
+.openPopup {
+  display: none;
+}
+  
+
+  
+@media (max-width: 360px) {
+  .header {
+    font-size: 15px;
+  }
+    .galleryCard {
+      width: 100px;
+      height: 60px;
+  }
+.blok {
+    background-color: rgb(13, 13, 83);
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+    height: 88%;
+    -webkit-box-shadow: 20px 21px 10px -11px rgba(0, 142, 251, 0.33);
+    -moz-box-shadow: 20px 21px 10px -11px rgba(0, 145, 255, 0.33);
+    box-shadow: 20px 21px 10px -11px rgba(0, 144, 255, 0.33);
+}
+.suxyzGrid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 70px 70px 70px;
+  grid-template-rows: 70px 70px 70px 70px;
+  grid-gap: 20px
+}
+.svwxz {
+  background-color: rgb(38, 43, 43);
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  font-size: 9px;
+}
+.svwyz {
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  font-size: 8px;
+}
+}
+
+
+@media (max-width: 470px) {
+  .header {
+  padding: 12px;
+}
+
+
+.logo {
+  font-size: 20px;
+}
+
+
+.navigation {
+  display: none;
+}
+
+
+.openPopup {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+
+
+.openPopup span {
+  width: 100%;
+  background-color: black;
+  height: 1px;
+}
+
+
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.264);
+}
+
+.content {
+  width: 100%;
+  height: auto;
+  min-height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(180, 0, 0);
+  -webkit-box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+  -moz-box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+  box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+}
+  
+
+.blok {
+  background-color: rgb(13, 13, 83);
+  display: flex;
+  flex-direction: column;
+  width: 88%;
+  height: 88%;
+  -webkit-box-shadow: 20px 21px 10px -11px rgba(0, 142, 251, 0.33);
+  -moz-box-shadow: 20px 21px 10px -11px rgba(0, 145, 255, 0.33);
+  box-shadow: 20px 21px 10px -11px rgba(0, 144, 255, 0.33);
+}
+
+
+.suxyzGrid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 90px 90px 90px;
+  grid-template-rows: 90px 90px 90px 90px;
+  grid-gap: 20px
+}
+
+.svwxz {
+  background-color: rgb(38, 43, 43);
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  font-size: 12px;
+}
+
+.svwyz {
+  display: flex;
+  justify-content: center; /* По горизонтали */
+  align-items: center;     /* По вертикали (если нужна) */
+  font-size: 10px;
+}
+
+
+.content button {
+  background-color: transparent;
+  border: 0;
+}
+
+
+.content button svg {
+  width: 50px;
+  height: 50px;
+}
+  
+
+.content .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px;
+}
+  
+.headContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  font-size: 24px;
+  }
+}
+  
