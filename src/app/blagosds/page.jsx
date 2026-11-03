@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-import logo from "../assets/tu.jpg";
+import logo from "../../assets/tu.jpg";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +58,7 @@ const Header = () => {
                 </button>
               </div>
               <div className={styles.navigation}>
-                <Link href={"/tsarstvie/1"}>Главная страница</Link>
+                <Link href={"/"}>Главная страница</Link>
                 <Link href={"/"}>О нас</Link>
                 <Link href={"/"}>Контакты</Link>
               </div>
