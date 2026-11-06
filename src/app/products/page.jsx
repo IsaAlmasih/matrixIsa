@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import styles from "./styles.module.css";
+import styles from "../products/styles.module.css";
 
 import Imag1 from "../../assets/education/141.jpg";
 import Imag2 from "../../assets/education/python.jpg";
@@ -102,7 +102,7 @@ const page = () => {
           <Image src={Imag4} height={50} width={50} alt="Корзина" />
         </Link>
       </div>
-      <div className="category-list">
+      <div className={styles.categorylist}>
         {products.map((category, id) => (
           <Category
             key={id}

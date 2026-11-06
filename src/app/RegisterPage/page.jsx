@@ -3,24 +3,42 @@
 import { useFormik } from "formik";
 // import React from "react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
-import styles from "./styles.module.css"
+import styles from "./styles.module.css";
 
 import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 import axiosConfig from "../../app/utils/axiosConfig";
 import Link from "next/link";
 
-
 const page = () => {
-  const router=useRouter()
-  if (localStorage.getItem("token") !== null) {
-    router.push("/study");
-  }
+  const router = useRouter();
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      router.push("/study");
+    }
+  }, [router]);
+
   const formik = useFormik({
     initialValues: {
       login: "",
       password: "",
+      acceptedPolicy: false
+    },
+
+    validate(values) {
+      const errors = {};
+      if (!values.login) {
+        errors.login = "Введите почту";
+      }
+      if (!values.password) {
+        errors.password = "Введите пароль";
+      }
+      if (!values.password) {
+        errors.acceptedPolicy =
+          "Необходимо согласиться с политикой конфиденциальности";
+      }
+      return errors
     },
     onSubmit: async (values) => {
       const formData = {
@@ -35,7 +53,7 @@ const page = () => {
       const response = await axiosConfig(1).post(
         "api/users/register/",
         formData,
-        { headers: { ContentType: "application/json" } }
+        { headers: { ContentType: "application/json" } },
       );
     },
   });
@@ -77,8 +95,8 @@ const page = () => {
               <h3>Ваше имя: "Пользователь"</h3>
               <p>Возможные имена:</p>
               <select name="" id="">
-                <option value="">Пользователь.</option>
-                <option value="">Десятник.</option>
+                {/* <option value="">Пользователь.</option> */}
+                {/* <option value="">Десятник.</option> */}
                 {/* <option value="">Пятидесятник.</option> */}
                 {/* <option value="">Сотник.</option> */}
                 {/* <option value="">Тысячник.</option> */}
@@ -86,8 +104,8 @@ const page = () => {
                 {/* <option value="">Стотысячник.</option> */}
                 {/* <option value="">Миллионник.</option>
                 <option value="">Судья.</option> */}
-                <option value="">Ключник.</option>
-                <option value="">Безопасность.</option>
+                {/* <option value="">Ключник.</option> */}
+                {/* <option value="">Безопасность.</option> */}
               </select>
             </div>
             <div className={styles.politic}>
@@ -111,7 +129,7 @@ const page = () => {
               Если уже есть аккаунт, ты можешь авторизоваться
             </p>
             <div>
-              <Link href={"/loginPage"} className={styles.smallText}>
+              <Link href={"/LoginPage"} className={styles.smallText}>
                 <small>Авторизоваться</small>
               </Link>
             </div>

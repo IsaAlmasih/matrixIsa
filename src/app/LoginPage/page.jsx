@@ -3,7 +3,7 @@
 import { useFormik } from "formik";
 import axiosConfig from "../utils/axiosConfig";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./styles.module.css";
 
@@ -11,13 +11,13 @@ import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-
-
 const page = () => {
-  const router=useRouter()
-  if (localStorage.getItem("token") !== null) {
-    router.push("/study")
-  }
+  const router = useRouter();
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      router.push("/study");
+    }
+  }, [router]);
 
   const formik = useFormik({
     initialValues: {
