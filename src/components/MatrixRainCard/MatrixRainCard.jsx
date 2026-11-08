@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./MatrixRainCard.css";
+import Link from "next/link";
 
 const MatrixRainCard = ({ name, id, image, link }) => {
   const canvasRef = useRef(null);
@@ -59,7 +60,7 @@ const MatrixRainCard = ({ name, id, image, link }) => {
       <canvas ref={canvasRef} className="matrix-canvas"></canvas>
       <div className="matrix-content">
         <h2>{name}</h2>
-        <a href={link}>Войти</a>
+       {link && <a href={link}>Войти</a>}
       </div>
     </div>
   );

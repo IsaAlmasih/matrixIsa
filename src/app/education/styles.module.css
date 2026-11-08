@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
   height: 100vh;
   width: 100%;
   z-index: 1;
@@ -28,32 +29,27 @@
 
 .MatrixWrapper {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  height: 350px;
-  /* width: 65%; */
+  grid-template-columns: repeat(4, 1fr);
+  height: 400px;
+  width: 45%;
   gap: 20px;
 }
 
 
 .button {
-    font-size: 20px;
+    font-size: 25px;
+    margin-bottom: 100px;
+    color: rgb(255, 4, 0);
     background-color: transparent;
-    border: none;
-    margin-top: 40px;
-    border: 2px solid #4dff00;
+    /* border: 30; */
 }
 
 
 
-@media (max-width: 390px) {
-  .images {
-    display: flex;
-    padding-top: 0;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: column;
-    gap: 3px;
+@media (max-width: 350px) {
+  .mainWrapper {
+    width: 100%;
+    height: 100vh;
   }
   .wrapper {
     padding-top: 0;
@@ -62,9 +58,10 @@
     width: 100%;
     gap: 10px;
   }
+
   .text {
-    font-size: 25px;
-    color: #01ff16;
+    font-size: 20px;
+    color: #ff0101;
   }
 
   .MatrixWrapper {
@@ -72,21 +69,17 @@
     align-items: flex-start;
     justify-content: center;
     position: relative;
-    top: -100px;
+    top: 10px;
     margin: auto;
   }
 
-  .mainWrapper {
-    /* background-color: #000000; */
-    padding-top: 100px;
-    justify-content: flex-start;
-    display: flex;
-    gap: 10px;
+  .button {
+    font-size: 20px;
+    margin-top: -70px;
   }
-
 }
 
-@media (max-width:490px) {
+/* @media (max-width:490px) {
   .images {
     display: flex;
     padding-top: 0;
@@ -118,7 +111,6 @@
   }
 
   .mainWrapper {
-    /* background-color: #000000; */
     padding-top: 100px;
     justify-content: flex-start;
     display: flex;
@@ -128,4 +120,4 @@
   .matrix-card-container {
     grid-template-columns: repeat(3, 1fr);
   }
-}
+} */

@@ -18,40 +18,40 @@ import HTMLFlipBook from "react-pageflip";
 const page = () => {
   const images3 = [
     {
-      name: "React.",
+      name: "Духовное",
       id: 1,
       image: image2.src,
       link: "/education/react",
       hasMatrixRain: false,
     },
     {
-      name: "React Next js",
+      name: "Природа",
       id: 1,
       image: image2.src,
       link: "/education/react",
       hasMatrixRain: false,
     },
     {
-      name: "Python",
+      name: "Культура",
       id: 1,
       image: image2.src,
       link: "/education/python",
       hasMatrixRain: false,
     },
     {
-      name: "Revit",
+      name: "Наука",
       id: 1,
       image: image2.src,
       link: "/education/react",
       hasMatrixRain: false,
     },
-    {
-      name: "Django",
-      id: 1,
-      image: image2.src,
-      link: "/education/django",
-      hasMatrixRain: false,
-    },
+    // {
+    //   name: "Django",
+    //   id: 1,
+    //   image: image2.src,
+    //   link: "/education/django",
+    //   hasMatrixRain: false,
+    // },
   ];
   const router = useRouter();
 
@@ -80,7 +80,7 @@ const page = () => {
 
   return (
     <div key="10" className={styles.mainWrapper}>
-      <div className={styles.text}>Выберите интересующую тему.</div>
+      {/* <p>Выберите интересующую тему.</p> */}
       <div className={styles.MatrixWrapper}>
         {images3 &&
           images3.map((image, index) => (
@@ -99,7 +99,7 @@ const page = () => {
         className={styles.button}
       >
         {"<--"}Назад
-      </button>      
+      </button>
       <MatrixRain></MatrixRain>
     </div>
   );

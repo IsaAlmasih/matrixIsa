@@ -5,13 +5,17 @@ import { useRouter } from "next/navigation";
 
 import styles from "../products/styles.module.css";
 
+
+import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
+
+
 import Imag1 from "../../assets/education/141.jpg";
 import Imag2 from "../../assets/education/python.jpg";
 import Imag3 from "../../assets/education/React.jpg";
 import Imag5 from "../../assets/education/django.jpg";
 
 import Image from "next/image";
-import Imag4 from "../../assets/education/141.jpg";
+// import Imag4 from "../../assets/education/141.jpg";
 
 import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 import ProductCard from "@/components/productCard/productCard";
@@ -97,19 +101,11 @@ const page = () => {
 
   return (
     <div className={styles.wrapp}>
-      <div>
-        <Link href={"/cart"} className={styles.cart}>
-          <Image src={Imag4} height={50} width={50} alt="Корзина" />
-        </Link>
-      </div>
       <div className={styles.categorylist}>
         {products.map((category, id) => (
-          <Category
+          <MatrixRainCard
             key={id}
-            id={category.id}
-            categoryName={category.name}
-            image={category.image}
-            href={category.link}
+            name={category.name}
           />
         ))}
       </div>

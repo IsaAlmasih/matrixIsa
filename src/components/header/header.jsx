@@ -8,6 +8,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logo from "../../assets/141.jpg";
+import Imag4 from "../../assets/education/141.jpg";
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +25,7 @@ const Header = () => {
           Matrix
         </Link>
         <div className={styles.btn}>
-          <Link href="/">На главную</Link>
+          <Link href="/PlanetPage">На главную</Link>
         </div>
         <div className={styles.navigation}>
           <Link
@@ -33,7 +35,11 @@ const Header = () => {
           >
             Выйти из матрицы.
           </Link>
-          <Link href={"/cart"}>Кабинет</Link>
+          <div>
+            <Link href={"/cart"} className={styles.cart}>
+              <Image src={Imag4} height={50} width={50} alt="Корзина" />
+            </Link>
+          </div>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className={styles.openPopup}>
           <svg
@@ -66,7 +72,7 @@ const Header = () => {
                 </button>
               </div>
               <div className={styles.navigation}>
-                <Link href={"/"}>Главная страница</Link>
+                <Link href={"/PlanetPage"}>Главная страница</Link>
                 <Link href={"/about"}>О нас</Link>
                 <Link href={"/"}>Контакты</Link>
                 <Link href={"/cart"}>Кабинет</Link>

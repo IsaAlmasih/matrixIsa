@@ -13,9 +13,13 @@
 }
 
 .categorylist {
-    display: flex;
-    gap: 10px;
-
+    height: 250px;
+     display: grid;
+     grid-template-columns: 200px 200px 200px 200px;
+     grid-template-rows: 200px 200px 200px;
+    div {
+        width: 130px;
+    }
 }
 
 .wrapper {

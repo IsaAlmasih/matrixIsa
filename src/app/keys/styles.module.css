@@ -26,12 +26,13 @@
 }
 
 
-@media (max-width: 350px) {
+@media (min-width: 350px) {
     .wrapper {
         font-size: 20px;
+        gap: 12px;
     }
     .wrapper img {
-    max-width: 70px !important;
+    max-width: 100px;
     height: auto;
     display: flex;
 }
@@ -41,7 +42,7 @@
 }
 
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
     .wrapper {
     font-size: 20px;
     }
@@ -50,7 +51,7 @@
     height: auto;
     gap: 10px;
 }
-}
+} */
 
 
 @media (max-width: 500px) {

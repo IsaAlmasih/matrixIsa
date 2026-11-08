@@ -11,6 +11,7 @@ const page = () => {
     <div className={styles.wrapper}>
       <div className={styles.blok}>
         <div className={styles.text}>
+            <MatrixRain />
           <p className={styles.textTsar}>
             Индекс 462432 Город. Орск., ул. Живописная, дом 21.
           </p>
