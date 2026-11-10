@@ -1,19 +1,22 @@
 "use client";
+
 import React, { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import styles from "../education/styles.module.css";
+
 import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 import ProductCard from "@/components/productCard/productCard";
+import Book from "@/components/book/Book";
+import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
+import HTMLFlipBook from "react-pageflip";
+
 
 import image from "../../assets//education/python.jpg";
 import image1 from "../../assets/education/React_next_js.jpg";
 import image2 from "../../assets/education/React.jpg";
 import image3 from "../../assets/education/djang.jpg";
 
-import { useRouter } from "next/navigation";
-import Book from "@/components/book/Book";
-
-import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
-import HTMLFlipBook from "react-pageflip";
 
 const page = () => {
   const images3 = [
@@ -80,7 +83,7 @@ const page = () => {
 
   return (
     <div key="10" className={styles.mainWrapper}>
-      {/* <p>Выберите интересующую тему.</p> */}
+      <p>Свой раздел каждому и книги тош самое.</p>
       <div className={styles.MatrixWrapper}>
         {images3 &&
           images3.map((image, index) => (

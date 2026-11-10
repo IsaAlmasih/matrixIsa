@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { getClient } from "../lib/lib/db";
+import { getClient } from "../src/lib/db";
 
 async function main() {
   const client = await getClient();

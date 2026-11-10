@@ -4,6 +4,7 @@ import React from "react";
 
 import styles from "./styles.module.css";
 import { useRouter } from "next/navigation";
+// import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 
 import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
 

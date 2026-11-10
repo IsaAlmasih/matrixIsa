@@ -8,7 +8,6 @@ import React, { useEffect } from "react";
 import styles from "./styles.module.css";
 
 import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
-import axiosConfig from "../../app/utils/axiosConfig";
 import Link from "next/link";
 
 const page = () => {
@@ -23,38 +22,59 @@ const page = () => {
     initialValues: {
       login: "",
       password: "",
-      acceptedPolicy: false
+      acceptedPolicy: false,
     },
 
     validate(values) {
       const errors = {};
+
       if (!values.login) {
         errors.login = "Введите почту";
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.login)) {
+        errors.login = "Введите корректную почту";
       }
+
       if (!values.password) {
         errors.password = "Введите пароль";
+      } else if (values.password.length < 8) {
+        errors.password = "Минимум 8 символов";
       }
-      if (!values.password) {
+
+      if (!values.acceptedPolicy) {
         errors.acceptedPolicy =
           "Необходимо согласиться с политикой конфиденциальности";
       }
-      return errors
+
+      return errors;
     },
-    onSubmit: async (values) => {
-      const formData = {
-        username: values.login,
-        password: values.password,
-        email: values.login,
-      };
-      const formdata2 = new FormData();
-      formdata2.set("username", "Пользователь");
-      formdata2.set("password", values.password);
-      formdata2.set("email", values.login);
-      const response = await axiosConfig(1).post(
-        "api/users/register/",
-        formData,
-        { headers: { ContentType: "application/json" } },
-      );
+
+    async onSubmit(values, { setStatus }) {
+      try {
+        setStatus(undefined);
+
+        const response = await fetch("/api/users/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.login,
+            password: values.password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          setStatus({ error: data.message });
+          return;
+        } // Регистрация успешна — переходим на страницу входа
+
+        router.push("/LoginPage");
+      } catch (error) {
+        console.error(error);
+        setStatus({ error: "Не удалось связаться с сервером" });
+      }
     },
   });
   return (
@@ -73,23 +93,29 @@ const page = () => {
               <label htmlFor="email">Введите почту</label>
               <input
                 id="email"
-                type="text"
-                name="email"
+                type="email"
+                name="login"
                 value={formik.values.login}
-                onChange={(e) => formik.setFieldValue("login", e.target.value)}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+              {formik.touched.login && formik.errors.login && (
+                <p>{formik.errors.login}</p>
+              )}
             </div>
             <div className={styles.blockInput}>
               <label htmlFor="pass">Введите пароль</label>
               <input
                 id="pass"
                 type="password"
-                name="pass"
+                name="password"
                 value={formik.values.password}
-                onChange={(e) =>
-                  formik.setFieldValue("password", e.target.value)
-                }
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+              {formik.touched.password && formik.errors.password && (
+                <p>{formik.errors.password}</p>
+              )}
             </div>
             <div className={styles.selectRole}>
               <h3>Ваше имя: "Пользователь"</h3>
@@ -100,10 +126,10 @@ const page = () => {
                 {/* <option value="">Пятидесятник.</option> */}
                 {/* <option value="">Сотник.</option> */}
                 {/* <option value="">Тысячник.</option> */}
-                {/* <option value="">Десятитысячник.</option> */}
-                {/* <option value="">Стотысячник.</option> */}
+                {/* <option value="">Десятитысячник.</option>/}
+                {/* <option value="">Стотысячник.</option> */}
                 {/* <option value="">Миллионник.</option>
-                <option value="">Судья.</option> */}
+                <option value="">Судья.</option> */}
                 {/* <option value="">Ключник.</option> */}
                 {/* <option value="">Безопасность.</option> */}
               </select>
@@ -113,15 +139,25 @@ const page = () => {
                 <input
                   type="checkbox"
                   id="politic"
-                  defaultValue="Политика конфиденциальности"
+                  name="acceptedPolicy"
+                  checked={formik.values.acceptedPolicy}
+                  onChange={formik.handleChange}
                 />
-                <a href="#" className={styles.smallText}>
+                <Link href="/privacy" className={styles.smallText}>
                   <small>Политика конфиденциальности</small>
-                </a>
+                </Link>
               </label>
+              {formik.errors.acceptedPolicy && (
+                <p>{formik.errors.acceptedPolicy}</p>
+              )}
             </div>
-            <button type="submit" className={styles.btnLogin}>
-              Зарегестрироваться
+            {formik.status?.error && <p>{formik.status.error}</p>}
+            <button
+              type="submit"
+              className={styles.btnLogin}
+              disabled={formik.isSubmitting}
+            >
+              {formik.isSubmitting ? "Регистрация..." : "Зарегистрироваться"}   
             </button>
           </form>
           <div className={styles.blockWithTextRegAcc}>
