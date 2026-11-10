@@ -50,10 +50,9 @@ const ProductCard = ({ product, hasMatrixRain }) => {
       <Link href={product.link}>
         <h3 className={styles.name}>{product.name}</h3>
       </Link>
-
-      {/* <p className={styles.price}>{product.price}p</p> */}
-      {/* <a href={product.link}><button>Описание</button></a> */}
-      {/* <button
+      <p className={styles.price}>{product.price}p</p>
+      <a href={product.link}><button>Описание</button></a>
+      <button
         className={styles.button}
         onClick={() => {
           if (isBuyed) {
@@ -66,7 +65,7 @@ const ProductCard = ({ product, hasMatrixRain }) => {
         }}
       >
         {isBuyed ? "Удалить из корзины" : "Перейти"}
-      </button> */}
+      </button>
       {isBuyed && (
         <>
           <span>

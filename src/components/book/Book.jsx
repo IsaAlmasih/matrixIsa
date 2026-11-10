@@ -1,6 +1,6 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 
 import styles from "./styles.module.css";
 import HTMLFlipBook from "react-pageflip";

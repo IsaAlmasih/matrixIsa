@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 
 import styles from "../education/styles.module.css";
 
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
-import ProductCard from "@/components/productCard/productCard";
-import Book from "@/components/book/Book";
+import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
+import ProductCard from "../../components/productCard/productCard";
+import Book from "../../components/book/Book";
 import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
 import HTMLFlipBook from "react-pageflip";
 

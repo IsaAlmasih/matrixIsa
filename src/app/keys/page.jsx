@@ -5,10 +5,10 @@ import styles from './styles.module.css'
 
 import { Link } from 'next/link';
 
-import ImageWithModal from '@/components/ImageWithModal/ImageWithModal';
+import ImageWithModal from "../../components/ImageWithModal/ImageWithModal";
 import imag from './154.jpg';
 import imag1 from "./11111.jpg";
-import { MatrixRain } from '@/components/MatrixRain/MatrixRain';
+import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 
 const Page = () => {
   const [isOpen1,setIsOpen1]=useState(false)

@@ -1,0 +1,73 @@
+.overlay {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 32px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: 5s;
+  z-index: 10;
+  overflow-y: auto;
+  padding-top: 120px;
+}
+
+.overlay_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup {
+  width: 70%;
+  height: fit-content;
+  display: flex;
+  padding: 32px;
+  background-color: black;
+  -webkit-box-shadow: -2px 0px 51px -6px rgba(212, 212, 212, 0.36);
+  -moz-box-shadow: -2px 0px 51px -6px rgba(212, 212, 212, 0.36);
+  box-shadow: -2px 0px 51px -6px rgba(212, 212, 212, 0.36);
+
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 32px;
+  margin: auto;
+  color: white;
+}
+
+.popup__list {
+  width: 100%;
+  display: grid;
+  height: calc(64px * 4);
+  overflow-y: auto;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 64px;
+}
+
+.popup__item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+@media (max-width: 1024px) {
+  .popup__list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 567px) {
+  .popup {
+    width: 100%;
+    max-width: 420px;
+  }
+  .popup__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
