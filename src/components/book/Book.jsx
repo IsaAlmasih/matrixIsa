@@ -35,14 +35,10 @@ const Book = (props) => {
   const router = useRouter();
   return (
     <div className={styles.wrapper}>
-      <div className={styles.wrapper}>
         <HTMLFlipBook
-          width={isMobile ? 500 : 500}
-          height={isMobile ? 600 : 600}
-          className={styles.book}
-        >
-          <div
-            className={styles.firstPage}
+          width={isMobile ? 500 : 500} height={isMobile ? 600 : 600}
+          className={styles.book}>
+          <div className={styles.firstPage}
             dangerouslySetInnerHTML={{ __html: props.text1 }}
           ></div>
           <div
@@ -70,7 +66,6 @@ const Book = (props) => {
           </div>
         </HTMLFlipBook>
       </div>
-    </div>
   );
 };
 

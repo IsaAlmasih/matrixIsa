@@ -82,6 +82,7 @@
 
   .matrix-content h2 {
     margin-top: 100px;
+    height: 200px;
   }
   .matrix-canvas {
     height: 150px;

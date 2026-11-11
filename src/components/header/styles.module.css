@@ -55,7 +55,9 @@
   cursor: pointer;
 }
 
-
+/* .cart {
+  color: #28e80a;
+} */
 .openPopup {
   display: none;
 }

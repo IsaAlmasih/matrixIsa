@@ -69,14 +69,15 @@ const page = () => {
           setStatus({ error: data.message });
           return;
         } // Регистрация успешна — переходим на страницу входа
-
-        router.push("/LoginPage");
+        localStorage.setItem("user", JSON.stringify(data.user));
+        router.push("/user")
       } catch (error) {
         console.error(error);
         setStatus({ error: "Не удалось связаться с сервером" });
       }
     },
   });
+
   return (
     <>
       <MatrixRain></MatrixRain>

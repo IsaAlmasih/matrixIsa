@@ -44,7 +44,9 @@ export default function Home() {
               Облачная БД.
             </Link>
           </div>
-          <div className={styles.card}>Блок 6</div>
+          <Link href="/user" className={styles.card}>
+            Блок 6
+          </Link>
           <div className={styles.card}>Блок 7</div>
           <div className={styles.card}>Блок 8</div>
           <div className={styles.card}>Блок 9</div>
