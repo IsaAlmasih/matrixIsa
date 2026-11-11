@@ -31,7 +31,7 @@ const page = () => {
       name: "Природа",
       id: 1,
       image: image2.src,
-      link: "/education/react",
+      link: "/education/nature",
       hasMatrixRain: false,
     },
     {

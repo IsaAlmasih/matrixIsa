@@ -17,9 +17,9 @@ import Imag5 from "../../assets/education/django.jpg";
 import Image from "next/image";
 // import Imag4 from "../../assets/education/141.jpg";
 
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
-import ProductCard from "@/components/productCard/productCard";
-import Category from "@/components/Category/Category";
+import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
+import ProductCard from "../../components/productCard/productCard";
+import Category from "../../components/Category/Category";
 
 const products = [
   {
@@ -103,13 +103,13 @@ const page = () => {
     <div className={styles.wrapp}>
       <div className={styles.categorylist}>
         {products.map((category, id) => (
-          <MatrixRainCard
-            key={id}
-            name={category.name}
-          />
+          <MatrixRainCard key={id} name={category.name} />
         ))}
       </div>
-      <button onClick={() => router.push("/")} className={styles.button}>
+      <button
+        onClick={() => router.push("/PlanetPage")}
+        className={styles.button}
+      >
         {"<--"}Назад
       </button>
       <MatrixRain></MatrixRain>

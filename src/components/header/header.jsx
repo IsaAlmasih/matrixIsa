@@ -18,7 +18,6 @@ const Header = () => {
     [styles.isVisible]: isVisible,
   });
   return (
-    <>
       <header className={headerClasses}>
         <Link className={styles.logo} href={"/matrix"}>
           <Image src={logo} width={45} height={45} alt="logo" />
@@ -28,11 +27,7 @@ const Header = () => {
           <Link href="/PlanetPage">На главную</Link>
         </div>
         <div className={styles.navigation}>
-          <Link
-            href="https://bhaskaracharjee.github.io/3D-Room/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="/RegisterPage"> 
             Выйти из матрицы.
           </Link>
           <div>
@@ -81,7 +76,6 @@ const Header = () => {
           </div>
         )}
       </header>
-    </>
   );
 };
 

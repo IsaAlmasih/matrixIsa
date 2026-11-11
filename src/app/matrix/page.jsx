@@ -12,13 +12,7 @@ export default function Home() {
       <div className={styles.wrapper}>
         <div className={styles.remoteLeft}>Пульты</div>
         <div className={styles.Btn}>
-          <Link
-            href="https://bhaskaracharjee.github.io/3D-Room/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Выйти из матрицы.
-          </Link>
+          <Link href="/RegisterPage">Выйти из матрицы.</Link>
         </div>
         <div className={styles.cardGrid}>
           <div className={styles.card}>Блок 1</div>
@@ -47,7 +41,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Облачная БД Пример и вроде норм, попробуй с неё.
+              Облачная БД.
             </Link>
           </div>
           <div className={styles.card}>Блок 6</div>

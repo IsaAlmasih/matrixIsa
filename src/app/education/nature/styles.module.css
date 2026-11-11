@@ -1,0 +1,617 @@
+.wrapper {
+    background-color: rgb(3, 3, 66);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    color: #26ff00;
+    gap: 20px;
+}
+
+
+.blok {
+  background-color: rgb(12, 0, 59);
+  text-align: center;
+  width: 80%;
+  height: 70%;
+  margin-top: 150px;
+  justify-content: center;
+  -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+  -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+  box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+}
+
+
+.blo {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80vh;
+    margin: auto;
+}
+
+
+.textGrid{
+    max-width: 100%;
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 150px 150px 150px 150px;
+    gap: 6px;
+}
+
+
+.textGridOne {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridTwo {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridThree {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridFour {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridFive {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridSix {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridSeven {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridEight {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textGridNine {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .textGridTen {
+    visibility: hidden;
+} */
+
+.textGridTen {
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    font-size: 15px;
+    color: #00ff2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.buttonLaw {
+    font-size: 20px;
+    border: none;
+    background-color: rgb(0, 0, 0);
+    height: 30px;
+    border: 2px solid #4dff00;
+}
+
+
+@media (max-width: 1700px) {
+    .blok {
+        background-color: rgb(12, 0, 59);
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        justify-content: center;
+        -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+    }
+
+    .textGrid{
+        border-radius: 2px;
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 150px 150px 150px 100px;
+        gap: 6px;
+        margin-top: 150px;
+    }
+
+    .textGridTen {
+        font-size: 20px;
+    }
+
+    .textGridNine {
+        font-size: 20px;
+    }
+
+    .textGridEight {
+        font-size: 20px;
+    }
+
+    .textGridSeven {
+        font-size: 20px;
+    }
+
+    .textGridSix {
+        font-size: 20px;
+    }
+
+    .textGridFive {
+        font-size: 20px;
+    }
+
+    .textGridFour {
+        font-size: 20px;
+    }
+
+    .textGridThree {
+        font-size: 20px;
+    }
+
+    .textGridTwo {
+        font-size: 20px;
+    }
+
+    .textGridOne {
+        font-size: 20px;
+    }
+
+    .buttonLaw {
+        font-size: 20px;
+        color: rgb(43, 255, 0);
+        background-color: transparent;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .blok {
+        background-color: rgb(12, 0, 59);
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        justify-content: center;
+        -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+    }
+
+    .textGrid{
+        display: grid;
+        grid-template-columns: 220px 220px 220px;
+        grid-template-rows: 150px 150px 150px 150px;
+        margin-top: 100px;
+    }
+
+    .textGridTen {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridNine {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridEight {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridSeven {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridSix {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridFive {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridFour {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridThree {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .textGridTwo {
+        font-size: 20px;
+        padding: 20px;
+    }
+    
+    .textGridOne {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .buttonLaw {
+        font-size: 20px;
+        color: rgb(43, 255, 0);
+        background-color: transparent;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    .blok {
+        background-color: rgb(12, 0, 59);
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        justify-content: center;
+        -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+    }
+
+    .textGrid{
+        display: grid;
+        grid-template-columns: 120px 120px 120px;
+        grid-template-rows: 100px 100px 100px 100px;
+        margin-top: 100px;
+    }
+
+    .textGridTen {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridNine {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridEight {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSeven {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSix {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFive {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFour {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridThree {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridTwo {
+        font-size: 12px;
+        padding: 4px;
+    }
+    
+    .textGridOne {
+        font-size: 12px;
+        padding: 4px;
+    }
+    .buttonLaw {
+        font-size: 20px;
+        color: rgb(43, 255, 0);
+        background-color: transparent;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .blok {
+        background-color: rgb(12, 0, 59);
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        justify-content: center;
+        -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+    }
+
+    .textGrid{
+        display: grid;
+        grid-template-columns: 120px 120px 120px;
+        grid-template-rows: 100px 100px 100px 100px;
+        margin-top: 100px;
+    }
+
+    .textGridTen {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridNine {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridEight {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSeven {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSix {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFive {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFour {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridThree {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridTwo {
+        font-size: 12px;
+        padding: 4px;
+    }
+    
+    .textGridOne {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .buttonLaw {
+        font-size: 20px;
+        color: rgb(43, 255, 0);
+        background-color: transparent;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blok {
+        background-color: rgb(12, 0, 59);
+        text-align: center;
+        width: 90%;
+        height: auto;
+        justify-content: center;
+        -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+    }
+
+    .textGrid{
+        display: grid;
+        grid-template-columns: 90px 90px 90px;
+        grid-template-rows: 100px 100px 100px 100px;
+        margin-top: 10px;
+    }
+
+    .textGridTen {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridNine {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridEight {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSeven {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSix {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFive {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFour {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridThree {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridTwo {
+        font-size: 12px;
+        padding: 4px;
+    }
+    
+    .textGridOne {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .buttonLaw {
+        font-size: 20px;
+        color: rgb(43, 255, 0);
+        background-color: transparent;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 340px) {
+    .blok {
+        background-color: rgb(12, 0, 59);
+        color: #ffffff;
+        text-align: center;
+        width: 90%;
+        height: 90%;
+        justify-content: center;
+        -webkit-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        -moz-box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+        box-shadow: 0px 0px 59px 9px rgba(255, 0, 0, 0.56);
+    }
+
+    .textGrid{
+        border-radius: 2px;
+        display: grid;
+        grid-template-columns: 90px 90px 90px;
+        grid-template-rows: 100px 100px 100px 100px;
+        gap: 6px;
+        margin-top: 150px;
+    }
+
+    .textGridTen {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridNine {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridEight {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSeven {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridSix {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFive {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridFour {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridThree {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .textGridTwo {
+        font-size: 12px;
+        padding: 4px;
+    }
+    
+    .textGridOne {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .buttonLaw {
+        font-size: 20px;
+        color: rgb(43, 255, 0);
+        background-color: transparent;
+        gap: 10px;
+    }
+}

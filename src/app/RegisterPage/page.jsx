@@ -157,7 +157,7 @@ const page = () => {
               className={styles.btnLogin}
               disabled={formik.isSubmitting}
             >
-              {formik.isSubmitting ? "Регистрация..." : "Зарегистрироваться"}   
+              {formik.isSubmitting ? "Регистрация..." : "Зарегистрироваться"}
             </button>
           </form>
           <div className={styles.blockWithTextRegAcc}>

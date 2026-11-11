@@ -13,12 +13,13 @@
 }
 
 .categorylist {
-    height: 250px;
+    /* height: 200px; */
+    margin-top: 120px;
      display: grid;
-     grid-template-columns: 200px 200px 200px 200px;
+     grid-template-columns: 250px 250px 250px 250px;
      grid-template-rows: 200px 200px 200px;
     div {
-        width: 130px;
+        /* width: 150px; */
     }
 }
 

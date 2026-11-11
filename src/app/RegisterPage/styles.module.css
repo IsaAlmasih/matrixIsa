@@ -94,7 +94,9 @@
 }
 
 .smallText {
-  
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
 }
 
 @media (max-width: 550px) {
