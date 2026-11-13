@@ -4,10 +4,10 @@ import React, { useRef, useState } from 'react'
 import styles from './styles.module.css'
 import { Link } from 'next/link';
 
-import ImageWithModal from '@/components/ImageWithModal/ImageWithModal';
+// import ImageWithModal from '../../../components/ImageWithModal/ImageWithModal';
 import imag from "./1_2024.png";
 // import imag1 from "./11111.jpg";
-import { MatrixRain } from '@/components/MatrixRain/MatrixRain';
+// import { MatrixRain } from '../../../components/MatrixRain/MatrixRain';
 
 const Page = () => {
   const [isOpen1,setIsOpen1]=useState(false)
@@ -30,12 +30,12 @@ const Page = () => {
       <div className={styles.imges}>
         {/* <img src={imag1.src} ref={img1} onClick={()=>onClick()} /> */}
         {/* <img src={imag.src} /> */}
-        <ImageWithModal
+        {/* <ImageWithModal
           src={imag.src}
           alt={"Книга Вечный Завет"}
           width={300}
           height={400}
-        />
+        /> */}
         {/* <ImageWithModal
           src={imag1.src}
           alt={"Книга Ключи"}

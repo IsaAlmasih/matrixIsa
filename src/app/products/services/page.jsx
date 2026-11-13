@@ -1,8 +1,8 @@
 "use client";
 import React, { use } from "react";
 import styles from "./styles.module.css";
-import Category from "@/components/Category/Category";
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+import Category from "../../../components/Category/Category";
+import { MatrixRain } from "../../../components/MatrixRain/MatrixRain";
 
 import image from "../../../assets/113111.jpg";
 import image1 from "../../../assets/142221.jpg";

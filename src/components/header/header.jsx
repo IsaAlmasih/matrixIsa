@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
 import clsx from "clsx";
@@ -10,9 +10,8 @@ import logo from "../../assets/141.jpg";
 import Imag4 from "../../assets/education/141.jpg";
 import { useRouter } from "next/navigation";
 
-
 const Header = () => {
-  const router=useRouter()
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const headerClasses = clsx(styles.header, {
@@ -22,13 +21,20 @@ const Header = () => {
     await fetch("/api/auth/logout", {
       method: "POST",
     });
-  localStorage.removeItem("user")
+    localStorage.removeItem("user");
 
     router.replace("/");
   };
+
+  const [href, setHref] = useState("/LoginPage");
+
+  useEffect(() => {
+    setHref(localStorage.getItem("user") ? "/matrix" : "/LoginPage");
+  }, []);
+
   return (
     <header className={headerClasses}>
-      <Link className={styles.logo} href={localStorage.getItem("user")?"/matrix":"/LoginPage"}>
+      <Link className={styles.logo} href={href}>
         <Image src={logo} width={45} height={45} alt="logo" />
         Matrix
       </Link>
@@ -36,9 +42,7 @@ const Header = () => {
         <Link href="/PlanetPage">На главную</Link>
       </div>
       <div className={styles.navigation}>
-        <button onClick={logout}>
-          Выйти из матрицы.
-        </button>
+        <button onClick={logout}>Выйти из матрицы.</button>
         <div>
           <Link href={"/cart"} className={styles.cart}>
             <Image src={Imag4} height={50} width={50} alt="Корзина" />

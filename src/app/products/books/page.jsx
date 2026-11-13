@@ -1,7 +1,7 @@
 "use client";
 import React, { use } from "react";
 import styles from "./styles.module.css";
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+import { MatrixRain } from "../../../components/MatrixRain/MatrixRain";
 
 import image from "../../../assets/4444.png";
 import image1 from "../../../assets/444444.png";
@@ -9,8 +9,8 @@ import image2 from "../../../assets/book4.jpg";
 
 import { useRouter } from "next/navigation";
 
-import ProductCard from "@/components/productCard/productCard";
-import Category from "@/components/Category/Category";
+import ProductCard from "../../../components/productCard/productCard";
+import Category from "../../../components/Category/Category";
 
 const books = [
   {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 
 import React from "react";
-import { MatrixRain } from "@/components/MatrixRain/MatrixRain";
+import { MatrixRain } from "../../../components/MatrixRain/MatrixRain";
 
 const page = () => {
   return (

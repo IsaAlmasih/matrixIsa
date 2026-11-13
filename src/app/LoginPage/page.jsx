@@ -125,7 +125,7 @@ const Page = () => {
               Ещё нет аккаунта? Создай его, нажав на ссылку ниже
             </p>
 
-            <Link href="/RegistrPage" className={styles.smallText}>
+            <Link href="/RegisterPage" className={styles.smallText}>
               <small>Зарегистрировать аккаунт</small>
             </Link>
           </div>

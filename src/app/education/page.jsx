@@ -83,7 +83,7 @@ const page = () => {
 
   return (
     <div key="10" className={styles.mainWrapper}>
-      <p>Свой раздел каждому и книги тош самое.</p>
+      {/* <p>Свой раздел каждому и книги тош самое.</p> */}
       <div className={styles.MatrixWrapper}>
         {images3 &&
           images3.map((image, index) => (

@@ -1,5 +1,5 @@
 .wrapper {
-    background-color: rgb(38, 9, 224);
+    /* background-color: rgb(38, 9, 224); */
     background-repeat: no-repeat;
     display: flex;    
     justify-content: center;
@@ -34,21 +34,37 @@
 }
 
 .firstPage {
-    background-color: blueviolet;
+    text-align: center;
+    padding: 20px;
+    font-size: 19px;
+    color: #14eb00;
+    border: 1px solid red;
+    /* background-color: blueviolet; */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .secondPage {
-    background-color: aqua;
+        text-align: center;
+    padding: 20px;
+    font-size: 19px;
+    border: 1px solid red;
+        color: #14eb00;
+
+    /* background-color: aqua; */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .thirdPage {
-    background-color: blue;
+        text-align: center;
+    padding: 20px;
+    font-size: 19px;
+        color: #14eb00;
+    border: 1px solid red;
+    /* background-color: blue; */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; 
