@@ -61,6 +61,7 @@ const Page = () => {
         }
 
         // Сервер уже установил HttpOnly-cookie
+        localStorage.setItem("user",JSON.stringify(data.user))
         router.replace("/user");
       } catch (error) {
         console.error("Login error:", error);

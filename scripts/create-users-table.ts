@@ -1,5 +1,7 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import pool from "../src/lib/db";
+
+config();
 
 async function main() {
   try {
