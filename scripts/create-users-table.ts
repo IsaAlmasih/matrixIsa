@@ -1,11 +1,9 @@
 import "dotenv/config";
-import { getClient } from "../src/lib/db";
+import pool from "../src/lib/db";
 
 async function main() {
-  const client = await getClient();
-
   try {
-    await client.query(`
+    await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) NOT NULL UNIQUE,
@@ -16,10 +14,10 @@ async function main() {
     console.log("✅ Таблица users создана или уже существует");
   } catch (error) {
     console.error("❌ Ошибка при создании таблицы:", error);
+    process.exitCode = 1;
   } finally {
-    await client.end().catch(() => {});
+    await pool.end();
   }
 }
 
 main();
-

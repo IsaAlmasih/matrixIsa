@@ -1,4 +1,5 @@
 .mainWrapper {
+  background-color: rgb(255, 255, 255);
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -10,28 +11,11 @@
 }
 
 
-.pageCardHolder {
-  width: 100%;
-  height: 100%;
-  gap: 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 1fr;
-}
-
-
-.text {
-  font-size: 49px;
-  color: #01ff16;
-  margin-bottom: 90px;
-}
-
-
 .MatrixWrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 400px;
-  width: 45%;
+  width: 37%;
   gap: 20px;
 }
 
@@ -41,83 +25,41 @@
     margin-bottom: 100px;
     color: rgb(255, 4, 0);
     background-color: transparent;
-    /* border: 30; */
 }
 
+
+@media (max-width: 600px) {
+  .MatrixWrapper {
+    grid-template-columns: 185px 190px;
+    grid-template-rows: 486px 486px;
+    gap: 10px;
+    margin-right: 200px;
+    margin-bottom: 200px;
+    border: 6px solid red;
+  }
+
+  .matrix-card {
+
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .MatrixWrapper {
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 200px 200px;
+    gap: 30px;
+    margin-right: 100px;
+  }
+}
 
 
 @media (max-width: 350px) {
-  .mainWrapper {
-    width: 100%;
-    height: 100vh;
-  }
-  .wrapper {
-    padding-top: 0;
-    height: fit-content;
-    min-width: fit-content;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .text {
-    font-size: 20px;
-    color: #ff0101;
-  }
-
-  .MatrixWrapper {
-    grid-template-columns: repeat(2, 1fr);
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    top: 10px;
-    margin: auto;
-  }
-
-  .button {
-    font-size: 20px;
-    margin-top: -70px;
+ .MatrixWrapper {
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 200px 200px;
+    gap: 30px;
+    margin-right: 100px;
   }
 }
-
-/* @media (max-width:490px) {
-  .images {
-    display: flex;
-    padding-top: 0;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: column;
-    gap: 3px;
-  }
-  .wrapper {
-    padding-top: 0;
-    height: fit-content;
-    min-width: fit-content;
-    width: 100%;
-    gap: 10px;
-  }
-  .text {
-    font-size: 10px;
-    color: #01ff16;
-  }
-
-  .MatrixWrapper {
-    grid-template-columns: repeat(2, 1fr);
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    top: -100px;
-    margin: auto;
-  }
-
-  .mainWrapper {
-    padding-top: 100px;
-    justify-content: flex-start;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .matrix-card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} */
