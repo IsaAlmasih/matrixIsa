@@ -44,6 +44,46 @@
     gap: 6px;
 }
 
+.textGrid > div {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.cardLink {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.textGrid :global(.matrix-card) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    min-width: 0;
+}
+
+.textGrid :global(.matrix-canvas) {
+    width: 100%;
+    height: 100%;
+}
+
+.textGrid :global(.matrix-content) {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.textGrid :global(.matrix-content h2) {
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(12px, 4vw, 16px) !important;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
 
 .textGridOne {
     background-color: transparent;
@@ -53,10 +93,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    h2 {
-        font-size: 20px !important;
-        margin-top: 70px;
-    }
 }
 
 .textGridTwo {
@@ -166,7 +202,7 @@
 
 @media (max-width: 1700px) {
     .blok {
-        background-color: rgb(12, 0, 59);
+        /* background-color: rgb(12, 0, 59); */
         text-align: center;
         width: 90%;
         height: 90%;
@@ -235,7 +271,7 @@
 
 @media (max-width: 1200px) {
     .blok {
-        background-color: rgb(12, 0, 59);
+        /* background-color: rgb(12, 0, 59); */
         text-align: center;
         width: 90%;
         height: 90%;
@@ -312,7 +348,7 @@
 
 @media (max-width: 900px) {
     .blok {
-        background-color: rgb(12, 0, 59);
+        /* background-color: rgb(12, 0, 59); */
         text-align: center;
         width: 90%;
         height: 90%;
@@ -388,7 +424,7 @@
 
 @media (max-width: 600px) {
     .blok {
-        background-color: rgb(12, 0, 59);
+        /* background-color: rgb(12, 0, 59); */
         text-align: center;
         width: 90%;
         height: 90%;
@@ -465,7 +501,7 @@
 
 @media (max-width: 480px) {
     .blok {
-        background-color: rgb(12, 0, 59);
+        /* background-color: rgb(12, 0, 59); */
         text-align: center;
         width: 90%;
         height: auto;
@@ -542,7 +578,7 @@
 
 @media (max-width: 340px) {
     .blok {
-        background-color: rgb(12, 0, 59);
+        /* background-color: rgb(12, 0, 59); */
         color: #ffffff;
         text-align: center;
         width: 90%;

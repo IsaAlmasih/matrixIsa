@@ -34,14 +34,14 @@ const Page = () => {
         <ImageWithModal
           src={imag.src}
           alt={"Книга Вечный Завет"}
-          width={300}
-          height={400}
+          width={150}
+          height={250}
         />
         <ImageWithModal
           src={imag1.src}
           alt={"Книга Ключи"}
-          width={300}
-          height={400}
+          width={150}
+          height={250}
         />
       </div>
       <div className={styles.wrappe}>

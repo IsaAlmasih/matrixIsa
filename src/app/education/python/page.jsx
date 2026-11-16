@@ -30,15 +30,14 @@ const page = () => {
             ></Book>
           </div>
         </div>
-          <button
-            onClick={() => router.push("/education")}
-            className={styles.button}
-          >
-            {"<--"}Назад
-          </button>
+        <button
+          onClick={() => router.push("/education/nature")}
+          className={styles.button}
+        >
+          {"<--"}Назад
+        </button>
       </div>
       <MatrixRain></MatrixRain>
-
     </div>
   );
 };

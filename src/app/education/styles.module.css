@@ -1,5 +1,5 @@
 .mainWrapper {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -29,37 +29,33 @@
 
 
 @media (max-width: 600px) {
-  .MatrixWrapper {
-    grid-template-columns: 185px 190px;
-    grid-template-rows: 486px 486px;
-    gap: 10px;
-    margin-right: 200px;
-    margin-bottom: 200px;
-    border: 6px solid red;
+  .mainWrapper {
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: calc(100dvh - 100px);
+    margin-top: 100px;
+    overflow: hidden;
   }
 
-  .matrix-card {
+  .MatrixWrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    height: auto;
+    flex: 1;
+    min-height: 0;
+    width: calc(100% - 32px);
+    gap: 12px;
+    margin: 8px 16px;
+  }
 
+  .button {
+    flex-shrink: 0;
+    margin: 0 0 12px;
   }
 }
-
-
-
-@media (max-width: 480px) {
-  .MatrixWrapper {
-    grid-template-columns: 100px 100px;
-    grid-template-rows: 200px 200px;
-    gap: 30px;
-    margin-right: 100px;
-  }
-}
-
 
 @media (max-width: 350px) {
  .MatrixWrapper {
-    grid-template-columns: 100px 100px;
-    grid-template-rows: 200px 200px;
-    gap: 30px;
-    margin-right: 100px;
+    gap: 8px;
   }
 }
