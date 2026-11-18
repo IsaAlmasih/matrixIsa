@@ -1,28 +1,26 @@
 .wrapper {
-    /* background-color: rgb(38, 9, 224); */
-    background-repeat: no-repeat;
-    display: flex;    
-    justify-content: center;
-    align-items: center;
-    /* width: 100%;
+  /* background-color: rgb(38, 9, 224); */
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%;
     height: 100vh; */
 }
 
 .wrappe {
-    font-size: 40px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 300px;
+  font-size: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
 }
 
 .book {
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
-
-
 
 .arrowLeft,
 .arrowRight {
@@ -38,75 +36,79 @@
   z-index: 10;
 }
 
-.arrowLeft { left: 10px; }
-.arrowRight { right: 10px; }
+.arrowLeft {
+  left: 10px;
+}
+.arrowRight {
+  right: 10px;
+}
 
 .arrowLeft:hover,
 .arrowRight:hover {
   opacity: 1;
 }
 
-
-
 .button {
-    font-size: 20px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    color: rgb(254, 7, 7);
-    background-color: transparent;
-    border: 30;
-    z-index: 100;
+  font-size: 20px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color: rgb(254, 7, 7);
+  background-color: transparent;
+  border: 30;
+  z-index: 100;
 }
 
 .firstPage {
-    text-align: center;
-    padding: 20px;
-    font-size: 19px;
-    color: #14eb00;
-    border: 1px solid red;
-    /* background-color: blueviolet; */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 19px;
+  color: #14eb00;
+  border: 1px solid red;
+  /* background-color: blueviolet; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .secondPage {
-        text-align: center;
-    padding: 20px;
-    font-size: 19px;
-    border: 1px solid red;
-        color: #14eb00;
+  text-align: center;
+  padding: 20px;
+  font-size: 19px;
+  border: 1px solid red;
+  color: #14eb00;
 
-    /* background-color: aqua; */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-color: aqua;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .thirdPage {
-        text-align: center;
-    padding: 20px;
-    font-size: 19px;
-        color: #14eb00;
-    border: 1px solid red;
-    /* background-color: blue; */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; 
+  text-align: center;
+  padding: 20px;
+  font-size: 19px;
+  color: #14eb00;
+  border: 1px solid red;
+  background-color: blue;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (max-width: 576px) {
-    .firstPage,
-    .secondPage,
-    .thirdPage {
-        left: 15px !important;
-        right: 15px !important;
-        min-width: calc(100% - 30px) !important;
-        width: calc(100% - 30px) !important;
-    }
+  .firstPage,
+  .secondPage,
+  .thirdPage {
+    margin-top: -30px;
+    left: 15px !important;
+    right: 15px !important;
+    min-width: calc(100% - 30px) !important;
+    width: calc(100% - 30px) !important;
+    height: calc(100% - 10%) !important;
+  }
 
-    .book {
-        min-width: 100% !important;
-    }
+  .book {
+    min-width: 100% !important;
+  }
 }
