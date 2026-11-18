@@ -2,12 +2,14 @@ import { useRef, useEffect, useState } from "react";
 import "./MatrixRainCard.css";
 import Link from "next/link";
 
-const MatrixRainCard = ({ name, id, image, link }) => {
+const MatrixRainCard = ({ name, id, image, link, hasMatrixRain=false }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current; 
+    if (!hasMatrixRain||!canvas) return
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -57,7 +59,7 @@ const MatrixRainCard = ({ name, id, image, link }) => {
 
   return (
     <div className="matrix-card" key={id}>
-      <canvas ref={canvasRef} className="matrix-canvas"></canvas>
+      {hasMatrixRain&&<canvas ref={canvasRef} className="matrix-canvas"></canvas>}
       <div className="matrix-content">
         <h2>{name}</h2>
        {link && <a href={link}>Войти</a>}

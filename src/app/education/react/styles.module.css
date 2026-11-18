@@ -1,27 +1,95 @@
 .wrapper {
-    margin-top: 150px;
-    text-align: center;
-    padding: 10px;
+    position: relative;
+    /* background-color: rgb(0, 0, 0); */
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 18px;
+    padding: 100px 16px 24px;
+    color: #eb0404;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1;
 }
 
 
-.wrap {
-    color: #04ff00;
-    margin-top: 50px;
+.wrappe {
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
 }
 
-.container a {
-  display: flex; /* или inline-block */
-  margin-bottom: 5px; /* чуть пространства между ссылками */
-  color: #ffffff;
-  justify-content: center;
+.book {
+    background-repeat: no-repeat;
 }
-
 
 .button {
     font-size: 20px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: rgb(254, 7, 7);
     background-color: transparent;
-    border: none;
-    border: 2px solid #4dff00;
-    width: 140px;
+    border: 30;
+    z-index: 100;
+    gap: 50px;
+}
+
+.firstPage {
+    background-color: blueviolet;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.secondPage {
+    background-color: aqua;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.thirdPage {
+    background-color: blue;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.button {
+    position: absolute;
+    height: 50px;
+    width: 70px;
+    top: 90%;
+    /* right: 50px; */
+    z-index: 100;
+    color: #fff4f4;
+}
+
+@media (max-width: 768px), (max-height: 500px) {
+    .wrapper {
+        min-height: 100svh;
+        height: auto !important;
+        justify-content: center;
+        gap: 12px;
+        padding: 72px 12px 16px;
+        overflow-x: hidden;
+    }
+
+    .button {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0 auto 0 0;
+        padding: 8px 12px;
+        border: 1px solid red;
+        font-size: 16px;
+    }
 }

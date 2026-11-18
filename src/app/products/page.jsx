@@ -103,7 +103,7 @@ const page = () => {
     <div className={styles.wrapp}>
       <div className={styles.categorylist}>
         {products.map((category, id) => (
-          <MatrixRainCard key={id} name={category.name} />
+          <MatrixRainCard key={id} name={category.name} hasMatrixRain/>
         ))}
       </div>
       <button

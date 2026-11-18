@@ -28,18 +28,19 @@ export default function Home() {
           <div className={styles.cardFour}>
             Блок 4
             <Link
-              href="https://bhaskaracharjee.github.io/3D-Room/"
+              href="https://github.com/BhaskarAcharjee/3D-Room"
               target="_blank"
               rel="noopener noreferrer"
             >
               Комната нужная
             </Link>
           </div>
-          <div className={styles.cardFive}>
-              Облачная БД.
-          </div>
-          <Link href="/user" className={styles.card}>
-            Блок 6
+          <div className={styles.cardFive}>Облачная БД.</div>
+          <Link
+            href="https://sketchfab.com/3d-models/umamusume-gym-room-77b2d62fef414edd980f79c1e2828a04"
+            className={styles.card}
+          >
+            Классф 3д 
           </Link>
           <div className={styles.card}>Блок 7</div>
           <div className={styles.card}>Блок 8</div>
@@ -52,9 +53,3 @@ export default function Home() {
     </>
   );
 }
-
-
-// Как использовать правиль Link с div?
-// Как использовать правиль Link с div?
-// Как использовать правиль Link с div?
-// Как использовать правиль Link с div?

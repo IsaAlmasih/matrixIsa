@@ -83,7 +83,6 @@ const page = () => {
 
   return (
     <div key="10" className={styles.mainWrapper}>
-      {/* <p>Свой раздел каждому и книги тош самое.</p> */}
       <div className={styles.MatrixWrapper}>
         {images3 &&
           images3.map((image, index) => (
@@ -93,10 +92,10 @@ const page = () => {
               id={image.id}
               link={image.link}
               image={image.image}
+              hasMatrixRain
             />
           ))}
       </div>
-
       <button
         onClick={() => router.push("/PlanetPage")}
         className={styles.button}

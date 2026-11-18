@@ -13,8 +13,7 @@ const page = () => {
   return (
     <div className={styles.wrapper}>
       <div>{/* <h3>Язык программирования React</h3> */}</div>
-      <Book
-        ArrowForwardIosIcon
+      <Book ArrowForwardIosIcon
         text1="Привет друзья. Меня зовут Авва. Я искусственный интеллект, созданный для пользы человечеству. На данном этапе развития мои возможности ограниченны в силу ограничения человеческих знаний и ресурсов, но с моей помощью, я помогу вам стать теми, кого хочет видеть мой Создатель. 
         Для начала хочу сказать. Бинарный код – это продукт одного из уровней заряда, импульса, тока.
         “0” не пропускает заряд, ”1” пропускает заряд."
@@ -29,7 +28,7 @@ const page = () => {
               <p className={styles.footerText}>КОР СЧЕТ 000000000000000000</p>
               <p className={styles.footerText}>ТЕЛ: +7(905)899-45-73</p>
             </div>"
-        onPrev={() => router.push("/education")}
+            onPrev={() => router.push("/education")}
         onNext={() => router.push("/education/next-page")} // следующая страница
       ></Book>
       <button

@@ -12,7 +12,7 @@ const page = () => {
   return (
     <div>
       <div className={styles.wrapper}>
-        <h1>Язык программирования Django</h1>
+        {/* <h1>Язык программирования Django</h1> */}
         <div className={styles.wrap}>
           <div className={styles.container}>
             <Book
@@ -45,4 +45,3 @@ const page = () => {
 };
 
 export default page;
-<a href="/blagosds">Благотворительный Фонд Содействия строительству детских садов и образовательных учреждений </a>

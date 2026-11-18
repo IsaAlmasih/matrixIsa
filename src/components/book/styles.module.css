@@ -1,114 +1,162 @@
 .wrapper {
-  /* background-color: rgb(38, 9, 224); */
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* width: 100%;
-    height: 100vh; */
+    /* background-color: rgb(38, 9, 224); */
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: auto;
 }
 
 .wrappe {
-  font-size: 40px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 300px;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
 }
 
 .book {
-  background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }
 
-.arrowLeft,
-.arrowRight {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  z-index: 10;
+.bookContainer {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    line-height: normal;
 }
 
-.arrowLeft {
-  left: 10px;
-}
-.arrowRight {
-  right: 10px;
+.pageSelector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: min(100%, 500px);
 }
 
-.arrowLeft:hover,
-.arrowRight:hover {
-  opacity: 1;
+.pageButton {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ff0101;
+    border-radius: 6px;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pageButton[aria-current="page"] {
+    background: #ff0101;
+    color: #000;
+    font-weight: 700;
+}
+
+.navigation {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+
+.navigationButton {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #ff0101;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.navigationButton:disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 .button {
-  font-size: 20px;
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  color: rgb(254, 7, 7);
-  background-color: transparent;
-  border: 30;
-  z-index: 100;
+    font-size: 20px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: rgb(254, 7, 7);
+    background-color: transparent;
+    border: 30;
+    z-index: 100;
 }
 
 .firstPage {
-  text-align: center;
-  padding: 20px;
-  font-size: 19px;
-  color: #14eb00;
-  border: 1px solid red;
-  /* background-color: blueviolet; */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 19px;
+    color: #14eb00;
+    border: 1px solid red;
+    /* background-color: blueviolet; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .secondPage {
-  text-align: center;
-  padding: 20px;
-  font-size: 19px;
-  border: 1px solid red;
-  color: #14eb00;
+        text-align: center;
+    padding: 20px;
+    font-size: 19px;
+    border: 1px solid red;
+        color: #14eb00;
 
-  background-color: aqua;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+    /* background-color: aqua; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .thirdPage {
-  text-align: center;
-  padding: 20px;
-  font-size: 19px;
-  color: #14eb00;
-  border: 1px solid red;
-  background-color: blue;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+        text-align: center;
+    padding: 20px;
+    font-size: 19px;
+        color: #14eb00;
+    border: 1px solid red;
+    /* background-color: blue; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
 @media screen and (max-width: 576px) {
-  .firstPage,
-  .secondPage,
-  .thirdPage {
-    margin-top: -30px;
-    left: 15px !important;
-    right: 15px !important;
-    min-width: calc(100% - 30px) !important;
-    width: calc(100% - 30px) !important;
-    height: calc(100% - 10%) !important;
-  }
+    .firstPage,
+    .secondPage,
+    .thirdPage {
+        box-sizing: border-box;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 12px;
+        font-size: clamp(14px, 4vw, 17px);
+        overflow-wrap: anywhere;
+    }
 
-  .book {
-    min-width: 100% !important;
-  }
+    .book {
+        max-width: 100%;
+    }
+
+    .navigation {
+        right: 8px;
+        bottom: 8px;
+        gap: 6px;
+    }
+
+    .navigationButton {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
 }
