@@ -100,7 +100,7 @@ const page = () => {
         onClick={() => router.push("/PlanetPage")}
         className={styles.button}
       >
-        {"<--"}Назад
+        Назад
       </button>
       <MatrixRain></MatrixRain>
     </div>

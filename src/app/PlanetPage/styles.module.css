@@ -1,7 +1,7 @@
 .wrapper {
   background-color: black;
   width: 100%;
-  height: 100vh;
+  /* height: 90vh; */
   position: relative;
   z-index: 1;
 }
@@ -17,12 +17,6 @@
   color: rgb(128, 255, 0);
 }
 
-/* Переписать последовательность. */
-
-
-
-
-/* Переписать последовательность. импортманд лучшь убрать везде. */
 
 @media (max-width: 1920px) {
   .wrapper {
@@ -75,5 +69,5 @@
     padding: 50px;
   }
 }
-/* Переписать последовательность. */
+
 
