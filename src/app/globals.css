@@ -14,9 +14,19 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
-
 
 * {
   box-sizing: border-box;
@@ -36,16 +46,16 @@ a {
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 *,
@@ -55,18 +65,16 @@ code {
   padding: 0;
   box-sizing: border-box;
   user-select: none;
-  /* transform-style: preserve-3d; */
   -webkit-tap-highlight-color: transparent;
 }
-/* Generic */
+
 
 .face {
   position: absolute;
 }
-/***************/
 
-/***************/
-/***************/
+
+
 
 .alb {
   position: absolute;
@@ -211,8 +219,9 @@ code {
 .arb__bottom {
   background-color: #383358;
 }
-/***************/
-/***************/
+
+
+
 .blt {
   position: absolute;
   left: 0;
@@ -432,7 +441,8 @@ code {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       to bottom,
       rgba(40, 125, 210, 0.25),
       transparent 20%,
@@ -545,8 +555,9 @@ code {
 .blb2__bottom {
   background-color: #383358;
 }
-/***************/
-/***************/
+
+
+
 .bocina-l,
 .bocina-r {
   position: absolute;
@@ -848,7 +859,8 @@ code {
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: 0.125vw 0.125vw 1vw rgba(81, 137, 251, 0.5),
+  box-shadow:
+    0.125vw 0.125vw 1vw rgba(81, 137, 251, 0.5),
     -0.125vw 0.125vw 1vw rgba(81, 137, 251, 0.5),
     0.125vw -0.125vw 1vw rgba(81, 137, 251, 0.5),
     -0.125vw -0.125vw 1vw rgba(81, 137, 251, 0.5);
@@ -1407,7 +1419,8 @@ code {
 .cuadro-l__back,
 .cuadro-r__back {
   background-color: #383358;
-  box-shadow: 0.35vw 0.35vw 0.35vw rgba(81, 137, 251, 0.2),
+  box-shadow:
+    0.35vw 0.35vw 0.35vw rgba(81, 137, 251, 0.2),
     -0.35vw 0.35vw 0.35vw rgba(81, 137, 251, 0.2),
     -0.35vw -0.35vw 0.35vw rgba(81, 137, 251, 0.2),
     0.35vw -0.35vw 0.35vw rgba(81, 137, 251, 0.2);
@@ -1539,7 +1552,8 @@ code {
   width: 100%;
   height: 100%;
   background-image: radial-gradient(transparent 50%, rgba(4, 61, 174, 0.25));
-  box-shadow: 0.65vw 0.65vw 0.5vw rgba(81, 137, 251, 0.6),
+  box-shadow:
+    0.65vw 0.65vw 0.5vw rgba(81, 137, 251, 0.6),
     -0.65vw 0.65vw 0.5vw rgba(81, 137, 251, 0.6),
     -0.65vw -0.65vw 0.5vw rgba(81, 137, 251, 0.6),
     0.65vw -0.65vw 0.5vw rgba(81, 137, 251, 0.6);
@@ -1552,7 +1566,8 @@ code {
   width: 1vw;
   height: 0.25vw;
   background-color: #9e99c1;
-  box-shadow: 0.125vw 0.125vw 0.25vw rgba(81, 137, 251, 0.6),
+  box-shadow:
+    0.125vw 0.125vw 0.25vw rgba(81, 137, 251, 0.6),
     -0.125vw 0.125vw 0.25vw rgba(81, 137, 251, 0.6),
     -0.125vw -0.125vw 0.25vw rgba(81, 137, 251, 0.6),
     0.125vw -0.125vw 0.25vw rgba(81, 137, 251, 0.6);
@@ -1781,7 +1796,8 @@ code {
 }
 .muro__left {
   background-color: #0b0c1f;
-  box-shadow: 0.5vw 0.5vw 0.6vw rgba(81, 137, 251, 0.3),
+  box-shadow:
+    0.5vw 0.5vw 0.6vw rgba(81, 137, 251, 0.3),
     0.5vw -0.5vw 0.6vw rgba(81, 137, 251, 0.3),
     -0.5vw 0.5vw 0.6vw rgba(81, 137, 251, 0.3),
     -0.5vw -0.5vw 0.6vw rgba(81, 137, 251, 0.3);
@@ -2296,8 +2312,7 @@ code {
   bottom: 0.5vw;
 }
 
-/**********************/
-/**********************/
+
 @keyframes pantalla-tablet {
   from {
     background-color: #6a9afb;
@@ -2306,7 +2321,8 @@ code {
 @keyframes pantalla-tv {
   from {
     background-color: #6a9afb;
-    box-shadow: 0.125vw 0.125vw 0vw rgba(81, 137, 251, 0),
+    box-shadow:
+      0.125vw 0.125vw 0vw rgba(81, 137, 251, 0),
       -0.125vw 0.125vw 0vw rgba(81, 137, 251, 0),
       0.125vw -0.125vw 0vw rgba(81, 137, 251, 0),
       -0.125vw -0.125vw 0vw rgba(81, 137, 251, 0);
@@ -2320,7 +2336,6 @@ code {
     );
   }
 }
-
 
 html {
   margin: 0;
@@ -2369,7 +2384,6 @@ h3 {
   margin: 0;
   padding: 0;
 }
-
 
 .second-block {
   color: white;
@@ -2425,7 +2439,6 @@ img.planet {
   color: black;
 }
 
-
 .header-site {
   display: flex;
   justify-content: space-between;
@@ -2451,7 +2464,6 @@ img.planet {
   width: 100%;
   box-sizing: border-box;
 }
-
 
 .blink {
   -webkit-animation: blink 3s linear infinite;
@@ -2522,7 +2534,6 @@ pre {
   word-wrap: break-word;
 }
 
-
 .block-link-upload {
   margin-top: 10px;
 }
@@ -2579,8 +2590,6 @@ pre {
   font-size: 20px;
 }
 
-
-
 .send-mail {
   padding: 0 200px;
   margin-top: 40px;
@@ -2599,7 +2608,6 @@ pre {
   display: flex;
   justify-content: space-between;
 }
-
 
 .column {
   float: left;
@@ -2629,13 +2637,11 @@ textarea {
   width: 90%;
 }
 
-
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
   }
 }
-
 
 #defaultCanvas0 {
   margin: 0;
@@ -2644,9 +2650,11 @@ textarea {
   max-width: 100%;
 }
 
-
 @keyframes pulsate {
   50% {
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.3), 0 0 5px #0020f0, 0 0 8px #0021f8;
+    text-shadow:
+      0 -1px rgba(0, 0, 0, 0.3),
+      0 0 5px #0020f0,
+      0 0 8px #0021f8;
   }
 }

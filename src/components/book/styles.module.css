@@ -22,6 +22,32 @@
     background-repeat: no-repeat;
 }
 
+
+
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.arrowLeft { left: 10px; }
+.arrowRight { right: 10px; }
+
+.arrowLeft:hover,
+.arrowRight:hover {
+  opacity: 1;
+}
+
+
+
 .button {
     font-size: 20px;
     position: absolute;

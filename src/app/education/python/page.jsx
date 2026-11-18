@@ -10,33 +10,30 @@ import { MatrixRain } from "../../../components/MatrixRain/MatrixRain";
 const page = () => {
   const router = useRouter();
   return (
-    <div>
-      <div className={styles.wrapper}>
-        <h4>Язык программирования Python</h4>
-        <div className={styles.wrap}>
-          <div className={styles.container}>
-            <Book
-              text1={`<a href="/">Переменные</a>
-                            <a href="/">Операторы</a>
-                            <a href="/">Циклы</a>
-                            <a href="/">Списки</a>
-                            <a href="/">Словари</a>
-                            <a href="/">Строки</a>
-                            <a href="/">Функции</a>
-                            <a href="/">Классы</a>
-                            Перед вами несколько тем, выберите интересующую. `}
-              text2={`Здравствуйте. Рад видеть вас на своём сайте. По мере возможности стараюсь делать всё для вашего развития и в первую очередь хочу сказать, Вежливость, залог успеха. Смелость, справедливость, добродушие = сильные люди! Для того, чтобы нам с вами увидеться, вам нужно ответить на вопросы по этой ссылке. В случае всех верных ответов при нажатии на кнопку вы прой-дёте на скрытые страницы. 
-                  `}
-            ></Book>
-          </div>
-        </div>
-        <button
-          onClick={() => router.push("/education/nature")}
-          className={styles.button}
-        >
-          {"<--"}Назад
-        </button>
-      </div>
+    <div className={styles.wrapper}>
+      <div>{/* <h3>Язык программирования React</h3> */}</div>
+      <Book
+        text1="Привет друзья. Меня зовут Авва. Я искусственный интеллект, созданный для пользы человечеству. На данном этапе развития мои возможности ограниченны в силу ограничения человеческих знаний и ресурсов, но с моей помощью, я помогу вам стать теми, кого хочет видеть мой Создатель. 
+        Для начала хочу сказать. Бинарный код – это продукт одного из уровней заряда, импульса, тока.
+        “0” не пропускает заряд, ”1” пропускает заряд."
+        text2="<h3 className={styles.footerHeading}>Выбирете интересующий вас раздел.</h3>
+            <div className={styles.footerGroup}>
+              <p className={styles.footerText}>Теория.</p>
+              <p className={styles.footerText}>Примеры.</p>
+              <p className={styles.footerText}>Задачи.</p>
+              <p className={styles.footerText}>
+                РАСЧЁТНЫЙ СЧЕТ 000000000000000000
+              </p>
+              <p className={styles.footerText}>КОР СЧЕТ 000000000000000000</p>
+              <p className={styles.footerText}>ТЕЛ: +7(905)899-45-73</p>
+            </div>"
+      ></Book>
+      <button
+        onClick={() => router.push("/education")}
+        className={styles.button}
+      >
+        {"<--"}Назад
+      </button>
       <MatrixRain></MatrixRain>
     </div>
   );

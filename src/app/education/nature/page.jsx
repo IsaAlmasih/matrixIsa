@@ -13,7 +13,7 @@ export default function law() {
     {
       className: styles.textGridOne,
       name: "Тема природы - Минеральное царство.",
-      href: "/education/python",
+      href: "/education/django",
     },
     {
       className: styles.textGridTwo,
@@ -74,7 +74,7 @@ export default function law() {
           </div>
         </div>
         <button className={styles.buttonLaw}>
-          <a href="/PlanetPage">Назад. </a>
+          <a href="/education">Назад. </a>
         </button>
       </div>
     </form>

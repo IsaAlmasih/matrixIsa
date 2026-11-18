@@ -1,15 +1,17 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
-import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
+import React, { useRef, useEffect, useState } from "react";
+
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 import styles from "./styles.module.css";
 import HTMLFlipBook from "react-pageflip";
 
-import { useRouter } from "next/navigation";
-
 const Book = (props) => {
   const [isMobile, setIsMobile] = useState(false);
   const [width, setWidth] = useState(1920);
+  const bookRef = useRef(null);
+
   useEffect(() => {
     setWidth(screen.width);
 
@@ -19,62 +21,73 @@ const Book = (props) => {
     window.addEventListener("resize", windowResize);
 
     return () => {
-      window.addEventListener("resize", windowResize);
+      window.removeEventListener("resize", windowResize);
     };
   }, []);
 
   useEffect(() => {
-    if (width < 480) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
+    setIsMobile(width < 480);
   }, [width]);
 
+  const flipNext = () => bookRef.current?.pageFlip().flipNext();
+  const flipPrev = () => bookRef.current?.pageFlip().flipPrev();
 
-  const router = useRouter();
   return (
     <div className={styles.wrapper}>
-        <HTMLFlipBook
-          width={isMobile ? 500 : 500} height={isMobile ? 600 : 600}
-          className={styles.book}>
-          <div className={styles.firstPage}
-            dangerouslySetInnerHTML={{ __html: props.text1 }}
-          ></div>
-          <div
-            className={styles.secondPage}
-            dangerouslySetInnerHTML={{ __html: props.text2 }}
-          >
-          </div>
-          <div className={styles.thirdPage}>
-            <>{props.text3}</>
-          </div>
-          <div className={styles.secondPage}>
-            <>{props.text4}</>
-          </div>
-          <div className={styles.firstPage}>
-            <>{props.text5}</>
-          </div>
-          <div className={styles.secondPage}>
-            <>{props.text6}</>
-          </div>
-          <div className={styles.firstPage}>
-            <>{props.text7}</>
-          </div>
-          <div className={styles.secondPage}>
-            <>{props.text8}</>
-          </div>
-        </HTMLFlipBook>
-      </div>
+      <button
+        className={styles.arrowLeft}
+        onClick={flipPrev}
+        aria-label="Предыдущая страница"
+      >
+        <ArrowBackIosIcon />
+      </button>
+
+      <HTMLFlipBook
+        ref={bookRef}
+        width={500}
+        height={600}
+        className={styles.book}
+        showCover={true}
+        useMouseEvents={false}
+        useSwipe={false}
+      >
+        <div
+          className={styles.firstPage}
+          dangerouslySetInnerHTML={{ __html: props.text1 }}
+        ></div>
+        <div
+          className={styles.secondPage}
+          dangerouslySetInnerHTML={{ __html: props.text2 }}
+        ></div>
+        <div className={styles.thirdPage}>
+          <>{props.text3}</>
+        </div>
+        <div className={styles.secondPage}>
+          <>{props.text4}</>
+        </div>
+        <div className={styles.firstPage}>
+          <>{props.text5}</>
+        </div>
+        <div className={styles.secondPage}>
+          <>{props.text6}</>
+        </div>
+        <div className={styles.firstPage}>
+          <>{props.text7}</>
+        </div>
+        <div className={styles.secondPage}>
+          <>{props.text8}</>
+        </div>
+      </HTMLFlipBook>
+
+      <button
+        className={styles.arrowRight}
+        onClick={flipNext}
+        aria-label="Следующая страница"
+      >
+        <ArrowForwardIosIcon />
+      </button>
+    </div>
   );
 };
 
 export default Book;
-
-
-
-
-
-
-
-

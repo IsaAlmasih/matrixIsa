@@ -36,13 +36,7 @@ export default function Home() {
             </Link>
           </div>
           <div className={styles.cardFive}>
-            <Link
-              href="https://console.yandex.cloud/folders/b1gab1f5lhtbknb1joug/dashboard "
-              target="_blank"
-              rel="noopener noreferrer"
-            >
               Облачная БД.
-            </Link>
           </div>
           <Link href="/user" className={styles.card}>
             Блок 6

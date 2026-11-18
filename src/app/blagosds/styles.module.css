@@ -104,7 +104,12 @@
 
 @media (max-width: 360px) {
   .header {
-    font-size: 15px;
+    font-size: 10px;
+    height: 40px;
+  }
+
+  .logo {
+    font-size: 13px;
   }
   .galleryCard {
     width: 100px;
@@ -144,7 +149,7 @@
   }
 }
 
-/* @media (max-width: 470px) {
+@media (max-width: 600px) {
   .header {
     padding: 12px;
   }
@@ -252,4 +257,119 @@
     padding: 12px;
     font-size: 24px;
   }
-} */
+}
+
+
+
+@media (max-width: 470px) {
+  .header {
+    padding: 12px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .openPopup {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    border: none;
+  }
+
+  .openPopup span {
+    width: 100%;
+    background-color: black;
+    height: 1px;
+  }
+
+  .popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.264);
+  }
+
+  .content {
+    width: 100%;
+    height: auto;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(180, 0, 0);
+    -webkit-box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+    -moz-box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+    box-shadow: -3px 9px 8px -2px rgba(34, 60, 80, 0.35);
+  }
+
+  .blok {
+    background-color: rgb(13, 13, 83);
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+    height: 88%;
+    -webkit-box-shadow: 20px 21px 10px -11px rgba(0, 142, 251, 0.33);
+    -moz-box-shadow: 20px 21px 10px -11px rgba(0, 145, 255, 0.33);
+    box-shadow: 20px 21px 10px -11px rgba(0, 144, 255, 0.33);
+  }
+
+  .suxyzGrid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 90px 90px 90px;
+    grid-template-rows: 90px 90px 90px 90px;
+    grid-gap: 20px;
+  }
+
+  .svwxz {
+    background-color: rgb(38, 43, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .svwyz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  .content button {
+    background-color: transparent;
+    border: 0;
+  }
+
+  .content button svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .content .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 12px;
+  }
+
+  .headContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    font-size: 24px;
+  }
+}
+
+
+
