@@ -25,6 +25,7 @@
     margin-bottom: 100px;
     color: rgb(255, 4, 0);
     background-color: transparent;
+    border:none
 }
 
 
@@ -39,7 +40,7 @@
 
   .MatrixWrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 250px));
     height: auto;
     flex: 1;
     min-height: 0;
@@ -51,6 +52,7 @@
   .button {
     flex-shrink: 0;
     margin: 0 0 12px;
+    margin-bottom: 70px;
   }
 }
 
