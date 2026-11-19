@@ -13,7 +13,8 @@ import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 const Page = () => {
   const [isOpen1, setIsOpen1] = useState(false);
   const images = [
-    { src: imag.src, alt: "Книга Вечный Завет" },
+    { src: imag.src, 
+      alt: "Книга Вечный Завет" },
     ...Array.from({ length: 14 }, () => ({
       src: imag1.src,
       alt: "Книга Ключи",

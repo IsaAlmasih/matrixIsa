@@ -38,14 +38,14 @@ const page = () => {
       name: "Культура",
       id: 1,
       image: image2.src,
-      link: "/education/python",
+      link: "/education/culture",
       hasMatrixRain: false,
     },
     {
       name: "Наука",
       id: 1,
       image: image2.src,
-      link: "/education/react",
+      link: "/education/science",
       hasMatrixRain: false,
     },
     // {

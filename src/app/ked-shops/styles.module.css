@@ -1,0 +1,174 @@
+/* ---------- Страница ---------- */
+
+.page {
+  background-color:transparent;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.title {
+  font-size: 28px;
+  margin: 0 0 24px;
+}
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.counter { color: #8f949b; font-size: 14px; }
+
+.activeCategory { margin: 0 0 20px; color: #545a61; font-size: 15px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: transparent;
+  border: 1px solid #f10505;
+  border-radius: 16px;
+  padding: 20px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.cardBadge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 7px;
+  background: #28ec00;
+  color: #005bff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cardTitle { font-size: 18px; margin: 10px 0 6px; }
+
+.cardDesc {
+  font-size: 14px;
+  color: #36e006;
+  margin: 0 0 16px;
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #8f949b;
+  border-top: 1px solid #f0f1f3;
+  padding-top: 12px;
+}
+
+.noResults {
+  text-align: center;
+  color: #8f949b;
+  padding: 40px 0;
+}
+
+/* ---------- Выпадающий список ---------- */
+
+.dropdownWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  /* max-width: 420px; */
+  font-family: inherit;
+}
+
+.trigger {
+  background-color: #0a0248;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 2px solid #e6e8eb;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: border-color 0.15s;
+}
+
+.trigger:hover { border-color: #a8acb3; }
+.triggerOpen { border-color: #005bff; }
+
+.triggerLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow { transition: transform 0.15s; color: #8f9b8f; }
+.arrowUp { transform: rotate(180deg); }
+
+.panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 1px solid #e6e8eb;
+  outline: none;
+  font-size: 14px;
+}
+
+.list {
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.item:hover { background: #f2f4f7; }
+
+.itemActive {
+  background: #f0f6ff;
+  color: #005bff;
+}
+
+.code {
+  min-width: 28px;
+  color: #909b8f;
+  font-variant-numeric: tabular-nums;
+}
+
+.empty { padding: 16px; color: #8f949b; font-size: 14px; }
