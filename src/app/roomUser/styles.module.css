@@ -924,7 +924,7 @@
     width: 100%;
     height: 100%;
     box-shadow: 0.125vw 0.125vw 1vw rgba(81, 137, 251, .5), -0.125vw 0.125vw 1vw rgba(81, 137, 251, .5), 0.125vw -0.125vw 1vw rgba(81, 137, 251, .5), -0.125vw -0.125vw 1vw rgba(81, 137, 251, .5);
-    background-image: url('https://rawcdn.githack.com/ricardoolivaalonso/Codepen/43200238c3177b02a97423fa6cc23f8bfcc5c105/Room/gif.gif');
+    background-image: url('../../assets/1111.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -1425,9 +1425,9 @@
     background-color: #383358;
 }
 .cuadro-l__front {
-    background-image: url('https://rawcdn.githack.com/ricardoolivaalonso/Codepen/43200238c3177b02a97423fa6cc23f8bfcc5c105/Room/cuadro-1.jpg');
-    background-color: #d51e24;
-    border: 1vw solid #d51e24;
+    background-image: url('../../assets/1111.jpg');
+    background-color: #000000;
+    border: 1vw solid #000000;
 }
 .cuadro-l__front::before {
     content: '';

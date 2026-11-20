@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { OKVED_CATEGORIES, PRODUCT_CATEGORIES, SHOPS } from "./data";
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 /* ---------- Универсальный выпадающий список ---------- */
 
@@ -169,24 +170,26 @@ export default function ShopsPage() {
           )?.name;
 
           return (
-            <article key={shop.id} className={styles.card}>
-              <div className={styles.cardBadge}>{shop.okved}</div>
-              <h2 className={styles.cardTitle}>{shop.name}</h2>
-              <p className={styles.cardDesc}>{shop.description}</p>
+            <Link href="/" key={shop.id}>
+              <article className={styles.card}>
+                <div className={styles.cardBadge}>{shop.okved}</div>
+                <h2 className={styles.cardTitle}>{shop.name}</h2>
+                <p className={styles.cardDesc}>{shop.description}</p>
 
-              <div className={styles.products}>
-                {matched.map((p) => (
-                  <span key={p.name} className={styles.productTag}>
-                    {p.name}
-                  </span>
-                ))}
-              </div>
+                <div className={styles.products}>
+                  {matched.map((p) => (
+                    <span key={p.name} className={styles.productTag}>
+                      {p.name}
+                    </span>
+                  ))}
+                </div>
 
-              <div className={styles.cardFooter}>
-                <span className={styles.cardCity}>{shop.city}</span>
-                <span className={styles.cardOkved}>{okvedName}</span>
-              </div>
-            </article>
+                <div className={styles.cardFooter}>
+                  <span className={styles.cardCity}>{shop.city}</span>
+                  <span className={styles.cardOkved}>{okvedName}</span>
+                </div>
+              </article>
+            </Link>
           );
         })}
       </div>

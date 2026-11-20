@@ -42,7 +42,9 @@ const Header = () => {
         <Link href="/PlanetPage">На главную</Link>
       </div>
       <div className={styles.navigation}>
-        <button onClick={logout}>Выйти из матрицы.</button>
+        <button className={styles.logoutButton} onClick={logout}>
+          Выйти из матрицы.
+        </button>
         <div>
           <Link href={"/cart"} className={styles.cart}>
             <Image src={Imag4} height={50} width={50} alt="Корзина" />

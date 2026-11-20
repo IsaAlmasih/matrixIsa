@@ -61,8 +61,8 @@ const Page = () => {
         }
 
         // Сервер уже установил HttpOnly-cookie
-        localStorage.setItem("user",JSON.stringify(data.user))
-        router.replace("/user");
+        localStorage.setItem("roomUser", JSON.stringify(data.user));
+        router.replace("/roomUser");
       } catch (error) {
         console.error("Login error:", error);
         setError("Не удалось подключиться к серверу");
