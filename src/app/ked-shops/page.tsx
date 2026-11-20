@@ -1,40 +1,38 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { OKED_CATEGORIES, SHOPS } from "./data";
+import { OKVED_CATEGORIES, PRODUCT_CATEGORIES, SHOPS } from "./data";
 import styles from "./styles.module.css";
 
-import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
+/* ---------- Универсальный выпадающий список ---------- */
 
-/* ---------- Выпадающий список ОКЭД ---------- */
-
-function OkedDropdown({ value, onChange }) {
+function Dropdown({ items, value, onChange, allLabel, renderLabel }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const ref = useRef(null);
 
-  // закрытие по клику мимо списка
   useEffect(() => {
     const handler = (e) => {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
     };
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
     document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
 
-  const filtered = OKED_CATEGORIES.filter(
-    (c) =>
-      c.name.toLowerCase().includes(query.toLowerCase()) ||
-      c.code.includes(query),
+  const filtered = items.filter((item) =>
+    renderLabel(item).toLowerCase().includes(query.toLowerCase()),
   );
 
-  const selected = OKED_CATEGORIES.find((c) => c.code === value);
-  const label = selected
-    ? `${selected.code} — ${selected.name}`
-    : "Все категории ОКЭД";
+  const selected = items.find((item) => item.code === value);
+  const label = selected ? renderLabel(selected) : allLabel;
 
-  const pick = (c) => {
-    onChange(c ? c.code : "");
+  const pick = (item) => {
+    onChange(item ? item.code : "");
     setOpen(false);
     setQuery("");
   };
@@ -56,7 +54,7 @@ function OkedDropdown({ value, onChange }) {
         <div className={styles.panel}>
           <input
             className={styles.search}
-            placeholder="Поиск по названию или коду"
+            placeholder="Поиск"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
@@ -66,16 +64,16 @@ function OkedDropdown({ value, onChange }) {
               className={`${styles.item} ${value === "" ? styles.itemActive : ""}`}
               onClick={() => pick(null)}
             >
-              Все категории ОКЭД
+              {allLabel}
             </li>
-            {filtered.map((c) => (
+            {filtered.map((item) => (
               <li
-                key={c.code}
-                className={`${styles.item} ${value === c.code ? styles.itemActive : ""}`}
-                onClick={() => pick(c)}
+                key={item.code}
+                className={`${styles.item} ${value === item.code ? styles.itemActive : ""}`}
+                onClick={() => pick(item)}
               >
-                <span className={styles.code}>{c.code}</span>
-                <span>{c.name}</span>
+                <span className={styles.code}>{item.code}</span>
+                <span>{renderLabel(item)}</span>
               </li>
             ))}
             {filtered.length === 0 && (
@@ -91,51 +89,111 @@ function OkedDropdown({ value, onChange }) {
 /* ---------- Страница каталога ---------- */
 
 export default function ShopsPage() {
-  const [oked, setOked] = useState("");
+  // три независимых фильтра
+  const [okved, setOkved] = useState(""); // "" = все ОКВЭД
+  const [query, setQuery] = useState(""); // поиск по наименованию товара
+  const [category, setCategory] = useState(""); // "" = все категории товаров
 
-  const shops = useMemo(
-    () => (oked ? SHOPS.filter((s) => s.oked === oked) : SHOPS),
-    [oked],
-  );
+  const shops = useMemo(() => {
+    const q = query.trim().toLowerCase();
 
-  const categoryName = oked
-    ? OKED_CATEGORIES.find((c) => c.code === oked)?.name
-    : null;
+    return SHOPS.filter((shop) => {
+      // фильтр по ОКВЭД
+      if (okved && shop.okved !== okved) return false;
+
+      // фильтр по категории товара: у магазина есть хоть один товар этой категории
+      if (category && !shop.products.some((p) => p.category === category)) {
+        return false;
+      }
+
+      // фильтр по наименованию товара: есть хоть один товар, чьё имя содержит запрос
+      if (q && !shop.products.some((p) => p.name.toLowerCase().includes(q))) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [okved, query, category]);
+
+  // товары, попавшие под фильтры, — для подсветки на карточке
+  const matchedProducts = (shop) => {
+    const q = query.trim().toLowerCase();
+    return shop.products.filter((p) => {
+      if (category && p.category !== category) return false;
+      if (q && !p.name.toLowerCase().includes(q)) return false;
+      return true;
+    });
+  };
+
+  const activeFilters = [okved, category, query.trim()].filter(Boolean).length;
 
   return (
     <main className={styles.page}>
-      <h1 className={styles.title}>Каталог магазинов по ОКЭД</h1>
+      <h1 className={styles.title}>Каталог магазинов по ОКВЭД</h1>
 
       <div className={styles.filterBar}>
-        <OkedDropdown value={oked} onChange={setOked} />
-        <span className={styles.counter}>Найдено: {shops.length}</span>
-      </div>
+        <Dropdown
+          items={OKVED_CATEGORIES}
+          value={okved}
+          onChange={setOkved}
+          allLabel="Все ОКВЭД"
+          renderLabel={(c) => `${c.code} — ${c.name}`}
+        />
 
-      {categoryName && (
-        <p className={styles.activeCategory}>
-          Вид деятельности: <b>{categoryName}</b>
-        </p>
-      )}
+        <input
+          className={styles.productSearch}
+          placeholder="Наименование товара"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+
+        <Dropdown
+          items={PRODUCT_CATEGORIES.map((c) => ({ code: c, name: c }))}
+          value={category}
+          onChange={setCategory}
+          allLabel="Все категории товаров"
+          renderLabel={(c) => c.name}
+        />
+
+        <span className={styles.counter}>
+          Найдено: {shops.length}
+          {activeFilters > 0 && ` · фильтров: ${activeFilters}`}
+        </span>
+      </div>
 
       <div className={styles.grid}>
-        {shops.map((shop) => (
-          <article key={shop.id} className={styles.card}>
-            <div className={styles.cardBadge}>{shop.oked}</div>
-            <h2 className={styles.cardTitle}>{shop.name}</h2>
-            <p className={styles.cardDesc}>{shop.description}</p>
-            <div className={styles.cardFooter}>
-              <span className={styles.cardCity}>{shop.city}</span>
-              <span className={styles.cardOked}>
-                {OKED_CATEGORIES.find((c) => c.code === shop.oked)?.name}
-              </span>
-            </div>
-          </article>
-        ))}
+        {shops.map((shop) => {
+          const matched = matchedProducts(shop);
+          const okvedName = OKVED_CATEGORIES.find(
+            (c) => c.code === shop.okved,
+          )?.name;
+
+          return (
+            <article key={shop.id} className={styles.card}>
+              <div className={styles.cardBadge}>{shop.okved}</div>
+              <h2 className={styles.cardTitle}>{shop.name}</h2>
+              <p className={styles.cardDesc}>{shop.description}</p>
+
+              <div className={styles.products}>
+                {matched.map((p) => (
+                  <span key={p.name} className={styles.productTag}>
+                    {p.name}
+                  </span>
+                ))}
+              </div>
+
+              <div className={styles.cardFooter}>
+                <span className={styles.cardCity}>{shop.city}</span>
+                <span className={styles.cardOkved}>{okvedName}</span>
+              </div>
+            </article>
+          );
+        })}
       </div>
-      <MatrixRain></MatrixRain>
+
       {shops.length === 0 && (
         <p className={styles.noResults}>
-          По этой категории пока нет магазинов.
+          Под эти фильтры пока ничего не подходит.
         </p>
       )}
     </main>

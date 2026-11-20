@@ -12,10 +12,10 @@ export default function Home() {
       <nav className={styles.wrapper}>
         <div className={styles.text}>
           <Link href={"/education"}>Учение.</Link>
-          <Link href={"/price"}>Организации.</Link>
+          {/* <Link href={"/price"}>Организации.</Link> */}
           <Link href={"/keys"}>Книги.</Link>
-          <Link href={"/ked-shops"}>Магазины.</Link>
-          <Link href={"/"}>Тесты.</Link>
+          <Link href={"/ked-shops"}>Организации.</Link>
+          {/* <Link href={"/"}>Тесты.</Link> */}
           <Link href={"/contacts"}>Сотрудничество.</Link>
         </div>
         <MatrixRain></MatrixRain>

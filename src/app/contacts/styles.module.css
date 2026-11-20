@@ -36,10 +36,10 @@
   font-size: 37px;
 }
 
-
 @media (max-width: 350px) {
   .textTsar {
-    font-size: 19px;
+    font-size: 14px;
+    gap: 5px;
   }
 
   .blok {
@@ -48,80 +48,26 @@
   }
 }
 
+@media (max-width: 480px) {
+  .textTsar {
+    font-size: 14px;
+    gap: 5px;
+  }
 
-/* @media (min-width: 1024px) {
-  .text {
-    font-size: 38px;
+  .blok {
+    width: 290px;
+    height: 450px;
   }
 }
 
-@media (min-width: 962px) {
-  .text {
-    font-size: 38px;
+@media (max-width: 768px) {
+  .textTsar {
+    font-size: 19px;
+    gap: 5px;
   }
-} */
 
-/* @media (min-width: 768px) {
-  .text {
-    font-size: 36px;
+  .blok {
+    width: 390px;
+    height: 550px;
   }
-} */
-
-/* @media (min-width: 480px) {
-  .text {
-    font-size: 30px;
-  }
-} */
-
-
-/* @media (min-width: 1280px) {
-    .blok {
-    font-size: 66px;
-    } 
-} */
-
-/* @media (min-width: 1536px) {
-    .blok {
-    font-size: 76px;
-    } 
-} */
-
-/* @media (min-width: 1920px) {
-    .blok {
-    font-size: 108px;
-    } 
-} */
-
-/* .wrapper {
-    background-color: black;
-    height: 100vh;
-    width: 100%;
-    color: #0f1ccf;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    gap: 20px;
 }
-
-.wrappe {
-    background-color: black;
-    height: 10vh;
-    width: 250px;
-    color: #0f1ccf;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    gap: 10px; 
-}
-
-.include {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: wrap;
-} */

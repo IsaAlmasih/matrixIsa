@@ -69,8 +69,8 @@ const page = () => {
           setStatus({ error: data.message });
           return;
         } // Регистрация успешна — переходим на страницу входа
-        localStorage.setItem("user", JSON.stringify(data.user));
-        router.push("/user")
+        localStorage.setItem("roomUser", JSON.stringify(data.user));
+        router.push("/roomUser");
       } catch (error) {
         console.error(error);
         setStatus({ error: "Не удалось связаться с сервером" });
