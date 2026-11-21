@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/price/layout,_N_T_/price/matrix/layout,_N_T_/price/matrix/page,_N_T_/price/matrix"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/price/matrix/__PAGE__",
+    "/price/matrix",
+    "/price",
+    "/_index",
+    "/_head"
+  ]
+}

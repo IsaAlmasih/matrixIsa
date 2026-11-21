@@ -1,0 +1,77 @@
+/* [project]/src/app/keys/styles.module.css [app-client] (css) */
+.styles-module__xwhs2q__wrapper {
+  box-sizing: border-box;
+  color: #8aff00;
+  background-color: #000;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 24px 24px;
+  font-size: 30px;
+  display: flex;
+}
+
+.styles-module__xwhs2q__imageGrid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  width: min(100%, 1200px);
+  display: grid;
+}
+
+.styles-module__xwhs2q__imageCard {
+  box-sizing: border-box;
+  background: #111;
+  border: 1px solid #4dff00;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  height: 190px;
+  padding: 10px;
+  display: flex;
+  overflow: hidden;
+}
+
+.styles-module__xwhs2q__imageCard img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.styles-module__xwhs2q__wrappe {
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .styles-module__xwhs2q__imageGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .styles-module__xwhs2q__wrapper {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .styles-module__xwhs2q__wrapper {
+    gap: 16px;
+    padding: 90px 12px 20px;
+  }
+
+  .styles-module__xwhs2q__imageGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .styles-module__xwhs2q__imageCard {
+    height: 250px;
+  }
+}
+
+/*# sourceMappingURL=src_app_keys_styles_module_css_bad6b30c._.single.css.map*/

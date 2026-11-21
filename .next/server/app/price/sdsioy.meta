@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/price/layout,_N_T_/price/sdsioy/layout,_N_T_/price/sdsioy/page,_N_T_/price/sdsioy"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/price/sdsioy/__PAGE__",
+    "/price/sdsioy",
+    "/price",
+    "/_index",
+    "/_head"
+  ]
+}

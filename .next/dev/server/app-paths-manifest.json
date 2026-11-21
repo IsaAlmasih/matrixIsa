@@ -1,0 +1,12 @@
+{
+  "/LoginPage/page": "app/LoginPage/page.js",
+  "/PlanetPage/page": "app/PlanetPage/page.js",
+  "/RegisterPage/page": "app/RegisterPage/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/db-test/route": "app/api/db-test/route.js",
+  "/api/users/auth/route": "app/api/users/auth/route.js",
+  "/api/users/register/route": "app/api/users/register/route.js",
+  "/keys/page": "app/keys/page.js",
+  "/page": "app/page.js"
+}
