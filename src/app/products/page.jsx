@@ -1,110 +1,85 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import styles from "../products/styles.module.css";
 
-
 import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
+import Link from "next/link";
 
-
-import Imag1 from "../../assets/education/141.jpg";
-import Imag2 from "../../assets/education/python.jpg";
-import Imag3 from "../../assets/education/React.jpg";
-import Imag5 from "../../assets/education/django.jpg";
-
-import Image from "next/image";
-// import Imag4 from "../../assets/education/141.jpg";
-
-import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
-import ProductCard from "../../components/productCard/productCard";
-import Category from "../../components/Category/Category";
-
-const products = [
-  {
-    id: 20,
-    name: "Папирус",
-    image: Imag3,
-    link: "/products/papirus",
-  },
-  {
-    id: 9,
-    name: "Товары для творчества",
-    image: Imag1,
-    link: "/products/services",
-  },
-  {
-    id: 30,
-    name: "Книги",
-    image: Imag2,
-    link: "/products/books",
-  },
-  {
-    id: 40,
-    name: "Новогодние товары",
-    image: Imag5,
-    link: "/products/hyrlands",
-  },
-  {
-    id: 20,
-    name: "Папирус",
-    image: Imag3,
-    link: "/products/papirus",
-  },
-  {
-    id: 9,
-    name: "Товары для творчества",
-    image: Imag1,
-    link: "/products/services",
-  },
-  {
-    id: 30,
-    name: "Книги",
-    image: Imag2,
-    link: "/products/books",
-  },
-  {
-    id: 40,
-    name: "Новогодние товары",
-    image: Imag5,
-    link: "/products/hyrlands",
-  },
-  {
-    id: 20,
-    name: "Папирус",
-    image: Imag3,
-    link: "/products/papirus",
-  },
-  {
-    id: 9,
-    name: "Товары для творчества",
-    image: Imag1,
-    link: "/products/services",
-  },
-  {
-    id: 30,
-    name: "Книги",
-    image: Imag2,
-    link: "/products/books",
-  },
-  {
-    id: 40,
-    name: "Новогодние товары",
-    image: Imag5,
-    link: "/products/hyrlands",
-  },
-];
-
-const page = () => {
+export default function law() {
   const router = useRouter();
+  const topics = [
+    {
+      className: styles.textGridOne,
+      name: "Вид деятельности 55.",
+      href: "/ked-shops",
+    },
+    {
+      className: styles.textGridTwo,
+      name: "Вид деятельности 55.",
+      href: "/education/django",
+    },
+    {
+      className: styles.textGridThree,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+    {
+      className: styles.textGridFour,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+    {
+      className: styles.textGridFive,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+    {
+      className: styles.textGridSix,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+    {
+      className: styles.textGridSeven,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+    {
+      className: styles.textGridEight,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+    {
+      className: styles.textGridTen,
+      name: "Вид деятельности 55.",
+      href: "/",
+    },
+  ];
 
   return (
-    <div className={styles.wrapp}>
-      <div className={styles.categorylist}>
-        {products.map((category, id) => (
-          <MatrixRainCard key={id} name={category.name} hasMatrixRain/>
-        ))}
+    <form>
+      <div className={styles.wrapper}>
+        <div className={styles.blok}>
+          <div className={styles.blo}>
+            <div className={styles.textGrid}>
+              {topics.map(({ className, name, href }) => (
+                <div key={name} className={className}>
+                  {href ? (
+                    <Link href={href} className={styles.cardLink}>
+                      <MatrixRainCard name={name} />
+                    </Link>
+                  ) : (
+                    <MatrixRainCard name={name} />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <button className={styles.buttonLaw}>
+          <a href="/PlanetPage">Назад. </a>
+        </button>
       </div>
       <button
         onClick={() => router.push("/PlanetPage")}
@@ -115,6 +90,4 @@ const page = () => {
       <MatrixRain></MatrixRain>
     </div>
   );
-};
-
-export default page;
+}

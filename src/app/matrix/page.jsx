@@ -11,9 +11,9 @@ export default function Home() {
     <>
       <div className={styles.wrapper}>
         <div className={styles.remoteLeft}>Пульты</div>
-        <div className={styles.Btn}>
+        {/* <div className={styles.Btn}>
           <Link href="/RegisterPage">Выйти из матрицы.</Link>
-        </div>
+        </div> */}
         <div className={styles.cardGrid}>
           <div className={styles.card}>Блок 1</div>
           <Link
@@ -40,10 +40,12 @@ export default function Home() {
             href="https://sketchfab.com/3d-models/umamusume-gym-room-77b2d62fef414edd980f79c1e2828a04"
             className={styles.card}
           >
-            Классф 3д 
+            Классф 3д
           </Link>
           <div className={styles.card}>Блок 7</div>
-          <div className={styles.card}>Блок 8</div>
+          <Link href="/roomUser" className={styles.card}>
+            Комната.
+          </Link>
           <div className={styles.card}>Блок 9</div>
         </div>
         <div className={styles.remoteRight}>Пульты правые.</div>

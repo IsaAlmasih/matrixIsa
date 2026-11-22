@@ -39,7 +39,7 @@ const page = () => {
           {"<--"}Назад
         </button>
       </div>
-      <MatrixRain></MatrixRain>
+      {/* <MatrixRain></MatrixRain> */}
     </div>
   );
 };
