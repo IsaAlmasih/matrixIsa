@@ -1,3 +1,0 @@
-module.exports=[42938,a=>{a.v("/_next/static/media/1_2024.21505af0.png")},49590,a=>{a.v({imges:"styles-module__9lcjNG__imges",wrappe:"styles-module__9lcjNG__wrappe",wrapper:"styles-module__9lcjNG__wrapper"})},62490,a=>{"use strict";var b=a.i(87924),c=a.i(72131),d=a.i(49590);a.i(38246),a.i(42938).default,a.s(["default",0,()=>{let[a,e]=(0,c.useState)(!1);return(0,b.jsxs)("div",{className:d.default.wrapper,children:[(0,b.jsx)("div",{className:d.default.imges}),(0,b.jsxs)("div",{className:d.default.wrappe,children:[(0,b.jsx)("a",{href:"112.pdf",children:"Отчёт за 2024 год."}),(0,b.jsx)("a",{href:"/",children:"Вернутся на главную."})]})]})}],62490)}];
-
-//# sourceMappingURL=src_app_price_society_othot_9b006e79._.js.map

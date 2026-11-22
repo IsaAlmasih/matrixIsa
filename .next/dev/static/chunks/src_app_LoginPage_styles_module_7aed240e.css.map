@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///D:/students/Ivan/matrixIsa/src/app/LoginPage/styles.module.css"],"sourcesContent":[".blockFormLogin {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n    height: 100vh;\r\n  }\r\n\r\n.blockLoginUser {\r\nbackground-color: aliceblue;\r\n}\r\n\r\n\r\n.blockWithTextRegAcc {\r\n\r\n}\r\n\r\n.labelAuth {\r\n    margin-top: 20px !important;\r\n}"],"names":[],"mappings":"AAAA;;;;;;;;;AASA;;;;AASA"}}]
-}

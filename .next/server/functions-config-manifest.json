@@ -1,9 +1,0 @@
-{
-  "version": 1,
-  "functions": {
-    "/api/auth/me": {},
-    "/api/db-test": {},
-    "/api/users/auth": {},
-    "/api/users/register": {}
-  }
-}
