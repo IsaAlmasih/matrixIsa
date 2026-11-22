@@ -35,6 +35,80 @@
   gap: 22px;
 }
 
+.profileButton {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.profileButton img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.accountOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(0 0 0 / 65%);
+}
+
+.accountModal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: min(100%, 360px);
+  padding: 32px 24px 24px;
+  border: 1px solid red;
+  border-radius: 8px;
+  background: #000;
+  color: #ff0101;
+  box-shadow: 0 0 24px rgb(255 0 0 / 30%);
+}
+
+.accountModal h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.accountLink,
+.accountLogout {
+  display: block;
+  padding: 12px;
+  border: 1px solid red;
+  background: transparent;
+  color: #ff0101;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accountLink:hover,
+.accountLogout:hover {
+  background: rgb(255 0 0 / 12%);
+}
+
+.accountClose {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  border: 0;
+  background: transparent;
+  color: #ff0101;
+  font-size: 28px;
+  cursor: pointer;
+}
+
 .logo {
   font-size: 30px;
   display: flex;
@@ -75,6 +149,10 @@
   }
   .navigation {
     display: none;
+  }
+  .profileButton img {
+    width: 40px;
+    height: 40px;
   }
   .openPopup {
     display: flex;
@@ -148,6 +226,10 @@
   .navigation {
     display: none;
   }
+  .profileButton img {
+    width: 40px;
+    height: 40px;
+  }
   .openPopup {
     display: flex;
     flex-direction: column;
@@ -218,6 +300,10 @@
   }
   .navigation {
     display: none;
+  }
+  .profileButton img {
+    width: 40px;
+    height: 40px;
   }
   .openPopup {
     display: flex;

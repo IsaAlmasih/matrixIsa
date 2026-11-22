@@ -81,6 +81,13 @@ export default function law() {
           <a href="/PlanetPage">Назад. </a>
         </button>
       </div>
-    </form>
+      <button
+        onClick={() => router.push("/PlanetPage")}
+        className={styles.button}
+      >
+        Назад
+      </button>
+      <MatrixRain></MatrixRain>
+    </div>
   );
 }

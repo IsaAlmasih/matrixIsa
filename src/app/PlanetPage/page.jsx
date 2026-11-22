@@ -14,8 +14,8 @@ export default function Home() {
           <Link href={"/education"}>Учение.</Link>
           {/* <Link href={"/price"}>Организации.</Link> */}
           <Link href={"/keys"}>Книги.</Link>
-          <Link href={"/ked-shops"}>Организации.</Link>
-          {/* <Link href={"/"}>Тесты.</Link> */}
+          <Link href={"/products"}>Магазины.</Link>
+          <Link href={"/"}>Тесты.</Link>
           <Link href={"/contacts"}>Сотрудничество.</Link>
         </div>
         <MatrixRain></MatrixRain>

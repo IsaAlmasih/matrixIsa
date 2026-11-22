@@ -84,7 +84,8 @@
 
 .textGridOne {
   /* background-color: transparent; */
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
+  /* font-size: 10px; */
   color: #00ff2a;
   display: flex;
   justify-content: center;
@@ -93,7 +94,7 @@
 
 .textGridTwo {
   /* background-color: transparent; */
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -103,7 +104,7 @@
 
 .textGridThree {
   /* background-color: transparent; */
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -113,7 +114,7 @@
 
 .textGridFour {
   /* background-color: transparent; */
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -123,7 +124,7 @@
 
 .textGridFive {
   /* background-color: transparent; */
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -133,7 +134,7 @@
 
 .textGridSix {
   background-color: transparent;
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -143,7 +144,7 @@
 
 .textGridSeven {
   background-color: transparent;
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff00007d; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -153,7 +154,7 @@
 
 .textGridEight {
   background-color: transparent;
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff00008c; */
   font-size: 15px;
   color: #00ff2a;
 
@@ -164,7 +165,7 @@
 
 .textGridNine {
   background-color: transparent;
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;
@@ -174,7 +175,7 @@
 
 .textGridTen {
   background-color: transparent;
-  border: 1px solid #ff00007d;
+  /* border: 2px solid #ff0000; */
   font-size: 15px;
   color: #00ff2a;
   display: flex;

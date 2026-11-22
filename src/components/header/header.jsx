@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 import styles from "./styles.module.css";
 import clsx from "clsx";
@@ -13,6 +14,7 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const headerClasses = clsx(styles.header, {
     [styles.isVisible]: isVisible,
@@ -22,8 +24,8 @@ const Header = () => {
       method: "POST",
     });
     localStorage.removeItem("user");
-
     router.replace("/");
+    setIsAccountModalOpen(false)
   };
 
   const [href, setHref] = useState("/LoginPage");
@@ -31,6 +33,17 @@ const Header = () => {
   useEffect(() => {
     setHref(localStorage.getItem("user") ? "/matrix" : "/LoginPage");
   }, []);
+
+  useEffect(() => {
+    if (!isAccountModalOpen) return;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsAccountModalOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isAccountModalOpen]);
 
   return (
     <header className={headerClasses}>
@@ -41,16 +54,19 @@ const Header = () => {
       <div className={styles.btn}>
         <Link href="/PlanetPage">На главную</Link>
       </div>
-      <div className={styles.navigation}>
-        <button className={styles.logoutButton} onClick={logout}>
-          Выйти из матрицы.
-        </button>
-        <div>
-          <Link href={"/cart"} className={styles.cart}>
-            <Image src={Imag4} height={50} width={50} alt="Корзина" />
-          </Link>
-        </div>
-      </div>
+      {/* <div className={styles.navigation}>
+        <button onClick={logout}>Выйти из матрицы.</button>
+      </div> */}
+      <button
+        type="button"
+        className={styles.profileButton}
+        onClick={() => setIsAccountModalOpen(true)}
+        aria-label="Открыть меню аккаунта"
+        aria-haspopup="dialog"
+        aria-expanded={isAccountModalOpen}
+      >
+        <Image src={Imag4} height={50} width={50} alt="" />
+      </button>
       <button onClick={() => setIsOpen(!isOpen)} className={styles.openPopup}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -85,11 +101,51 @@ const Header = () => {
               <Link href={"/PlanetPage"}>Главная страница</Link>
               <Link href={"/about"}>О нас</Link>
               <Link href={"/"}>Контакты</Link>
-              <Link href={"/cart"}>Кабинет</Link>
+              <Link href={"/user"}>Личный кабинет</Link>
             </div>
           </div>
         </div>
       )}
+      {isAccountModalOpen &&
+        createPortal(
+          <div
+            className={styles.accountOverlay}
+            onClick={() => setIsAccountModalOpen(false)}
+          >
+            <section
+              className={styles.accountModal}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="account-modal-title"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                className={styles.accountClose}
+                onClick={() => setIsAccountModalOpen(false)}
+                aria-label="Закрыть"
+              >
+                ×
+              </button>
+              <h2 id="account-modal-title">Аккаунт</h2>
+              <Link
+                href="/user"
+                className={styles.accountLink}
+                onClick={() => setIsAccountModalOpen(false)}
+              >
+                Личный кабинет
+              </Link>
+              <button
+                type="button"
+                className={styles.accountLogout}
+                onClick={logout}
+              >
+                Выйти из матрицы
+              </button>
+            </section>
+          </div>,
+          document.body,
+        )}
     </header>
   );
 };
