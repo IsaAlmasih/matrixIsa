@@ -170,7 +170,7 @@ export default function ShopsPage() {
           )?.name;
 
           return (
-            <Link href="/price/matrix" key={shop.id}>
+            <Link href={shop.href} key={shop.id}>
               <article className={styles.card}>
                 <div className={styles.cardBadge}>{shop.okved}</div>
                 <h2 className={styles.cardTitle}>{shop.name}</h2>

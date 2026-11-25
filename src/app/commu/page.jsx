@@ -28,7 +28,6 @@
 //   FiCreditCard, // Финуслуги
 // } from "react-icons/fi";
 
-
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -508,302 +507,261 @@ export default function Commu() {
                   ? "Проверка..."
                   : "Вы на связи"}
             </span>
+            <Link href="/LoginPage" className={styles.authLink}>
+              Авторизоваться
+            </Link>
           </div>
+        ) : messagesAuthStatus === "error" ? (
+          <div className={styles.authPrompt} role="alert">
+            <strong>{error}</strong>
+            <button
+              type="button"
+              className={styles.authLink}
+              onClick={checkAuth}
+            >
+              Повторить проверку
+            </button>
+          </div>
+        ) : (
+          <div className={styles.chatLayout}>
+            {/* ================================= */}
+            {/* Меню сообщества */}
+            {/* ================================= */}
 
-          {messagesAuthStatus === "checking" ? (
-            <div className={styles.authPrompt} role="status">
-              Проверяем авторизацию...
-            </div>
-          ) : messagesAuthStatus === "unauthenticated" ? (
-            <div className={styles.authPrompt}>
-              <FiMessageCircle aria-hidden="true" />
-              <strong>Войдите, чтобы пользоваться чатом</strong>
-              <span>
-                Авторизуйтесь, чтобы просматривать диалоги и отправлять
-                сообщения.
-              </span>
-              <Link href="/LoginPage" className={styles.authLink}>
-                Авторизоваться
-              </Link>
-            </div>
-          ) : messagesAuthStatus === "error" ? (
-            <div className={styles.authPrompt} role="alert">
-              <strong>{error}</strong>
-              <button
-                type="button"
-                className={styles.authLink}
-                onClick={checkAuth}
-              >
-                Повторить проверку
-              </button>
-            </div>
-          ) : (
-            <div className={styles.chatLayout}>
-              {/* ================================= */}
-              {/* Меню сообщества */}
-              {/* ================================= */}
+            <nav className={styles.menuColumn} aria-label="Меню сообщества">
+              {commuMenu.map(({ label, icon: Icon, href }) =>
+                href ? (
+                  <Link
+                    key={label}
+                    href={href}
+                    className={styles.menuItem}
+                    onClick={() => setActiveMenuItem(null)}
+                  >
+                    <Icon aria-hidden="true" />
+                    <span>{label}</span>
+                  </Link>
+                ) : (
+                  <button
+                    key={label}
+                    type="button"
+                    className={`${styles.menuItem} ${
+                      activeMenuItem === label ? styles.menuItemActive : ""
+                    }`}
+                    onClick={() => setActiveMenuItem(label)}
+                  >
+                    <Icon aria-hidden="true" />
+                    <span>{label}</span>
+                  </button>
+                ),
+              )}
+            </nav>
 
-              <nav className={styles.menuColumn} aria-label="Меню сообщества">
-                {commuMenu.map(({ label, icon: Icon, href }) =>
-                  href ? (
-                    <Link
-                      key={label}
-                      href={href}
-                      className={styles.menuItem}
-                      onClick={() => setActiveMenuItem(null)}
-                    >
-                      <Icon aria-hidden="true" />
-                      <span>{label}</span>
-                    </Link>
-                  ) : (
-                    <button
-                      key={label}
-                      type="button"
-                      className={`${styles.menuItem} ${
-                        activeMenuItem === label ? styles.menuItemActive : ""
-                      }`}
-                      onClick={() => setActiveMenuItem(label)}
-                    >
-                      <Icon aria-hidden="true" />
-                      <span>{label}</span>
-                    </button>
-                  ),
-                )}
-              </nav>
+            {/* ================================= */}
+            {/* Список диалогов и поиск пользователей */}
+            {/* ================================= */}
 
-              {/* ================================= */}
-              {/* Список диалогов и поиск пользователей */}
-              {/* ================================= */}
+            <div
+              className={`${styles.conversationsList} ${
+                activeConversation ? styles.conversationsListHidden : ""
+              }`}
+            >
+              {/* Поиск пользователей */}
 
-              <div
-                className={`${styles.conversationsList} ${
-                  activeConversation ? styles.conversationsListHidden : ""
-                }`}
-              >
-                {/* Поиск пользователей */}
+              <div className={styles.searchMessages}>
+                <FiSearch />
 
-                <div className={styles.searchMessages}>
-                  <FiSearch />
+                <input
+                  value={userSearch}
+                  onChange={(e) => setUserSearch(e.target.value)}
+                  placeholder="Найти пользователя..."
+                />
+              </div>
 
-                  <input
-                    value={userSearch}
-                    onChange={(e) => setUserSearch(e.target.value)}
-                    placeholder="Найти пользователя..."
-                  />
-                </div>
+              {/* Результаты поиска */}
 
-                {/* Результаты поиска */}
-
-                {userSearch.trim().length >= 2 && (
-                  <div className={styles.searchResults}>
-                    <div className={styles.searchResultsTitle}>
-                      Результаты поиска
-                    </div>
-
-                    {searchLoading && (
-                      <p className={styles.searchStatus}>Поиск...</p>
-                    )}
-
-                    {!searchLoading && searchResults.length === 0 && (
-                      <p className={styles.searchStatus}>
-                        Пользователи не найдены
-                      </p>
-                    )}
-
-                    {searchResults.map((user) => (
-                      <div key={user.id} className={styles.searchUser}>
-                        <div className={styles.userAvatar}>
-                          {user.username.charAt(0).toUpperCase()}
-                        </div>
-
-                        <div className={styles.conversationInfo}>
-                          <strong>{user.username}</strong>
-                          <span>{user.email}</span>
-                        </div>
-
-                        <button
-                          type="button"
-                          disabled={startingChat}
-                          onClick={() => startConversation(user.id)}
-                          className={styles.startChatButton}
-                        >
-                          {startingChat ? "..." : "Написать"}
-                        </button>
-                      </div>
-                    ))}
+              {userSearch.trim().length >= 2 && (
+                <div className={styles.searchResults}>
+                  <div className={styles.searchResultsTitle}>
+                    Результаты поиска
                   </div>
-                )}
 
-                {/* Существующие диалоги */}
-
-                <div className={styles.conversations}>
-                  {loadingConversations && conversations.length === 0 && (
-                    <div className={styles.chatEmpty}>Загрузка диалогов...</div>
+                  {searchLoading && (
+                    <p className={styles.searchStatus}>Поиск...</p>
                   )}
 
-                  {!loadingConversations &&
-                    filteredConversations.length === 0 &&
-                    userSearch.trim().length < 2 && (
-                      <div className={styles.chatEmpty}>
-                        <FiMessageCircle />
+                  {!searchLoading && searchResults.length === 0 && (
+                    <p className={styles.searchStatus}>
+                      Пользователи не найдены
+                    </p>
+                  )}
 
-                        <strong>Диалогов пока нет</strong>
-
-                        <span>
-                          Найдите пользователя выше, чтобы начать общение
-                        </span>
-                      </div>
-                    )}
-
-                  {filteredConversations.map((conversation) => (
-                    <button
-                      key={conversation.conversation_id}
-                      type="button"
-                      className={`${styles.conversationItem} ${
-                        activeConversation?.conversation_id ===
-                        conversation.conversation_id
-                          ? styles.conversationItemActive
-                          : ""
-                      }`}
-                      onClick={() => openConversation(conversation)}
-                    >
+                  {searchResults.map((user) => (
+                    <div key={user.id} className={styles.searchUser}>
                       <div className={styles.userAvatar}>
-                        {conversation.username.charAt(0).toUpperCase()}
+                        {user.username.charAt(0).toUpperCase()}
                       </div>
 
                       <div className={styles.conversationInfo}>
-                        <strong>{conversation.username}</strong>
-
-                        <span>
-                          {conversation.last_message || conversation.email}
-                        </span>
+                        <strong>{user.username}</strong>
+                        <span>{user.email}</span>
                       </div>
 
-                      {conversation.unread_count > 0 && (
-                        <span className={styles.unreadBadge}>
-                          {conversation.unread_count}
-                        </span>
-                      )}
-                    </button>
+                      <button
+                        type="button"
+                        disabled={startingChat}
+                        onClick={() => startConversation(user.id)}
+                        className={styles.startChatButton}
+                      >
+                        {startingChat ? "..." : "Написать"}
+                      </button>
+                    </div>
                   ))}
                 </div>
-              </div>
+              )}
 
-              {/* ================================= */}
-              {/* Окно переписки */}
-              {/* ================================= */}
+              {/* Существующие диалоги */}
 
-              {activeMenuItem && !activeConversation ? (
-                /* Заглушка выбранного раздела меню */
-                <div className={styles.menuPlaceholder}>
-                  <FiHelpCircle />
+              <div className={styles.conversations}>
+                {loadingConversations && conversations.length === 0 && (
+                  <div className={styles.chatEmpty}>Загрузка диалогов...</div>
+                )}
 
-                  <strong>{activeMenuItem}</strong>
+                {!loadingConversations &&
+                  filteredConversations.length === 0 &&
+                  userSearch.trim().length < 2 && (
+                    <div className={styles.chatEmpty}>
+                      <FiMessageCircle />
 
-                  <span>
-                    Раздел «{activeMenuItem}» скоро появится. Пока общайтесь в
-                    мессенджере — выберите диалог слева.
-                  </span>
-                </div>
-              ) : activeConversation ? (
-                <div className={styles.chatWindow}>
-                  {/* Собеседник */}
+                      <strong>Диалогов пока нет</strong>
 
-                  <div className={styles.chatUserHeader}>
-                    <button
-                      type="button"
-                      className={styles.backButton}
-                      onClick={backToConversations}
-                      aria-label="Назад к диалогам"
-                    >
-                      <FiArrowLeft />
-                    </button>
+                      <span>
+                        Найдите пользователя выше, чтобы начать общение
+                      </span>
+                    </div>
+                  )}
 
+                {filteredConversations.map((conversation) => (
+                  <button
+                    key={conversation.conversation_id}
+                    type="button"
+                    className={`${styles.conversationItem} ${
+                      activeConversation?.conversation_id ===
+                      conversation.conversation_id
+                        ? styles.conversationItemActive
+                        : ""
+                    }`}
+                    onClick={() => openConversation(conversation)}
+                  >
                     <div className={styles.userAvatar}>
-                      {activeConversation.username.charAt(0).toUpperCase()}
+                      {conversation.username.charAt(0).toUpperCase()}
                     </div>
 
-                    <div>
-                      <strong>{activeConversation.username}</strong>
-                      <span>{activeConversation.email}</span>
+                    <div className={styles.conversationInfo}>
+                      <strong>{conversation.username}</strong>
+
+                      <span>
+                        {conversation.last_message || conversation.email}
+                      </span>
                     </div>
+
+                    {conversation.unread_count > 0 && (
+                      <span className={styles.unreadBadge}>
+                        {conversation.unread_count}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* ================================= */}
+            {/* Окно переписки */}
+            {/* ================================= */}
+
+            {activeMenuItem && !activeConversation ? (
+              /* Заглушка выбранного раздела меню */
+              <div className={styles.menuPlaceholder}>
+                <FiHelpCircle />
+
+                <strong>{activeMenuItem}</strong>
+
+                <span>
+                  Раздел «{activeMenuItem}» скоро появится. Пока общайтесь в
+                  мессенджере — выберите диалог слева.
+                </span>
+              </div>
+            ) : activeConversation ? (
+              <div className={styles.chatWindow}>
+                {/* Собеседник */}
+
+                <div className={styles.chatUserHeader}>
+                  <button
+                    type="button"
+                    className={styles.backButton}
+                    onClick={backToConversations}
+                    aria-label="Назад к диалогам"
+                  >
+                    <FiArrowLeft />
+                  </button>
+
+                  <div className={styles.userAvatar}>
+                    {activeConversation.username.charAt(0).toUpperCase()}
                   </div>
 
-                  {/* История сообщений */}
-
-                  <div className={styles.chatMessages}>
-                    {loadingMessages && messages.length === 0 && (
-                      <div className={styles.chatEmpty}>
-                        Загрузка сообщений...
-                      </div>
-                    )}
-
-                    {!loadingMessages && messages.length === 0 && (
-                      <div className={styles.chatEmpty}>
-                        <FiMessageCircle />
-
-                        <strong>Начните общение</strong>
-
-                        <span>Напишите первое сообщение пользователю</span>
-                      </div>
-                    )}
-
-                    {messages.map((message) => (
-                      <div
-                        key={message.id}
-                        className={`${styles.messageRow} ${
-                          message.is_mine ? styles.messageRowMine : ""
-                        }`}
-                      >
-                        <div className={styles.messageBubble}>
-                          <p>{message.content}</p>
-
-                          <time>
-                            {new Date(message.created_at).toLocaleTimeString(
-                              "ru-RU",
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              },
-                            )}
-                          </time>
-                        </div>
-                      </div>
-                    ))}
-
-                    <div ref={messagesEndRef} />
+                  <div>
+                    <strong>{activeConversation.username}</strong>
+                    <span>{activeConversation.email}</span>
                   </div>
-
-                  {/* Ошибка */}
-
-                  {error && <div className={styles.chatError}>{error}</div>}
-
-                  {/* Поле ввода */}
-
-                  <form className={styles.chatInput} onSubmit={sendMessage}>
-                    <input
-                      value={messageText}
-                      onChange={(e) => setMessageText(e.target.value)}
-                      placeholder="Введите сообщение..."
-                      maxLength={50000}
-                    />
-
-                    <button
-                      type="submit"
-                      disabled={!messageText.trim() || sending}
-                      aria-label="Отправить сообщение"
-                    >
-                      <FiSend />
-                    </button>
-                  </form>
                 </div>
-              ) : (
-                /* Заглушка, если диалог не выбран */
 
-                <div className={styles.chatPlaceholder}>
-                  <FiMessageCircle />
+                {/* История сообщений */}
 
-                  <strong>Выберите диалог</strong>
+                <div className={styles.chatMessages}>
+                  {loadingMessages && messages.length === 0 && (
+                    <div className={styles.chatEmpty}>
+                      Загрузка сообщений...
+                    </div>
+                  )}
+
+                  {!loadingMessages && messages.length === 0 && (
+                    <div className={styles.chatEmpty}>
+                      <FiMessageCircle />
+
+                      <strong>Начните общение</strong>
+
+                      <span>Напишите первое сообщение пользователю</span>
+                    </div>
+                  )}
+
+                  {messages.map((message) => (
+                    <div
+                      key={message.id}
+                      className={`${styles.messageRow} ${
+                        message.is_mine ? styles.messageRowMine : ""
+                      }`}
+                    >
+                      <div className={styles.messageBubble}>
+                        <p>{message.content}</p>
+
+                        <time>
+                          {new Date(message.created_at).toLocaleTimeString(
+                            "ru-RU",
+                            {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            },
+                          )}
+                        </time>
+                      </div>
+                    </div>
+                  ))}
+
+                  <div ref={messagesEndRef} />
+                </div>
+
+                {/* Ошибка */}
+
+                {error && <div className={styles.chatError}>{error}</div>}
 
                   <span>
                     Выберите пользователя слева или найдите нового собеседника
@@ -816,4 +774,3 @@ export default function Commu() {
     </main>
   );
 }
-  
