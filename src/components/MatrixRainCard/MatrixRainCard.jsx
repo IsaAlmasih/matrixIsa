@@ -52,10 +52,68 @@ const MatrixRainCard = ({ name, id, image, link, hasMatrixRain=false }) => {
       });
     };
 
-    const interval = setInterval(draw, 30); // Уменьшаем интервал обновления кадров для плавности
+    let animationFrame = null;
+    let frameTimeout = null;
+    let isVisible = false;
+    const frameInterval = 50;
 
-    return () => clearInterval(interval);
-  }, []);
+    const scheduleDraw = () => {
+      if (!isVisible || document.hidden || animationFrame !== null || frameTimeout !== null) {
+        return;
+      }
+
+      animationFrame = window.requestAnimationFrame(drawFrame);
+    };
+
+    const stop = () => {
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+
+      if (frameTimeout !== null) {
+        window.clearTimeout(frameTimeout);
+        frameTimeout = null;
+      }
+    };
+
+    const drawFrame = () => {
+      animationFrame = null;
+      if (!isVisible || document.hidden) return;
+
+      draw();
+      frameTimeout = window.setTimeout(() => {
+        frameTimeout = null;
+        scheduleDraw();
+      }, frameInterval);
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        scheduleDraw();
+      } else {
+        stop();
+      }
+    });
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        scheduleDraw();
+      }
+    };
+
+    observer.observe(canvas);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      stop();
+    };
+  }, [hasMatrixRain]);
 
   return (
     <div className="matrix-card" key={id}>

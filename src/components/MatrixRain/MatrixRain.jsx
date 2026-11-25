@@ -33,7 +33,9 @@ export const MatrixRain = () => {
     if (!canvas || !context) return;
 
     let columns = [];
-    let animationFrame;
+    let animationFrame = null;
+    let frameTimeout = null;
+    let resizeTimeout = null;
     let lastFrameTime = 0;
     const frameInterval = 100;
 
@@ -62,8 +64,8 @@ export const MatrixRain = () => {
     };
 
     const draw = (timestamp) => {
-      animationFrame = window.requestAnimationFrame(draw);
-      if (timestamp - lastFrameTime < frameInterval) return;
+      animationFrame = null;
+      if (document.hidden) return;
 
       const elapsed = lastFrameTime ? timestamp - lastFrameTime : frameInterval;
       lastFrameTime = timestamp;
@@ -83,15 +85,61 @@ export const MatrixRain = () => {
           );
         });
       });
+
+      frameTimeout = window.setTimeout(() => {
+        frameTimeout = null;
+        if (!document.hidden) {
+          animationFrame = window.requestAnimationFrame(draw);
+        }
+      }, frameInterval);
+    };
+
+    const start = () => {
+      if (document.hidden || animationFrame !== null || frameTimeout !== null) {
+        return;
+      }
+
+      lastFrameTime = 0;
+      animationFrame = window.requestAnimationFrame(draw);
+    };
+
+    const stop = () => {
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+
+      if (frameTimeout !== null) {
+        window.clearTimeout(frameTimeout);
+        frameTimeout = null;
+      }
+
+      lastFrameTime = 0;
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    };
+
+    const handleResize = () => {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(resize, 100);
     };
 
     resize();
-    window.addEventListener("resize", resize);
-    animationFrame = window.requestAnimationFrame(draw);
+    window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    start();
 
     return () => {
-      window.removeEventListener("resize", resize);
-      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.clearTimeout(resizeTimeout);
+      stop();
     };
   }, []);
 

@@ -36,7 +36,6 @@ import Link from "next/link";
 
 import {
   FiMessageCircle,
-  FiChevronDown,
   FiArrowLeft,
   FiSearch,
   FiSend,
@@ -93,14 +92,7 @@ const commuMenu = [
   { label: "Финуслуги", icon: FiCreditCard },
 ];
 
-export default function Commu({ open, onOpen, onClose }) {
-  // если родитель не управляет виджетом — виджет управляет собой сам
-  const [localOpen, setLocalOpen] = useState(false);
-
-  const isOpen = open !== undefined ? open : localOpen;
-  const handleOpen = onOpen || (() => setLocalOpen(true));
-  const handleClose = onClose || (() => setLocalOpen(false));
-
+export default function Commu() {
   const [messagesAuthStatus, setMessagesAuthStatus] = useState("unknown");
   const [activeMenuItem, setActiveMenuItem] = useState(null);
 
@@ -232,10 +224,8 @@ export default function Commu({ open, onOpen, onClose }) {
   }, [loadConversations]);
 
   useEffect(() => {
-    if (isOpen) {
-      checkAuth();
-    }
-  }, [isOpen, checkAuth]);
+    checkAuth();
+  }, [checkAuth]);
 
   // =====================================
   // Поиск пользователей
@@ -504,13 +494,8 @@ export default function Commu({ open, onOpen, onClose }) {
   // =====================================
 
   return (
-    <aside
-      className={`${styles.messagesWidget} ${
-        isOpen ? styles.messagesWidgetOpen : ""
-      }`}
-    >
-      {isOpen && (
-        <div className={styles.messagesPanel}>
+    <main className={styles.messagesPage}>
+      <div className={styles.messagesPanel}>
           {/* Заголовок */}
 
           <div className={styles.messagesHeader}>
@@ -827,33 +812,8 @@ export default function Commu({ open, onOpen, onClose }) {
               )}
             </div>
           )}
-        </div>
-      )}
-
-      {/* Кнопка открытия виджета */}
-
-      <button
-        type="button"
-        className={styles.messagesToggle}
-        aria-expanded={isOpen}
-        onClick={() => {
-          if (isOpen) {
-            handleClose();
-          } else {
-            handleOpen();
-          }
-        }}
-      >
-        <FiMessageCircle aria-hidden="true" />
-
-        <strong>{isOpen ? "Свернуть чат" : "Сообщения"}</strong>
-
-        <FiChevronDown
-          className={isOpen ? styles.chevronUp : ""}
-          aria-hidden="true"
-        />
-      </button>
-    </aside>
+      </div>
+    </main>
   );
 }
   
