@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./styles.module.css";
@@ -17,35 +17,61 @@ const Header = () => {
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  const [href, setHref] = useState("/LoginPage");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authStatus, setAuthStatus] = useState("checking");
+  const [authError, setAuthError] = useState("");
+  const href = authStatus === "authenticated" ? "/matrix" : "/LoginPage";
+
+  const checkAuth = useCallback(async () => {
+    setAuthStatus("checking");
+    setAuthError("");
+
+    try {
+      const response = await fetch("/api/auth/me", { cache: "no-store" });
+
+      if (response.status === 401) {
+        setAuthStatus("unauthenticated");
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error("Не удалось проверить авторизацию");
+      }
+
+      const data = await response.json();
+      setAuthStatus(
+        data.authenticated ? "authenticated" : "unauthenticated",
+      );
+    } catch (error) {
+      console.error("Account authorization check error:", error);
+      setAuthError("Не удалось проверить авторизацию. Попробуйте ещё раз.");
+      setAuthStatus("error");
+    }
+  }, []);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await fetch("/api/auth/me");
-        if (response.ok) {
-          setIsLoggedIn(true);
-          setHref("/matrix");
-        }
-      } catch {
-        // не залогинен — остаёмся на LoginPage
-      }
-    };
-
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
   const headerClasses = clsx(styles.header, {
     [styles.isVisible]: isVisible,
   });
 
   const logout = async () => {
-    await fetch("/api/auth/logout", { method: "POST" });
-    setIsLoggedIn(false);
-    setHref("/LoginPage");
-    router.replace("/");
-    setIsAccountModalOpen(false);
+    try {
+      const response = await fetch("/api/auth/logout", { method: "POST" });
+
+      if (!response.ok) {
+        throw new Error("Не удалось выйти из аккаунта");
+      }
+
+      setAuthStatus("unauthenticated");
+      router.replace("/");
+      setIsAccountModalOpen(false);
+    } catch (error) {
+      console.error("Account logout error:", error);
+      setAuthError("Не удалось выйти из аккаунта. Попробуйте ещё раз.");
+      setAuthStatus("error");
+    }
   };
 
   useEffect(() => {
@@ -139,7 +165,44 @@ const Header = () => {
                 ×
               </button>
               <h2 id="account-modal-title">Аккаунт</h2>
-              {isLoggedIn && (
+              {authStatus === "checking" && (
+                <p className={styles.accountStatus} role="status">
+                  Проверяем авторизацию...
+                </p>
+              )}
+              {authStatus === "error" && (
+                <>
+                  <p className={styles.accountStatus} role="alert">
+                    {authError}
+                  </p>
+                  <button
+                    type="button"
+                    className={styles.accountLogout}
+                    onClick={checkAuth}
+                  >
+                    Повторить проверку
+                  </button>
+                </>
+              )}
+              {authStatus === "unauthenticated" && (
+                <>
+                  <Link
+                    href="/LoginPage"
+                    className={styles.accountLink}
+                    onClick={() => setIsAccountModalOpen(false)}
+                  >
+                    Войти
+                  </Link>
+                  <Link
+                    href="/RegisterPage"
+                    className={styles.accountLink}
+                    onClick={() => setIsAccountModalOpen(false)}
+                  >
+                    Зарегистрироваться
+                  </Link>
+                </>
+              )}
+              {authStatus === "authenticated" && (
                 <Link
                   href="/user"
                   className={styles.accountLink}
@@ -148,7 +211,7 @@ const Header = () => {
                   Личный кабинет
                 </Link>
               )}
-              {isLoggedIn && (
+              {authStatus === "authenticated" && (
                 <button
                   type="button"
                   className={styles.accountLogout}

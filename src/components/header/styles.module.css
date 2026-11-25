@@ -80,6 +80,13 @@
   text-align: center;
 }
 
+.accountStatus {
+  margin: 0;
+  color: #d3d3d3;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .accountLink,
 .accountLogout {
   display: block;

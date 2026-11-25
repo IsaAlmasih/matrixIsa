@@ -5,7 +5,7 @@ import { getCurrentUser } from "../../../../lib/auth";
 
 export const runtime = "nodejs";
 
-export async function GET(request) {
+export async function GET(request: NextRequest) {
   try {
     const currentUser = await getCurrentUser(request);
 

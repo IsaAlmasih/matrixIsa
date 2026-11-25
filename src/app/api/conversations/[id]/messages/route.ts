@@ -5,8 +5,12 @@ import { getCurrentUser } from "../../../../../lib/auth";
 
 export const runtime = "nodejs";
 
+type RouteContext = {
+  params: Promise<{ id: string }>;
+};
+
 // Получение сообщений диалога
-export async function GET(request, { params }) {
+export async function GET(request: NextRequest, { params }: RouteContext) {
   try {
     // Проверяем авторизацию
     const user = await getCurrentUser(request);
@@ -89,7 +93,7 @@ export async function GET(request, { params }) {
 }
 
 // Отправка сообщения
-export async function POST(request, { params }) {
+export async function POST(request: NextRequest, { params }: RouteContext) {
   try {
     // Проверяем авторизацию
     const user = await getCurrentUser(request);

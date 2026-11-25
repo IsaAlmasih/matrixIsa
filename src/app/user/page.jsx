@@ -20,7 +20,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import {
@@ -87,8 +87,26 @@ const navigation = [
 
 export default function UserPage() {
   const [activeModal, setActiveModal] = useState(null);
+  const closeTimer = useRef(null);
+
+  const cancelModalClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const scheduleModalClose = () => {
+    cancelModalClose();
+    closeTimer.current = setTimeout(() => {
+      setActiveModal(null);
+      closeTimer.current = null;
+    }, 250);
+  };
 
   const openNavigationModal = (label, element) => {
+    cancelModalClose();
+
     const bounds = element.getBoundingClientRect();
     const isMobile = window.innerWidth <= 600;
     const modalWidth = Math.min(isMobile ? 260 : 360, window.innerWidth - 24);
@@ -98,7 +116,10 @@ export default function UserPage() {
       : rightPosition + modalWidth <= window.innerWidth - 12
         ? rightPosition
         : Math.max(12, bounds.left - modalWidth - 12);
-    const top = Math.max(12, Math.min(bounds.top, window.innerHeight - 192));
+    const top = Math.max(
+      12,
+      Math.min(bounds.top, window.innerHeight - 192),
+    );
 
     setActiveModal({ label, left, top });
   };
@@ -118,6 +139,7 @@ export default function UserPage() {
     window.addEventListener("keydown", closeOnEscape);
     document.addEventListener("pointerdown", closeOnOutsideClick);
     return () => {
+      cancelModalClose();
       window.removeEventListener("keydown", closeOnEscape);
       document.removeEventListener("pointerdown", closeOnOutsideClick);
     };
@@ -131,7 +153,11 @@ export default function UserPage() {
         <nav className={styles.navigation} aria-label="Навигация кабинета">
           {navigation.map(({ label, icon: Icon, expandable, href }) =>
             label === "Сообщения" ? (
-              <Link key={label} href={href} className={styles.navigationItem}>
+              <Link
+                key={label}
+                href={href}
+                className={styles.navigationItem}
+              >
                 <Icon aria-hidden="true" />
                 <span>{label}</span>
               </Link>
@@ -143,7 +169,7 @@ export default function UserPage() {
                 onMouseEnter={(event) =>
                   openNavigationModal(label, event.currentTarget)
                 }
-                onMouseLeave={() => setActiveModal(null)}
+                onMouseLeave={scheduleModalClose}
               >
                 <button
                   type="button"
@@ -168,6 +194,8 @@ export default function UserPage() {
                     role="dialog"
                     aria-label={label}
                     style={{ left: activeModal.left, top: activeModal.top }}
+                    onMouseEnter={cancelModalClose}
+                    onMouseLeave={scheduleModalClose}
                   >
                     <button
                       type="button"

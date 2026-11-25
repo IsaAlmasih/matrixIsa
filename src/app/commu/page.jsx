@@ -495,30 +495,17 @@ export default function Commu() {
   return (
     <main className={styles.messagesPage}>
       <div className={styles.messagesPanel}>
-        {/* Заголовок */}
+          {/* Заголовок */}
 
-        <div className={styles.messagesHeader}>
-          <strong>Сообщения</strong>
+          <div className={styles.messagesHeader}>
+            <strong>Сообщения</strong>
 
-          <span className={styles.onlineIndicator}>
-            {messagesAuthStatus === "unauthenticated"
-              ? "Требуется вход"
-              : messagesAuthStatus === "checking"
-                ? "Проверка..."
-                : "Вы на связи"}
-          </span>
-        </div>
-
-        {messagesAuthStatus === "checking" ? (
-          <div className={styles.authPrompt} role="status">
-            Проверяем авторизацию...
-          </div>
-        ) : messagesAuthStatus === "unauthenticated" ? (
-          <div className={styles.authPrompt}>
-            <FiMessageCircle aria-hidden="true" />
-            <strong>Войдите, чтобы пользоваться чатом</strong>
-            <span>
-              Авторизуйтесь, чтобы просматривать диалоги и отправлять сообщения.
+            <span className={styles.onlineIndicator}>
+              {messagesAuthStatus === "unauthenticated"
+                ? "Требуется вход"
+                : messagesAuthStatus === "checking"
+                  ? "Проверка..."
+                  : "Вы на связи"}
             </span>
             <Link href="/LoginPage" className={styles.authLink}>
               Авторизоваться
@@ -776,40 +763,13 @@ export default function Commu() {
 
                 {error && <div className={styles.chatError}>{error}</div>}
 
-                {/* Поле ввода */}
-
-                <form className={styles.chatInput} onSubmit={sendMessage}>
-                  <input
-                    value={messageText}
-                    onChange={(e) => setMessageText(e.target.value)}
-                    placeholder="Введите сообщение..."
-                    maxLength={50000}
-                  />
-
-                  <button
-                    type="submit"
-                    disabled={!messageText.trim() || sending}
-                    aria-label="Отправить сообщение"
-                  >
-                    <FiSend />
-                  </button>
-                </form>
-              </div>
-            ) : (
-              /* Заглушка, если диалог не выбран */
-
-              <div className={styles.chatPlaceholder}>
-                <FiMessageCircle />
-
-                <strong>Выберите диалог</strong>
-
-                <span>
-                  Выберите пользователя слева или найдите нового собеседника
-                </span>
-              </div>
-            )}
-          </div>
-        )}
+                  <span>
+                    Выберите пользователя слева или найдите нового собеседника
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
       </div>
     </main>
   );
