@@ -6,25 +6,21 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import styles from "./styles.module.css";
-
 import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 
 const Page = () => {
   const router = useRouter();
-
   const [error, setError] = useState("");
 
-  // Проверяем, авторизован ли пользователь
   useEffect(() => {
     const checkAuth = async () => {
       try {
         const response = await fetch("/api/auth/me");
-
         if (response.ok) {
-          router.replace("/study");
+          router.replace("/matrix"); // ← единый адрес для залогиненных
         }
-      } catch (error) {
-        console.error("Auth check error:", error);
+      } catch (err) {
+        console.error("Auth check error:", err);
       }
     };
 
@@ -43,9 +39,7 @@ const Page = () => {
       try {
         const response = await fetch("/api/users/auth", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           credentials: "include",
           body: JSON.stringify({
             email: values.login,
@@ -56,15 +50,14 @@ const Page = () => {
         const data = await response.json();
 
         if (!response.ok) {
-          setError(data.message || "Ошибка авторизации");
+          setError(data.error || data.message || "Ошибка авторизации");
           return;
         }
 
-        // Сервер уже установил HttpOnly-cookie
-        localStorage.setItem("roomUser", JSON.stringify(data.user));
-        router.replace("/roomUser");
-      } catch (error) {
-        console.error("Login error:", error);
+        // Сессия живёт в httpOnly-куке, ничего больше хранить не нужно
+        router.replace("/matrix"); // ← единый адрес для залогиненных
+      } catch (err) {
+        console.error("Login error:", err);
         setError("Не удалось подключиться к серверу");
       } finally {
         setSubmitting(false);
@@ -84,7 +77,6 @@ const Page = () => {
             <label htmlFor="login" className={styles.labelAuth}>
               Почта
             </label>
-
             <input
               type="email"
               name="login"
@@ -99,7 +91,6 @@ const Page = () => {
             <label htmlFor="password" className={styles.labelAuth}>
               Пароль
             </label>
-
             <input
               type="password"
               name="password"
@@ -125,7 +116,6 @@ const Page = () => {
             <p className={styles.textCreateAcc}>
               Ещё нет аккаунта? Создай его, нажав на ссылку ниже
             </p>
-
             <Link href="/RegisterPage" className={styles.smallText}>
               <small>Зарегистрировать аккаунт</small>
             </Link>

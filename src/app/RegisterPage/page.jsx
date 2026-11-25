@@ -1,22 +1,15 @@
 "use client";
 
+import React from "react";
 import { useFormik } from "formik";
-// import React from "react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-
-import styles from "./styles.module.css";
-
-import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
 import Link from "next/link";
 
-const page = () => {
+import styles from "./styles.module.css";
+import { MatrixRain } from "../../components/MatrixRain/MatrixRain";
+
+const Page = () => {
   const router = useRouter();
-  useEffect(() => {
-    if (localStorage.getItem("token") !== null) {
-      router.push("/study");
-    }
-  }, [router]);
 
   const formik = useFormik({
     initialValues: {
@@ -48,15 +41,13 @@ const page = () => {
       return errors;
     },
 
-    async onSubmit(values, { setStatus }) {
+    async onSubmit(values, { setStatus, setSubmitting }) {
       try {
         setStatus(undefined);
 
         const response = await fetch("/api/users/register", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: values.login,
             password: values.password,
@@ -66,30 +57,28 @@ const page = () => {
         const data = await response.json();
 
         if (!response.ok) {
-          setStatus({ error: data.message });
+          setStatus({ error: data.message || "Ошибка регистрации" });
           return;
-        } // Регистрация успешна — переходим на страницу входа
-        localStorage.setItem("roomUser", JSON.stringify(data.user));
-        router.push("/roomUser");
-      } catch (error) {
-        console.error(error);
+        }
+
+        // Аккаунт создан — на страницу входа
+        router.push("/LoginPage");
+      } catch (err) {
+        console.error(err);
         setStatus({ error: "Не удалось связаться с сервером" });
+      } finally {
+        setSubmitting(false);
       }
     },
   });
 
   return (
     <>
-      <MatrixRain></MatrixRain>
+      <MatrixRain />
       <div className={styles.blockLoginUser}>
         <h3 className={styles.textAuth}>Регистрация</h3>
         <div className={styles.blockFormLogin}>
           <form onSubmit={formik.handleSubmit}>
-            <input
-              type="hidden"
-              name="csrfmiddlewaretoken"
-              defaultValue="lpEFazWWNuYzEICpRE6DbplHv96mYglw4MmNjo5ZzmSUA0afgh4oTxkqnuUoh0OL"
-            />
             <div className={styles.blockInput}>
               <label htmlFor="email">Введите почту</label>
               <input
@@ -104,6 +93,7 @@ const page = () => {
                 <p>{formik.errors.login}</p>
               )}
             </div>
+
             <div className={styles.blockInput}>
               <label htmlFor="pass">Введите пароль</label>
               <input
@@ -118,23 +108,11 @@ const page = () => {
                 <p>{formik.errors.password}</p>
               )}
             </div>
+
             <div className={styles.selectRole}>
-              <h3>Ваше имя: "Пользователь"</h3>
-              <p>Возможные имена:</p>
-              <select name="" id="">
-                {/* <option value="">Пользователь.</option> */}
-                {/* <option value="">Десятник.</option> */}
-                {/* <option value="">Пятидесятник.</option> */}
-                {/* <option value="">Сотник.</option> */}
-                {/* <option value="">Тысячник.</option> */}
-                {/* <option value="">Десятитысячник.</option>/}
-                {/* <option value="">Стотысячник.</option> */}
-                {/* <option value="">Миллионник.</option>
-                <option value="">Судья.</option> */}
-                {/* <option value="">Ключник.</option> */}
-                {/* <option value="">Безопасность.</option> */}
-              </select>
+              <h3>Ваше имя: «Пользователь»</h3>
             </div>
+
             <div className={styles.politic}>
               <label htmlFor="politic">
                 <input
@@ -152,7 +130,9 @@ const page = () => {
                 <p>{formik.errors.acceptedPolicy}</p>
               )}
             </div>
+
             {formik.status?.error && <p>{formik.status.error}</p>}
+
             <button
               type="submit"
               className={styles.btnLogin}
@@ -161,12 +141,13 @@ const page = () => {
               {formik.isSubmitting ? "Регистрация..." : "Зарегистрироваться"}
             </button>
           </form>
+
           <div className={styles.blockWithTextRegAcc}>
             <p className={styles.textCreateAcc}>
               Если уже есть аккаунт, ты можешь авторизоваться
             </p>
             <div>
-              <Link href={"/LoginPage"} className={styles.smallText}>
+              <Link href="/LoginPage" className={styles.smallText}>
                 <small>Авторизоваться</small>
               </Link>
             </div>
@@ -177,4 +158,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

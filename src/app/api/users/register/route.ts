@@ -1,65 +1,86 @@
 import { NextRequest, NextResponse } from "next/server";
+import { SignJWT } from "jose";
 import bcrypt from "bcryptjs";
 import pool from "../../../../lib/db";
+
 
 export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-
-    const email = String(body.email ?? "").trim().toLowerCase();
+    const email = String(body.email ?? "")
+      .trim()
+      .toLowerCase();
     const password = String(body.password ?? "");
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!email || !password) {
       return NextResponse.json(
-        { message: "Введите корректную почту" },
-        { status: 400 }
+        { error: "Email и пароль обязательны" },
+        { status: 400 },
       );
     }
-
-    if (password.length < 8) {
-      return NextResponse.json(
-        { message: "Пароль должен содержать минимум 8 символов" },
-        { status: 400 }
-      );
-    }
-
-    const existingUser = await pool.query(
-      "SELECT id FROM app_users WHERE email = $1",
-      [email]
-    );
-
-    if (existingUser.rows.length > 0) {
-      return NextResponse.json(
-        { message: "Пользователь с такой почтой уже существует" },
-        { status: 409 }
-      );
-    }
-
-    const passwordHash = await bcrypt.hash(password, 12);
-
 
     const result = await pool.query(
-      `INSERT INTO app_users (username, email, password_hash)        VALUES ($1, $2, $3)        RETURNING id, username, email, created_at`,
-      ["Пользователь", email, passwordHash]
+      `SELECT id, username, email, password_hash
+       FROM app_users
+       WHERE email = $1`,
+      [email],
     );
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Регистрация прошла успешно",
-        user: result.rows[0],
-      },
-      { status: 201 }
-    );
+    const user = result.rows[0];
 
+    if (!user) {
+      return NextResponse.json(
+        { error: "Неверный email или пароль" },
+        { status: 401 },
+      );
+    }
+
+    const passwordOk = await bcrypt.compare(password, user.password_hash);
+
+    if (!passwordOk) {
+      return NextResponse.json(
+        { error: "Неверный email или пароль" },
+        { status: 401 },
+      );
+    }
+
+    const secret = process.env.JWT_SECRET;
+
+    if (!secret) {
+      console.error("JWT_SECRET не задан в .env.local");
+      return NextResponse.json(
+        { error: "Ошибка конфигурации сервера" },
+        { status: 500 },
+      );
+    }
+
+    const secretKey = new TextEncoder().encode(secret);
+
+    const token = await new SignJWT({ email: user.email })
+      .setProtectedHeader({ alg: "HS256" })
+      .setSubject(String(user.id))
+      .setIssuedAt()
+      .setExpirationTime("7d")
+      .sign(secretKey);
+
+    const response = NextResponse.json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    });
+
+    response.cookies.set("session", token, {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    return response;
   } catch (error) {
-    console.error("Registration error:", error);
-
-    return NextResponse.json(
-      { message: "Ошибка при регистрации" },
-      { status: 500 }
-    );
+    console.error("Auth error:", error);
+    return NextResponse.json({ error: "Ошибка авторизации" }, { status: 500 });
   }
 }

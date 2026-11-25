@@ -16,23 +16,37 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+
+  const [href, setHref] = useState("/LoginPage");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch("/api/auth/me");
+        if (response.ok) {
+          setIsLoggedIn(true);
+          setHref("/matrix");
+        }
+      } catch {
+        // не залогинен — остаёмся на LoginPage
+      }
+    };
+
+    checkAuth();
+  }, []);
+
   const headerClasses = clsx(styles.header, {
     [styles.isVisible]: isVisible,
   });
+
   const logout = async () => {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-    });
-    localStorage.removeItem("user");
+    await fetch("/api/auth/logout", { method: "POST" });
+    setIsLoggedIn(false);
+    setHref("/LoginPage");
     router.replace("/");
-    setIsAccountModalOpen(false)
+    setIsAccountModalOpen(false);
   };
-
-  const [href, setHref] = useState("/LoginPage");
-
-  useEffect(() => {
-    setHref(localStorage.getItem("user") ? "/matrix" : "/LoginPage");
-  }, []);
 
   useEffect(() => {
     if (!isAccountModalOpen) return;
@@ -54,9 +68,6 @@ const Header = () => {
       <div className={styles.btn}>
         <Link href="/PlanetPage">На главную</Link>
       </div>
-      {/* <div className={styles.navigation}>
-        <button onClick={logout}>Выйти из матрицы.</button>
-      </div> */}
       <button
         type="button"
         className={styles.profileButton}
@@ -91,17 +102,17 @@ const Header = () => {
                   fill="none"
                 >
                   <path
-                    d="M22.6066 21.3934C22.2161 21.0029 21.5829 21.0029 21.1924 21.3934C20.8019 21.7839 20.8019 22.4171 21.1924 22.8076L22.6066 21.3934ZM40.9914 42.6066C41.3819 42.9971 42.0151 42.9971 42.4056 42.6066C42.7961 42.2161 42.7961 41.5829 42.4056 41.1924L40.9914 42.6066ZM21.1924 41.1924C20.8019 41.5829 20.8019 42.2161 21.1924 42.6066C21.5829 42.9971 22.2161 42.9971 22.6066 42.6066L21.1924 41.1924ZM42.4056 22.8076C42.7961 22.4171 42.7961 21.7839 42.4056 21.3934C42.0151 21.0029 41.3819 21.0029 40.9914 21.3934L42.4056 22.8076ZM21.1924 22.8076L40.9914 42.6066L42.4056 41.1924L22.6066 21.3934L21.1924 22.8076ZM22.6066 42.6066L42.4056 22.8076L40.9914 21.3934L21.1924 41.1924L22.6066 42.6066Z"
+                    d="M22.6066 21.3934C22.2161 21.0029 21.5829 21.0029 21.1924 21.3934C20.8019 21.7839 20.8019 22.4171 21.1924 22.8076L22.6066 21.3934ZM40.9914 42.6066C41.3819 42.9971 42.0151 42.9971 42.4056 42.6066C42.7961 42.2161 42.7961 41.5829 42.4056 41.1924L40.9914 42.6066ZM21.1924 41.1924C20.8019 41.5829 20.8019 42.2161 21.1924 42.6066C21.5829 42.9971 22.2161 42.9971 22.6066 42.6066L21.1924 41.1924ZM42.4056 22.8076C42.7961 22.4171 42.7961 21.7839 42.4056 21.3934C42.0151 21.0029 41.3819 21.0029 41.1924 21.3934L42.4056 22.8076ZM21.1924 22.8076L40.9914 42.6066L42.4056 41.1924L22.6066 21.3934L21.1924 22.8076ZM22.6066 42.6066L42.4056 22.8076L40.9914 21.3934L21.1924 41.1924L22.6066 42.6066Z"
                     fill="black"
                   />
                 </svg>
               </button>
             </div>
             <div className={styles.navigation}>
-              <Link href={"/PlanetPage"}>Главная страница</Link>
-              <Link href={"/about"}>О нас</Link>
-              <Link href={"/"}>Контакты</Link>
-              <Link href={"/user"}>Личный кабинет</Link>
+              <Link href="/PlanetPage">Главная страница</Link>
+              <Link href="/about">О нас</Link>
+              <Link href="/">Контакты</Link>
+              <Link href="/user">Личный кабинет</Link>
             </div>
           </div>
         </div>
@@ -128,20 +139,24 @@ const Header = () => {
                 ×
               </button>
               <h2 id="account-modal-title">Аккаунт</h2>
-              <Link
-                href="/user"
-                className={styles.accountLink}
-                onClick={() => setIsAccountModalOpen(false)}
-              >
-                Личный кабинет
-              </Link>
-              <button
-                type="button"
-                className={styles.accountLogout}
-                onClick={logout}
-              >
-                Выйти из матрицы
-              </button>
+              {isLoggedIn && (
+                <Link
+                  href="/user"
+                  className={styles.accountLink}
+                  onClick={() => setIsAccountModalOpen(false)}
+                >
+                  Личный кабинет
+                </Link>
+              )}
+              {isLoggedIn && (
+                <button
+                  type="button"
+                  className={styles.accountLogout}
+                  onClick={logout}
+                >
+                  Выйти из матрицы
+                </button>
+              )}
             </section>
           </div>,
           document.body,

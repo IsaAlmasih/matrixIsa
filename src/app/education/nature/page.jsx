@@ -45,11 +45,13 @@ export default function law() {
       name: "Тема природы – царство грибов.",
       href: "/",
     },
-    { className: styles.textGridEight, name: "Тама с .", href: "/" },
+    { className: styles.textGridEight, 
+      name: "Космология.", 
+      href: "/" },
     {
       className: styles.textGridTen,
-      name: "Тама с вопросами десятой Заповеди.",
-      href: "/additional/questionTen",
+      name: "Человек",
+      href: "/",
     },
   ];
 

@@ -55,7 +55,7 @@ function Dropdown({ items, value, onChange, allLabel, renderLabel }) {
         <div className={styles.panel}>
           <input
             className={styles.search}
-            placeholder="Поиск"
+            placeholder="Поиск по ОКВЭД"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
@@ -170,7 +170,7 @@ export default function ShopsPage() {
           )?.name;
 
           return (
-            <Link href="/" key={shop.id}>
+            <Link href="/price/matrix" key={shop.id}>
               <article className={styles.card}>
                 <div className={styles.cardBadge}>{shop.okved}</div>
                 <h2 className={styles.cardTitle}>{shop.name}</h2>

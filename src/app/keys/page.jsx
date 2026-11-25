@@ -41,8 +41,8 @@ const Page = () => {
             <ImageWithModal
               src={image.src}
               alt={image.alt}
-              width={300}
-              height={400}
+              width={70}
+              height={130}
             />
           </div>
         ))}

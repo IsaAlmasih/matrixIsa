@@ -7,7 +7,7 @@ import styles from "../products/styles.module.css";
 import MatrixRainCard from "../../components/MatrixRainCard/MatrixRainCard";
 import Link from "next/link";
 
-export default function law() {
+export default function () {
   const router = useRouter();
   const topics = [
     {
@@ -87,7 +87,7 @@ export default function law() {
       >
         Назад
       </button>
-      <MatrixRain></MatrixRain>
-    </div>
+      {/* <MatrixRain></MatrixRain> */}
+</form>
   );
 }

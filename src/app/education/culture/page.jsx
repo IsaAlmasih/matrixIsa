@@ -12,8 +12,8 @@ export default function law() {
   const topics = [
     {
       className: styles.textGridOne,
-      name: "Тема культуры - Минеральное царство.",
-      href: "/education/django",
+      name: "Библиотеки программирования.",
+      href: "/",
     },
     {
       className: styles.textGridTwo,
@@ -22,33 +22,33 @@ export default function law() {
     },
     {
       className: styles.textGridThree,
-      name: "Тема культуры - Животное царство.",
-      href: "/",
+      name: "Библиотеки  книг.",
+      href: "/keys",
     },
     {
       className: styles.textGridFour,
-      name: "Тема культуры - Почвы — биокосное царство.",
-      href: "/",
+      name: "ЯП React.",
+      href: "/education/react",
     },
     {
       className: styles.textGridFive,
-      name: "Тема культуры – Протистов царство.",
+      name: "Библиотеки.",
       href: "/",
     },
     {
       className: styles.textGridSix,
-      name: "Тема культуры – Монера и Дробянки царство.",
-      href: "/",
+      name: "ЯП Python",
+      href: "/education/python",
     },
     {
       className: styles.textGridSeven,
-      name: "Тема культуры – царство грибов.",
-      href: "/",
+      name: "ЯП django.",
+      href: "/education/django",
     },
     { className: styles.textGridEight, name: "Тама с .", href: "/" },
     {
       className: styles.textGridTen,
-      name: "Тама с культуры культуры культуры.",
+      name: "Тама о ИИ",
       href: "/additional/questionTen",
     },
   ];
