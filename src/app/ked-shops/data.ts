@@ -36,6 +36,7 @@ export type Shop = {
   id: number;
   name: string;
   okved: string; // код ОКВЭД
+  href:string;
   description: string;
   city: string;
   products: Product[];
@@ -45,6 +46,7 @@ export const SHOPS: Shop[] = [
   {
     id: 1,
     name: "ИП Така С. С.",
+    href: "/",
     okved: "47.91",
     description: "Торговля на маркетплейсах",
     city: "Москва",
@@ -57,6 +59,7 @@ export const SHOPS: Shop[] = [
     id: 2,
     name: "GreenField Ltd",
     okved: "01",
+    href: "/",
     description: "Фермерское хозяйство, злаковые культуры",
     city: "Тверь",
     products: [
@@ -68,6 +71,7 @@ export const SHOPS: Shop[] = [
     id: 3,
     name: "ВкусныйДом",
     okved: "10",
+    href: "/",
     description: "Производство молочной продукции",
     city: "Тула",
     products: [
@@ -79,6 +83,7 @@ export const SHOPS: Shop[] = [
     id: 4,
     name: "TexLine",
     okved: "13",
+    href: "/",
     description: "Текстиль и швейное производство",
     city: "Иваново",
     products: [
@@ -90,6 +95,7 @@ export const SHOPS: Shop[] = [
     id: 5,
     name: "МашЗавод №1",
     okved: "28",
+    href: "/",
     description: "Металлообработка и станкостроение",
     city: "Челябинск",
     products: [
@@ -101,6 +107,7 @@ export const SHOPS: Shop[] = [
     id: 6,
     name: "Магнит-Маркет",
     okved: "47",
+    href: "/",
     description: "Розничная сеть товаров для дома",
     city: "Казань",
     products: [
@@ -113,6 +120,7 @@ export const SHOPS: Shop[] = [
     id: 7,
     name: "DevSoft",
     okved: "62",
+    href: "/",
     description: "Разработка сайтов и мобильных приложений",
     city: "Санкт-Петербург",
     products: [
