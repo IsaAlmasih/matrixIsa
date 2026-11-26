@@ -1,189 +1,141 @@
-
 import { NextRequest, NextResponse } from "next/server";
-import pool from "../../../../..//lib/db";
-import { getCurrentUser } from "../../../../../lib/auth";
+import { jwtVerify } from "jose";
+import { Pool } from "pg";
 
 export const runtime = "nodejs";
 
-type RouteContext = {
-  params: Promise<{ id: string }>;
-};
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT || 5432),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME, // тут была ошибка в прошлом сообщении — было DB_PASSWORD, теперь DB_NAME
+});
 
-// Получение сообщений диалога
-export async function GET(request: NextRequest, { params }: RouteContext) {
+async function getUserId(request: NextRequest): Promise<number | null> {
+  const token = request.cookies.get("session")?.value;
+  if (!token) return null;
+
+  const secret = process.env.JWT_SECRET;
+  if (!secret) return null;
+
   try {
-    // Проверяем авторизацию
-    const user = await getCurrentUser(request);
-
-    if (!user) {
-      return NextResponse.json(
-        { error: "Необходима авторизация" },
-        { status: 401 }
-      );
-    }
-
-    // Получаем ID диалога
-    const { id } = await params;
-    const conversationId = Number(id);
-
-    if (!Number.isSafeInteger(conversationId) || conversationId <= 0) {
-      return NextResponse.json(
-        { error: "Некорректный ID диалога" },
-        { status: 400 }
-      );
-    }
-
-    // Проверяем, состоит ли пользователь в диалоге
-    const conversation = await pool.query(
-      `
-        SELECT id
-        FROM conversations
-        WHERE id = $1
-          AND (user1_id = $2 OR user2_id = $2)
-      `,
-      [conversationId, user.id]
+    const { payload } = await jwtVerify(
+      token,
+      new TextEncoder().encode(secret),
     );
+    return Number(payload.sub);
+  } catch {
+    return null;
+  }
+}
 
-    if (conversation.rows.length === 0) {
-      return NextResponse.json(
-        { error: "Диалог не найден" },
-        { status: 404 }
-      );
-    }
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const userId = await getUserId(request);
+  if (!userId) {
+    return NextResponse.json({ error: "Требуется вход" }, { status: 401 });
+  }
 
-    // Отмечаем входящие сообщения как прочитанные
-    await pool.query(
-      `
-        UPDATE messages
-        SET is_read = TRUE
-        WHERE conversation_id = $1
-          AND sender_id != $2
-          AND is_read = FALSE
-      `,
-      [conversationId, user.id]
-    );
+  const { id } = await params;
+  const conversationId = Number(id);
 
-    // Получаем сообщения
+  if (!conversationId || Number.isNaN(conversationId)) {
+    return NextResponse.json({ error: "Некорректный диалог" }, { status: 400 });
+  }
+
+  try {
     const result = await pool.query(
-      `
-        SELECT
-          id,
-          sender_id,
-          content,
-          created_at,
-          (sender_id = $2) AS is_mine
-        FROM messages
-        WHERE conversation_id = $1
-        ORDER BY id ASC
-      `,
-      [conversationId, user.id]
+      `SELECT m.id,
+              m.content,
+              m.sent_at AS created_at,
+              (m.sender_id = $1) AS is_mine
+       FROM messages m
+       JOIN conversation_participants p
+         ON p.conversation_id = m.conversation_id AND p.user_id = $1
+       WHERE m.conversation_id = $2
+       ORDER BY m.sent_at ASC`,
+      [userId, conversationId],
     );
 
-    return NextResponse.json({
-      messages: result.rows,
-    });
+    return NextResponse.json({ messages: result.rows });
   } catch (error) {
-    console.error("Get messages error:", error);
-
+    console.error(error);
     return NextResponse.json(
-      { error: "Ошибка при получении сообщений" },
-      { status: 500 }
+      { error: "Не удалось загрузить сообщения" },
+      { status: 500 },
     );
   }
 }
 
-// Отправка сообщения
-export async function POST(request: NextRequest, { params }: RouteContext) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const userId = await getUserId(request);
+  if (!userId) {
+    return NextResponse.json({ error: "Требуется вход" }, { status: 401 });
+  }
+
+  const { id } = await params;
+  const conversationId = Number(id);
+
+  if (!conversationId || Number.isNaN(conversationId)) {
+    return NextResponse.json({ error: "Некорректный диалог" }, { status: 400 });
+  }
+
   try {
-    // Проверяем авторизацию
-    const user = await getCurrentUser(request);
+    const { content } = await request.json();
 
-    if (!user) {
+    if (typeof content !== "string" || !content.trim()) {
       return NextResponse.json(
-        { error: "Необходима авторизация" },
-        { status: 401 }
+        { error: "Сообщение не может быть пустым" },
+        { status: 400 },
       );
     }
 
-    // Получаем ID диалога
-    const { id } = await params;
-    const conversationId = Number(id);
-
-    if (!Number.isSafeInteger(conversationId) || conversationId <= 0) {
-      return NextResponse.json(
-        { error: "Некорректный ID диалога" },
-        { status: 400 }
-      );
-    }
-
-    // Получаем текст сообщения
-    const body = await request.json();
-    const content = body.content?.trim();
-
-    if (!content || typeof content !== "string") {
-      return NextResponse.json(
-        { error: "Введите текст сообщения" },
-        { status: 400 }
-      );
-    }
-
-    if (content.length > 5000) {
-      return NextResponse.json(
-        { error: "Сообщение не должно превышать 5000 символов" },
-        { status: 400 }
-      );
-    }
-
-    // Проверяем участие пользователя в диалоге
-    const conversation = await pool.query(
-      `
-        SELECT id
-        FROM conversations
-        WHERE id = $1
-          AND (user1_id = $2 OR user2_id = $2)
-      `,
-      [conversationId, user.id]
+    // Проверяем, что пользователь — участник этого диалога
+    const access = await pool.query(
+      `SELECT 1 FROM conversation_participants
+       WHERE conversation_id = $1 AND user_id = $2`,
+      [conversationId, userId],
     );
 
-    if (conversation.rows.length === 0) {
+    if (access.rowCount === 0) {
       return NextResponse.json(
-        { error: "Диалог не найден" },
-        { status: 404 }
+        { error: "Нет доступа к этому диалогу" },
+        { status: 403 },
       );
     }
 
-    // Сохраняем сообщение
-    const result = await pool.query(
-      `
-        INSERT INTO messages (
-          conversation_id,
-          sender_id,
-          content
-        )
-        VALUES ($1, $2, $3)
-        RETURNING
-          id,
-          sender_id,
-          content,
-          created_at,
-          TRUE AS is_mine
-      `,
-      [conversationId, user.id, content]
+    const inserted = await pool.query(
+      `INSERT INTO messages (conversation_id, sender_id, content)
+       VALUES ($1, $2, $3)
+       RETURNING id, content, sent_at`,
+      [conversationId, userId, content.trim()],
     );
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: result.rows[0],
-      },
-      { status: 201 }
+    // Отмечаем сообщения собеседника прочитанными
+    await pool.query(
+      `UPDATE messages
+       SET is_read = true
+       WHERE conversation_id = $1 AND sender_id <> $2 AND is_read = false`,
+      [conversationId, userId],
     );
+
+    const message = {
+      ...inserted.rows[0],
+      is_mine: true,
+    };
+
+    return NextResponse.json({ message }, { status: 201 });
   } catch (error) {
-    console.error("Send message error:", error);
-
+    console.error(error);
     return NextResponse.json(
-      { error: "Ошибка при отправке сообщения" },
-      { status: 500 }
+      { error: "Не удалось отправить сообщение" },
+      { status: 500 },
     );
   }
 }

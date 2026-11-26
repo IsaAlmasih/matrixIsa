@@ -3,7 +3,6 @@ import { SignJWT } from "jose";
 import bcrypt from "bcryptjs";
 import pool from "../../../../lib/db";
 
-
 export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
@@ -13,6 +12,8 @@ export async function POST(request: NextRequest) {
       .trim()
       .toLowerCase();
     const password = String(body.password ?? "");
+    // Если username не прислали — берём часть email до собаки
+    const username = String(body.username ?? "").trim() || email.split("@")[0];
 
     if (!email || !password) {
       return NextResponse.json(
@@ -21,30 +22,53 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await pool.query(
-      `SELECT id, username, email, password_hash
-       FROM app_users
-       WHERE email = $1`,
+    if (password.length < 6) {
+      return NextResponse.json(
+        { error: "Пароль должен быть не короче 6 символов" },
+        { status: 400 },
+      );
+    }
+
+    const existingEmail = await pool.query(
+      "SELECT id FROM app_users WHERE email = $1",
       [email],
     );
 
-    const user = result.rows[0];
-
-    if (!user) {
+    if (existingEmail.rowCount !== 0) {
       return NextResponse.json(
-        { error: "Неверный email или пароль" },
-        { status: 401 },
+        { error: "Пользователь с таким email уже существует" },
+        { status: 409 },
       );
     }
 
-    const passwordOk = await bcrypt.compare(password, user.password_hash);
+    // Имя может случайно совпасть с чужим — тогда добавим число
+    let finalUsername = username;
+    const taken = await pool.query(
+      "SELECT id FROM app_users WHERE username = $1",
+      [finalUsername],
+    );
 
-    if (!passwordOk) {
-      return NextResponse.json(
-        { error: "Неверный email или пароль" },
-        { status: 401 },
+    let suffix = 1;
+    while (taken.rowCount !== 0) {
+      finalUsername = `${username}${suffix}`;
+      suffix += 1;
+      const again = await pool.query(
+        "SELECT id FROM app_users WHERE username = $1",
+        [finalUsername],
       );
+      if (again.rowCount === 0) break;
     }
+
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    const created = await pool.query(
+      `INSERT INTO app_users (username, email, password_hash)
+       VALUES ($1, $2, $3)
+       RETURNING id, username, email`,
+      [finalUsername, email, passwordHash],
+    );
+
+    const user = created.rows[0];
 
     const secret = process.env.JWT_SECRET;
 
@@ -56,20 +80,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const secretKey = new TextEncoder().encode(secret);
-
     const token = await new SignJWT({ email: user.email })
       .setProtectedHeader({ alg: "HS256" })
       .setSubject(String(user.id))
       .setIssuedAt()
       .setExpirationTime("7d")
-      .sign(secretKey);
+      .sign(new TextEncoder().encode(secret));
 
-    const response = NextResponse.json({
-      id: user.id,
-      username: user.username,
-      email: user.email,
-    });
+    const response = NextResponse.json(user, { status: 201 });
 
     response.cookies.set("session", token, {
       httpOnly: true,
@@ -80,7 +98,10 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error("Auth error:", error);
-    return NextResponse.json({ error: "Ошибка авторизации" }, { status: 500 });
+    console.error("Register error:", error);
+    return NextResponse.json(
+      { error: "Не удалось зарегистрироваться" },
+      { status: 500 },
+    );
   }
 }

@@ -495,18 +495,26 @@ export default function Commu() {
   return (
     <main className={styles.messagesPage}>
       <div className={styles.messagesPanel}>
-          {/* Заголовок */}
+        {/* Заголовок */}
 
-          <div className={styles.messagesHeader}>
-            <strong>Сообщения</strong>
+        <div className={styles.messagesHeader}>
+          <strong>Сообщения</strong>
 
-            <span className={styles.onlineIndicator}>
-              {messagesAuthStatus === "unauthenticated"
-                ? "Требуется вход"
-                : messagesAuthStatus === "checking"
-                  ? "Проверка..."
-                  : "Вы на связи"}
-            </span>
+          <span className={styles.onlineIndicator}>
+            {messagesAuthStatus === "unauthenticated"
+              ? "Требуется вход"
+              : messagesAuthStatus === "checking"
+                ? "Проверка..."
+                : "Вы на связи"}
+          </span>
+          <Link href="/LoginPage" className={styles.authLink}>
+            Авторизоваться
+          </Link>
+        </div>
+
+        {messagesAuthStatus === "unauthenticated" ? (
+          <div className={styles.authPrompt} role="alert">
+            <strong>Требуется вход</strong>
             <Link href="/LoginPage" className={styles.authLink}>
               Авторизоваться
             </Link>
@@ -763,13 +771,39 @@ export default function Commu() {
 
                 {error && <div className={styles.chatError}>{error}</div>}
 
-                  <span>
-                    Выберите пользователя слева или найдите нового собеседника
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
+                {/* Форма отправки сообщения */}
+
+                <form className={styles.chatInput} onSubmit={sendMessage}>
+                  <input
+                    value={messageText}
+                    onChange={(e) => setMessageText(e.target.value)}
+                    placeholder="Сообщение..."
+                    disabled={sending}
+                  />
+
+                  <button
+                    type="submit"
+                    className={styles.sendButton}
+                    disabled={sending || !messageText.trim()}
+                    aria-label="Отправить сообщение"
+                  >
+                    <FiSend />
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <div className={styles.chatEmpty}>
+                <FiMessageCircle />
+
+                <strong>Выберите диалог</strong>
+
+                <span>
+                  Выберите пользователя слева или найдите нового собеседника
+                </span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </main>
   );
