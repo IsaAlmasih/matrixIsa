@@ -70,9 +70,9 @@ const Page = () => {
       <MatrixRain />
 
       <div className={styles.blockLoginUser}>
-        <h3 className={styles.textAuth}>Авторизация</h3>
-
         <div className={styles.blockFormLogin}>
+          <h3 className={styles.textAuth}>Авторизация</h3>
+
           <form onSubmit={formik.handleSubmit}>
             <label htmlFor="login" className={styles.labelAuth}>
               Почта

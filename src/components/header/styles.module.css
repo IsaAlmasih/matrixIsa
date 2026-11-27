@@ -372,3 +372,120 @@
     font-size: 24px;
   }
 }
+
+@media (max-width: 565px) {
+  .header {
+    gap: 8px;
+    height: 64px;
+    padding: 8px 12px;
+  }
+
+  .logo {
+    flex: 0 1 auto;
+    gap: 6px;
+    min-width: 0;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .profileButton {
+    margin-left: auto;
+  }
+
+  .profileButton img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .openPopup {
+    display: grid;
+    flex: 0 0 40px;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .openPopup svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+  }
+
+  .openPopup svg path {
+    fill: #ff0101;
+  }
+
+  .popup {
+    position: fixed;
+    z-index: 2100;
+    inset: 0;
+    background: rgb(0 0 0 / 72%);
+    backdrop-filter: blur(4px);
+  }
+
+  .content {
+    gap: 8px;
+    max-height: min(80dvh, 520px);
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 12px;
+    border: 1px solid rgb(0 255 0 / 28%);
+    border-top: 0;
+    border-radius: 0 0 18px 18px;
+    background: #090b09;
+    color: #e8ffe5;
+    box-shadow: 0 16px 56px rgb(0 0 0 / 65%), 0 0 24px rgb(0 255 0 / 10%);
+  }
+
+  .headContent {
+    padding: 16px;
+    border-bottom: 1px solid rgb(0 255 0 / 24%);
+    color: #4dff00;
+  }
+
+  .content button {
+    color: #4dff00;
+  }
+
+  .content button svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .content button svg path {
+    fill: #4dff00;
+  }
+
+  .content .navigation {
+    gap: 6px;
+    padding: 12px;
+  }
+
+  .content .navigation a {
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #e8ffe5;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .content .navigation a:hover,
+  .content .navigation a:focus-visible {
+    border-color: rgb(0 255 0 / 24%);
+    background: #121d13;
+    color: #4dff00;
+    outline: none;
+  }
+}
