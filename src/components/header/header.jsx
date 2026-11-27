@@ -135,10 +135,7 @@ const Header = () => {
       </button>
       {isOpen &&
         createPortal(
-          <div
-            className={styles.popup}
-            onClick={() => setIsOpen(false)}
-          >
+          <div className={styles.popup} onClick={() => setIsOpen(false)}>
             <section
               className={styles.content}
               role="dialog"
@@ -169,7 +166,7 @@ const Header = () => {
               </div>
               <div className={styles.navigation}>
                 <Link href="/">Главная страница</Link>
-                <Link href="/user">Личный кабинет</Link>
+                <Link href="/roomUser">Личный кабинет</Link>
               </div>
             </section>
           </div>,
@@ -236,7 +233,7 @@ const Header = () => {
               )}
               {authStatus === "authenticated" && (
                 <Link
-                  href="/user"
+                  href="/roomUser"
                   className={styles.accountLink}
                   onClick={() => setIsAccountModalOpen(false)}
                 >
