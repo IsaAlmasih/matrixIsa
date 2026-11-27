@@ -511,12 +511,57 @@
     border-radius: 12px;
   }
 
+  .messagesHeader {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "title"
+      "status";
+    gap: 4px;
+    align-items: center;
+  }
+
+  .messagesHeader strong {
+    grid-area: title;
+  }
+
+  .messagesHeader .onlineIndicator {
+    grid-area: status;
+    font-size: 10px;
+  }
+
+  .chatLayout {
+    flex-direction: column;
+  }
+
   .menuColumn {
+    flex: 0 0 48px;
+    flex-direction: row;
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    padding: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .menuItem {
+    flex: 0 0 40px;
+    justify-content: center;
+    width: 40px;
+    min-height: 40px;
+    padding: 8px;
+  }
+
+  .menuItem span {
     display: none;
   }
 
   .conversationsList {
-    width: 42%;
+    flex: 1;
+    width: 100%;
     min-width: 0;
     border-right: 0;
   }
@@ -527,6 +572,20 @@
 
   .chatWindow {
     width: 100%;
+  }
+
+  .chatLayout > .chatEmpty {
+    display: none;
+  }
+
+  .chatUserHeader > div:last-child {
+    flex: 1;
+  }
+
+  .chatUserHeader span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .backButton {
