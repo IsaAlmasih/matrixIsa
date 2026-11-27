@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./styles.module.css";
@@ -19,14 +19,18 @@ const Header = () => {
 
   const [authStatus, setAuthStatus] = useState("checking");
   const [authError, setAuthError] = useState("");
+  const authCheckSequenceRef = useRef(0);
   const href = authStatus === "authenticated" ? "/matrix" : "/LoginPage";
 
   const checkAuth = useCallback(async () => {
+    const requestId = ++authCheckSequenceRef.current;
     setAuthStatus("checking");
     setAuthError("");
 
     try {
       const response = await fetch("/api/auth/me", { cache: "no-store" });
+
+      if (requestId !== authCheckSequenceRef.current) return;
 
       if (response.status === 401) {
         setAuthStatus("unauthenticated");
@@ -38,15 +42,24 @@ const Header = () => {
       }
 
       const data = await response.json();
+      if (requestId !== authCheckSequenceRef.current) return;
+
       setAuthStatus(
         data.authenticated ? "authenticated" : "unauthenticated",
       );
     } catch (error) {
+      if (requestId !== authCheckSequenceRef.current) return;
+
       console.error("Account authorization check error:", error);
       setAuthError("Не удалось проверить авторизацию. Попробуйте ещё раз.");
       setAuthStatus("error");
     }
   }, []);
+
+  const openAccountModal = () => {
+    setIsAccountModalOpen(true);
+    checkAuth();
+  };
 
   useEffect(() => {
     checkAuth();
@@ -97,14 +110,20 @@ const Header = () => {
       <button
         type="button"
         className={styles.profileButton}
-        onClick={() => setIsAccountModalOpen(true)}
+        onClick={openAccountModal}
         aria-label="Открыть меню аккаунта"
         aria-haspopup="dialog"
         aria-expanded={isAccountModalOpen}
       >
         <Image src={Imag4} height={50} width={50} alt="" />
       </button>
-      <button onClick={() => setIsOpen(!isOpen)} className={styles.openPopup}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={styles.openPopup}
+        aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
+        aria-expanded={isOpen}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 50 50"
@@ -114,35 +133,48 @@ const Header = () => {
           <path d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z" />
         </svg>
       </button>
-      {isOpen && (
-        <div className={styles.popup}>
-          <div className={styles.content}>
-            <div className={styles.headContent}>
-              <p>Меню</p>
-              <button onClick={() => setIsOpen(!isOpen)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="64"
-                  height="64"
-                  viewBox="0 0 64 64"
-                  fill="none"
+      {isOpen &&
+        createPortal(
+          <div
+            className={styles.popup}
+            onClick={() => setIsOpen(false)}
+          >
+            <section
+              className={styles.content}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Меню"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className={styles.headContent}>
+                <p>Меню</p>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Закрыть меню"
                 >
-                  <path
-                    d="M22.6066 21.3934C22.2161 21.0029 21.5829 21.0029 21.1924 21.3934C20.8019 21.7839 20.8019 22.4171 21.1924 22.8076L22.6066 21.3934ZM40.9914 42.6066C41.3819 42.9971 42.0151 42.9971 42.4056 42.6066C42.7961 42.2161 42.7961 41.5829 42.4056 41.1924L40.9914 42.6066ZM21.1924 41.1924C20.8019 41.5829 20.8019 42.2161 21.1924 42.6066C21.5829 42.9971 22.2161 42.9971 22.6066 42.6066L21.1924 41.1924ZM42.4056 22.8076C42.7961 22.4171 42.7961 21.7839 42.4056 21.3934C42.0151 21.0029 41.3819 21.0029 41.1924 21.3934L42.4056 22.8076ZM21.1924 22.8076L40.9914 42.6066L42.4056 41.1924L22.6066 21.3934L21.1924 22.8076ZM22.6066 42.6066L42.4056 22.8076L40.9914 21.3934L21.1924 41.1924L22.6066 42.6066Z"
-                    fill="black"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className={styles.navigation}>
-              <Link href="/PlanetPage">Главная страница</Link>
-              <Link href="/about">О нас</Link>
-              <Link href="/">Контакты</Link>
-              <Link href="/user">Личный кабинет</Link>
-            </div>
-          </div>
-        </div>
-      )}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="64"
+                    height="64"
+                    viewBox="0 0 64 64"
+                    fill="none"
+                  >
+                    <path
+                      d="M22.6066 21.3934C22.2161 21.0029 21.5829 21.0029 21.1924 21.3934C20.8019 21.7839 20.8019 22.4171 21.1924 22.8076L22.6066 21.3934ZM40.9914 42.6066C41.3819 42.9971 42.0151 42.9971 42.4056 42.6066C42.7961 42.2161 42.7961 41.5829 42.4056 41.1924L40.9914 42.6066ZM21.1924 41.1924C20.8019 41.5829 20.8019 42.2161 21.1924 42.6066C21.5829 42.9971 22.2161 42.9971 22.6066 42.6066L21.1924 41.1924ZM42.4056 22.8076C42.7961 22.4171 42.7961 21.7839 42.4056 21.3934C42.0151 21.0029 41.3819 21.0029 41.1924 21.3934L42.4056 22.8076ZM21.1924 22.8076L40.9914 42.6066L42.4056 41.1924L22.6066 21.3934L21.1924 22.8076ZM22.6066 42.6066L42.4056 22.8076L40.9914 21.3934L21.1924 41.1924L22.6066 42.6066Z"
+                      fill="black"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className={styles.navigation}>
+                <Link href="/">Главная страница</Link>
+                <Link href="/user">Личный кабинет</Link>
+              </div>
+            </section>
+          </div>,
+          document.body,
+        )}
       {isAccountModalOpen &&
         createPortal(
           <div

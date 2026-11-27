@@ -507,9 +507,6 @@ export default function Commu() {
                 ? "Проверка..."
                 : "Вы на связи"}
           </span>
-          <Link href="/LoginPage" className={styles.authLink}>
-            Авторизоваться
-          </Link>
         </div>
 
         {messagesAuthStatus === "unauthenticated" ? (

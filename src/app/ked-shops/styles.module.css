@@ -140,6 +140,7 @@
   background: #fff;
   border: 2px solid #e6e8eb;
   border-radius: 12px;
+  color: #20252b;
   cursor: pointer;
   font-size: 15px;
   transition: border-color 0.15s;
@@ -163,6 +164,7 @@
   left: 0;
   right: 0;
   background: #fff;
+  color: #20252b;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   z-index: 100;
@@ -176,6 +178,7 @@
   border: none;
   border-bottom: 1px solid #e6e8eb;
   outline: none;
+  color: #20252b;
   font-size: 14px;
 }
 
@@ -210,3 +213,81 @@
 }
 
 .empty { padding: 16px; color: #8f949b; font-size: 14px; }
+
+@media (max-width: 600px) {
+  .page {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 88px 12px 32px;
+  }
+
+  .title {
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .dropdownWrapper {
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .productSearch {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .counter {
+    align-self: flex-start;
+    font-size: 12px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .grid > a {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card {
+    min-width: 0;
+    padding: 12px;
+    border-radius: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .cardBadge {
+    font-size: 10px;
+  }
+
+  .cardTitle {
+    font-size: 15px;
+  }
+
+  .cardDesc {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .productTag {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+
+  .cardFooter {
+    font-size: 11px;
+  }
+}
