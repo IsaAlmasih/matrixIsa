@@ -1,10 +1,10 @@
 "use client";
 
 import { use } from "react";
-import CabinetShell from "../../../../../avva/cabinet-shell";
-import { getStaffById } from "../../../../../avva/staff";
-import { BLOCKS } from "../../../../../avva/blocks";
-import styles from "../../../../../avva/cabinet.module.css";
+import CabinetShell from "../../../../avva/cabinet-shell";
+import { getStaffById } from "../../../../avva/staff";
+import { BLOCKS } from "../../../../avva/blocks";
+import styles from "../../../../avva/cabinet.module.css";
 
 export default function BlockPage({ params }) {
   const { id, code } = use(params);
