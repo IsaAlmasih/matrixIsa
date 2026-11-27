@@ -1,0 +1,116 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 760px;
+}
+
+.card {
+  background: #1a1d29;
+  border: 1px solid #2a2e3f;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.backLink {
+  font-size: 13px;
+  color: #8a90b0;
+  text-decoration: none;
+}
+.backLink:hover {
+  color: #c8ccdd;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.name {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+.statusOn,
+.statusWait {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+.statusOn {
+  background: #1d3329;
+  color: #7ee0a0;
+}
+.statusWait {
+  background: #33301d;
+  color: #e0c88a;
+}
+
+.idBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: #23273a;
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+.idLabel {
+  font-size: 10px;
+  color: #6a7090;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.idValue {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6a7090;
+  margin: 20px 0 10px;
+}
+
+.blocksLine {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.blockChip {
+  font-size: 12px;
+  background: #23273a;
+  color: #c8ccdd;
+  border-radius: 10px;
+  padding: 4px 12px;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.eventRow {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #23273a;
+}
+.eventDate {
+  color: #6a7090;
+  min-width: 44px;
+}
+.eventText {
+  color: #c8ccdd;
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.5;
+  margin: 0;
+}

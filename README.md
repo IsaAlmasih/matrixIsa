@@ -65,3 +65,10 @@ CREATE TABLE IF NOT EXISTS messages (
 
 -- Индекс для быстрого получения сообщений по диалогу
 CREATE INDEX idx_messages_conversation ON messages(conversation_id);
+
+
+
+
+Что уже сделано ✅
+Сервер: Node.js 20, npm, git, nginx, PM2 установлены; пользователь matrixapp создан
+База данных на сервере: пользователь matrix_user, база matrix, схема залита — все 4 таблицы на месте (app_users, conversations, conversation_participants, messages)

@@ -1,0 +1,136 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 760px;
+}
+
+.card {
+  background: #1a1d29;
+  border: 1px solid #2a2e3f;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.5;
+  margin: 0 0 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  border: 1px solid #23273a;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.rowHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nameLink {
+  color: #c8ccdd;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+.nameLink:hover {
+  color: #7ea0ff;
+}
+
+.statusOn,
+.statusWait {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+.statusOn {
+  background: #1d3329;
+  color: #7ee0a0;
+}
+.statusWait {
+  background: #33301d;
+  color: #e0c88a;
+}
+
+.rowActions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.smallBtn,
+.smallBtnActive {
+  background: #2a2e3f;
+  color: #c8ccdd;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.smallBtnActive {
+  background: #4a5cff;
+  color: #fff;
+}
+
+.blocksLine {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.blockChip {
+  font-size: 11px;
+  background: #23273a;
+  color: #c8ccdd;
+  border-radius: 10px;
+  padding: 3px 10px;
+}
+
+.noBlocks {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.picker {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #2a2e3f;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip,
+.chipOn {
+  border-radius: 16px;
+  padding: 5px 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.chip {
+  background: transparent;
+  border: 1px solid #444a5c;
+  color: #c8ccdd;
+}
+.chipOn {
+  background: #4a5cff;
+  border: 1px solid #4a5cff;
+  color: #fff;
+}

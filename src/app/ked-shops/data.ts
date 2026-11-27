@@ -46,7 +46,7 @@ export const SHOPS: Shop[] = [
   {
     id: 1,
     name: "ИП Така С. С.",
-    href: "/",
+    href: "/shop",
     okved: "47.91",
     description: "Торговля на маркетплейсах",
     city: "Москва",
@@ -57,14 +57,14 @@ export const SHOPS: Shop[] = [
   },
   {
     id: 2,
-    name: "GreenField Ltd",
+    name: "AO Matrix",
     okved: "01",
-    href: "/",
-    description: "Фермерское хозяйство, злаковые культуры",
-    city: "Тверь",
+    href: "/shop",
+    description: "Предостовление посреднических услуг.",
+    city: "Москва",
     products: [
-      { name: "Пшеница", category: "Продукты питания" },
-      { name: "Гречка", category: "Продукты питания" },
+      { name: "Площадки", category: "Аренда" },
+      { name: "Программирование", category: "Услуги" },
     ],
   },
   {

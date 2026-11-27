@@ -1,0 +1,227 @@
+.panel {
+  margin-top: 100px;
+  display: flex;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  color: #e8e8f0;
+  background: #000000;
+}
+
+.sidebar {
+  width: 220px;
+  background: #000000;
+  border-right: 1px solid #2a2e3f;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 0 12px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.groupTitle {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6a7090;
+  padding: 0 12px;
+  margin-bottom: 2px;
+}
+
+
+.menuItem,
+.menuItemActive {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #c8ccdd;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.menuItem:hover {
+  background: #23273a;
+}
+
+.menuItemActive {
+  background: #4a5cff;
+  color: #fff;
+}
+
+.soon {
+  font-size: 10px;
+  color: #6a7090;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid #2a2e3f;
+}
+
+.topbarTitle {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.adminBadge {
+  font-size: 12px;
+  background: #2a2e3f;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.main {
+  padding: 24px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 760px;
+}
+
+.card {
+  background: #1a1d29;
+  border: 1px solid #2a2e3f;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summaryValue {
+  font-size: 26px;
+  font-weight: bold;
+  color: #7ee0a0;
+}
+
+.summaryLabel {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.flags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flagRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #23273a;
+}
+
+.flagName {
+  font-size: 14px;
+}
+
+.switchOn,
+.switchOff {
+  min-width: 64px;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.switchOn {
+  background: #4a5cff;
+  color: #fff;
+}
+
+.switchOff {
+  background: #2a2e3f;
+  color: #8a90b0;
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.5;
+  margin: 12px 0 0;
+}
+
+.error {
+  background: #3a1d29;
+  border: 1px solid #5c2a3f;
+  color: #e0a0b8;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Адаптив: на узких экранах сайдбар уходит наверх */
+@media (max-width: 720px) {
+  .panel {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-right: none;
+    border-bottom: 1px solid #2a2e3f;
+  }
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .menuItem,
+  .menuItemActive {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
