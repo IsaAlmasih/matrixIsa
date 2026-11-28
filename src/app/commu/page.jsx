@@ -80,7 +80,7 @@ const commuMenu = [
   { label: "Матрица", icon: FiBox, href: "/matrix" },
   { label: "Комната", icon: FiLayers, href: "/roomUser" },
   { label: "Учение", icon: FiBookOpen, href: "/education" },
-  { label: "Магазины", icon: FiShoppingBag, href: "/shops" },
+  { label: "Организации", icon: FiShoppingBag, href: "/ked-shops" },
   { label: "Работа", icon: FiBriefcase, href: "/work" },
   { label: "Покупатели", icon: FiShoppingCart },
   { label: "Поддержка", icon: FiHelpCircle },

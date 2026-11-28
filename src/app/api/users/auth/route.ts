@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { SignJWT } from "jose";
 import bcrypt from "bcryptjs";
 import pool from "../../../../lib/db";
-
+import { issueCode } from "../../../../lib/verify-code";
 
 export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, password } = await request.json();
+    const body = await request.json();
+    const email = String(body.email ?? "")
+      .trim()
+      .toLowerCase();
+    const password = String(body.password ?? "");
 
     if (!email || !password) {
       return NextResponse.json(
@@ -42,39 +45,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const secret = process.env.JWT_SECRET;
+    // Пароль верный — выдаём код подтверждения, сессию пока НЕ даём
+    await issueCode(user.email);
 
-    if (!secret) {
-      console.error("JWT_SECRET не задан в .env.local");
-      return NextResponse.json(
-        { error: "Ошибка конфигурации сервера" },
-        { status: 500 },
-      );
-    }
-
-    const secretKey = new TextEncoder().encode(secret);
-
-    const token = await new SignJWT({ email: user.email })
-      .setProtectedHeader({ alg: "HS256" })
-      .setSubject(String(user.id))
-      .setIssuedAt()
-      .setExpirationTime("7d")
-      .sign(secretKey);
-
-    const response = NextResponse.json({
-      id: user.id,
-      username: user.username,
+    return NextResponse.json({
+      pending: true,
       email: user.email,
     });
-
-    response.cookies.set("session", token, {
-      httpOnly: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
-
-    return response;
   } catch (error) {
     console.error("Auth error:", error);
     return NextResponse.json({ error: "Ошибка авторизации" }, { status: 500 });
