@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { SignJWT } from "jose";
 import bcrypt from "bcryptjs";
 import pool from "../../../../lib/db";
 
@@ -22,9 +21,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       return NextResponse.json(
-        { error: "Пароль должен быть не короче 6 символов" },
+        { error: "Пароль должен быть не короче 8 символов" },
         { status: 400 },
       );
     }
@@ -43,20 +42,15 @@ export async function POST(request: NextRequest) {
 
     // Имя может случайно совпасть с чужим — тогда добавим число
     let finalUsername = username;
-    const taken = await pool.query(
-      "SELECT id FROM app_users WHERE username = $1",
-      [finalUsername],
-    );
-
     let suffix = 1;
-    while (taken.rowCount !== 0) {
-      finalUsername = `${username}${suffix}`;
-      suffix += 1;
-      const again = await pool.query(
+    while (true) {
+      const taken = await pool.query(
         "SELECT id FROM app_users WHERE username = $1",
         [finalUsername],
       );
-      if (again.rowCount === 0) break;
+      if (taken.rowCount === 0) break;
+      finalUsername = `${username}${suffix}`;
+      suffix += 1;
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
@@ -68,35 +62,8 @@ export async function POST(request: NextRequest) {
       [finalUsername, email, passwordHash],
     );
 
-    const user = created.rows[0];
-
-    const secret = process.env.JWT_SECRET;
-
-    if (!secret) {
-      console.error("JWT_SECRET не задан в .env.local");
-      return NextResponse.json(
-        { error: "Ошибка конфигурации сервера" },
-        { status: 500 },
-      );
-    }
-
-    const token = await new SignJWT({ email: user.email })
-      .setProtectedHeader({ alg: "HS256" })
-      .setSubject(String(user.id))
-      .setIssuedAt()
-      .setExpirationTime("7d")
-      .sign(new TextEncoder().encode(secret));
-
-    const response = NextResponse.json(user, { status: 201 });
-
-    response.cookies.set("session", token, {
-      httpOnly: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
-
-    return response;
+    // Аккаунт создан, но сессию НЕ выдаём: вход — только через пароль + код
+    return NextResponse.json(created.rows[0], { status: 201 });
   } catch (error) {
     console.error("Register error:", error);
     return NextResponse.json(
